@@ -1,0 +1,39 @@
+import type { Metadata } from "next";
+
+import { AuthForm } from "@/components/auth/auth-form";
+
+export const metadata: Metadata = {
+  title: "Sign in",
+  description: "Sign in to save process guides and track checklist progress.",
+};
+
+type SignInPageProps = {
+  searchParams: Promise<{
+    error?: string;
+    message?: string;
+    redirectTo?: string;
+  }>;
+};
+
+export default async function SignInPage({ searchParams }: SignInPageProps) {
+  const params = await searchParams;
+
+  return (
+    <section className="mx-auto w-full max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+      <div className="mx-auto mb-8 max-w-xl text-center">
+        <h1 className="text-3xl font-semibold tracking-normal sm:text-4xl">
+          Welcome back
+        </h1>
+        <p className="mt-3 text-sm leading-6 text-muted-foreground">
+          Sign in to continue your saved requirement checklists.
+        </p>
+      </div>
+      <AuthForm
+        mode="sign-in"
+        error={params.error}
+        message={params.message}
+        redirectTo={params.redirectTo}
+      />
+    </section>
+  );
+}
