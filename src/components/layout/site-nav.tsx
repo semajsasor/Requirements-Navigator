@@ -5,6 +5,8 @@ import { Button } from "@/components/ui/button";
 import { signOutAction } from "@/lib/actions/auth";
 import { getCurrentUser } from "@/lib/auth/session";
 
+export const dynamic = "force-dynamic";
+
 const links = [
   { href: "/", label: "Home" },
   { href: "/explore", label: "Explore" },

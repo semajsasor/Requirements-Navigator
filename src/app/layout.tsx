@@ -19,8 +19,10 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://requirements-navigator.vercel.app";
+
 export const metadata: Metadata = {
-  metadataBase: new URL("https://requirements-navigator.vercel.app"),
+  metadataBase: new URL(siteUrl),
   title: {
     default: "Requirements Navigator",
     template: "%s | Requirements Navigator",
