@@ -2221,7 +2221,6 @@ export const processGuides: ProcessGuide[] = [
     reviewStatus: "reviewed",
     difficulty: "Low",
     tags: ["banking", "student", "money", "canada"],
-    tags: ["banking", "student", "money", "canada"],
     status: "published",
   },
   {
