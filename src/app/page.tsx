@@ -36,15 +36,15 @@ export default function Home() {
     <>
       <section className="relative overflow-hidden bg-[#f8faf9]">
         <div className="absolute inset-x-0 top-0 h-72 bg-[#e2f4ee]" aria-hidden="true" />
-        <div className="relative mx-auto grid w-full max-w-7xl gap-10 px-4 py-12 sm:px-6 md:grid-cols-[1.02fr_0.98fr] md:items-center md:py-18 lg:px-8 lg:py-24">
+        <div className="relative mx-auto grid w-full max-w-7xl gap-8 px-4 py-10 sm:px-6 md:grid-cols-[1.02fr_0.98fr] md:items-center md:py-18 lg:px-8 lg:py-24">
           <div>
             <Badge variant="accent" className="mb-5 shadow-sm">
               {landingPage.hero.eyebrow}
             </Badge>
-            <h1 className="max-w-4xl text-4xl font-semibold leading-tight tracking-normal text-foreground sm:text-5xl lg:text-6xl">
+            <h1 className="max-w-4xl text-3xl font-semibold leading-tight tracking-normal text-foreground sm:text-5xl lg:text-6xl">
               {landingPage.hero.headline}
             </h1>
-            <p className="mt-5 max-w-2xl text-base leading-7 text-muted-foreground sm:text-lg">
+            <p className="mt-4 max-w-2xl text-sm leading-6 text-muted-foreground sm:mt-5 sm:text-lg sm:leading-7">
               {landingPage.hero.subheadline}
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">

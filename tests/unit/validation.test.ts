@@ -27,4 +27,18 @@ describe("process guide validation", () => {
 
     expect(processGuideSchema.safeParse(guide).success).toBe(false);
   });
+
+  it("rejects processing time ranges where max is less than min", () => {
+    const guide = structuredClone(processGuides[0]!);
+    guide.estimatedProcessingTime = {
+      min: 2,
+      max: 1,
+      unit: "days",
+      display: "1 to 2 days",
+    };
+
+    const result = processGuideSchema.safeParse(guide);
+
+    expect(result.success).toBe(false);
+  });
 });

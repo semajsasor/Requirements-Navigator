@@ -23,6 +23,15 @@ describe("filterProcesses", () => {
     expect(results.map((guide) => guide.slug)).toContain("canada-study-permit");
   });
 
+  it("ranks direct title matches before broader metadata matches", () => {
+    const results = filterProcesses(processGuides, {
+      ...emptyProcessFilters,
+      query: "passport",
+    });
+
+    expect(results[0]?.slug).toBe("passport-renewal-us");
+  });
+
   it("filters by category and country", () => {
     const results = filterProcesses(processGuides, {
       ...emptyProcessFilters,

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import { ProcessDetailView } from "@/components/process/process-detail-view";
+import { getCurrentUser } from "@/lib/auth/session";
 import { getProcessBySlug, processGuides } from "@/lib/data/processes";
 import { getPublishedProcessGuideBySlug } from "@/lib/process/db";
 
@@ -39,5 +40,7 @@ export default async function ProcessPage({ params }: ProcessPageProps) {
     notFound();
   }
 
-  return <ProcessDetailView process={process} />;
+  const user = await getCurrentUser();
+
+  return <ProcessDetailView process={process} isSignedIn={Boolean(user)} />;
 }

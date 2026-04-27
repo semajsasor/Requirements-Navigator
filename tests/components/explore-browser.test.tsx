@@ -25,7 +25,7 @@ describe("ExploreBrowser", () => {
     expect(screen.getByText(/Popular processes/i)).toBeInTheDocument();
 
     await user.type(
-      screen.getByPlaceholderText(/search by process/i),
+      screen.getByRole("textbox", { name: /search requirement guides/i }),
       "zzzzzzzzz",
     );
 

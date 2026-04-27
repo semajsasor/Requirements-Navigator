@@ -20,8 +20,8 @@ export function ProcessInfoCard({
 }: ProcessInfoCardProps) {
   return (
     <Card className={cn("bg-white shadow-sm", className)}>
-      <CardContent className="flex gap-3 p-5">
-        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-accent text-accent-foreground">
+      <CardContent className="flex gap-3 p-4 sm:p-5">
+        <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md bg-accent text-accent-foreground sm:h-10 sm:w-10">
           {icon}
         </div>
         <div>

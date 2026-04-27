@@ -43,7 +43,15 @@ const sectionLinks = [
   { href: "#sources", label: "Sources" },
 ];
 
-export function ProcessDetailView({ process }: { process: ProcessGuide }) {
+type ProcessDetailViewProps = {
+  process: ProcessGuide;
+  isSignedIn?: boolean;
+};
+
+export function ProcessDetailView({
+  process,
+  isSignedIn = false,
+}: ProcessDetailViewProps) {
   const documentItems: ChecklistItem[] = process.requiredDocuments.map((document) => ({
     id: getDocumentChecklistItemId(document.name),
     title: document.name,
@@ -72,7 +80,7 @@ export function ProcessDetailView({ process }: { process: ProcessGuide }) {
   const location = formatProcessLocation(process);
 
   return (
-    <div className="mx-auto w-full max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
+    <div className="mx-auto w-full max-w-7xl px-4 py-6 sm:px-6 sm:py-8 lg:px-8">
       <RecentGuideTracker
         slug={process.slug}
         title={process.title}
@@ -96,10 +104,10 @@ export function ProcessDetailView({ process }: { process: ProcessGuide }) {
             <TrustBadge reviewStatus={process.reviewStatus} />
           </div>
 
-          <h1 className="mt-4 max-w-4xl text-3xl font-semibold leading-tight tracking-normal sm:text-5xl">
+          <h1 className="mt-4 max-w-4xl text-2xl font-semibold leading-tight tracking-normal sm:text-5xl">
             {process.title}
           </h1>
-          <p className="mt-5 max-w-3xl text-base leading-7 text-muted-foreground sm:text-lg">
+          <p className="mt-4 max-w-3xl text-sm leading-6 text-muted-foreground sm:mt-5 sm:text-lg sm:leading-7">
             {process.summary}
           </p>
           <p className="mt-4 max-w-3xl rounded-md border bg-white p-4 text-sm leading-6 text-muted-foreground">
@@ -261,7 +269,7 @@ export function ProcessDetailView({ process }: { process: ProcessGuide }) {
               <form action={saveGuideAction}>
                 <input type="hidden" name="slug" value={process.slug} />
                 <Button type="submit" variant="secondary" className="mt-2 w-full">
-                  Save to dashboard
+                  {isSignedIn ? "Save to dashboard" : "Sign in to save"}
                 </Button>
               </form>
               <Separator />

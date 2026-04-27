@@ -13,7 +13,9 @@ test("browsing guides from Explore", async ({ page }) => {
   await page.goto("/explore");
 
   await expect(page.getByRole("heading", { name: /browse requirement guides/i })).toBeVisible();
-  await page.getByPlaceholder(/search by process/i).fill("passport");
+  await expect(page.locator("[data-hydrated='true']")).toBeVisible();
+  await page.getByRole("textbox", { name: /search requirement guides/i }).fill("passport");
+  await expect(page.getByText(/38 of 70 guides/i)).toBeVisible();
   await expect(page.getByRole("heading", { name: /renew an adult passport/i })).toBeVisible();
 });
 

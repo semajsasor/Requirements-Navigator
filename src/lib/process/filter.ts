@@ -20,6 +20,43 @@ function normalize(value: string) {
   return value.trim().toLowerCase();
 }
 
+function getProcessSearchRank(process: ProcessGuide, query: string) {
+  const title = normalize(process.title);
+  const category = normalize(process.category);
+  const tags = process.tags.map(normalize);
+  const slug = normalize(process.slug);
+
+  if (title === query) {
+    return 600;
+  }
+
+  if (title.startsWith(query)) {
+    return 500;
+  }
+
+  if (title.includes(query)) {
+    return 400;
+  }
+
+  if (category === query) {
+    return 300;
+  }
+
+  if (category.includes(query)) {
+    return 250;
+  }
+
+  if (tags.includes(query)) {
+    return 200;
+  }
+
+  if (slug.includes(query)) {
+    return 150;
+  }
+
+  return 0;
+}
+
 export function getProcessSearchText(process: ProcessGuide) {
   return [
     process.title,
@@ -59,39 +96,55 @@ export function filterProcesses(
   const query = normalize(filters.query);
   const region = normalize(filters.region);
 
-  return processes.filter((process) => {
-    const matchesQuery = query
-      ? getProcessSearchText(process).includes(query)
-      : true;
+  const results = processes
+    .map((process, index) => ({ process, index }))
+    .filter(({ process }) => {
+      const matchesQuery = query
+        ? getProcessSearchText(process).includes(query)
+        : true;
 
-    const matchesCategory =
-      filters.category === "All" || process.category === filters.category;
+      const matchesCategory =
+        filters.category === "All" || process.category === filters.category;
 
-    const matchesCountry =
-      filters.countryCode === "All" ||
-      process.location.countryCode === filters.countryCode;
+      const matchesCountry =
+        filters.countryCode === "All" ||
+        process.location.countryCode === filters.countryCode;
 
-    const matchesRegion = region
-      ? normalize(
-          [
-            process.location.region ?? "",
-            process.location.city ?? "",
-            process.location.countryName,
-          ].join(" "),
-        ).includes(region)
-      : true;
+      const matchesRegion = region
+        ? normalize(
+            [
+              process.location.region ?? "",
+              process.location.city ?? "",
+              process.location.countryName,
+            ].join(" "),
+          ).includes(region)
+        : true;
 
-    const matchesDifficulty =
-      filters.difficulty === "All" || process.difficulty === filters.difficulty;
+      const matchesDifficulty =
+        filters.difficulty === "All" || process.difficulty === filters.difficulty;
 
-    return (
-      matchesQuery &&
-      matchesCategory &&
-      matchesCountry &&
-      matchesRegion &&
-      matchesDifficulty
-    );
-  });
+      return (
+        matchesQuery &&
+        matchesCategory &&
+        matchesCountry &&
+        matchesRegion &&
+        matchesDifficulty
+      );
+    });
+
+  if (!query) {
+    return results.map(({ process }) => process);
+  }
+
+  return results
+    .sort((a, b) => {
+      const rankDifference =
+        getProcessSearchRank(b.process, query) -
+        getProcessSearchRank(a.process, query);
+
+      return rankDifference || a.index - b.index;
+    })
+    .map(({ process }) => process);
 }
 
 export function hasActiveProcessFilters(filters: ProcessFilterInput) {
