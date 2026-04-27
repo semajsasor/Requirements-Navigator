@@ -4,6 +4,8 @@ import { ClipboardCheck, Menu, Search, User as UserIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { signOutAction } from "@/lib/actions/auth";
 import { getCurrentUser } from "@/lib/auth/session";
+import { NavAuth } from "./nav-auth";
+import { MobileNavAuth } from "./mobile-nav-auth";
 
 const links = [
   { href: "/", label: "Home" },
@@ -42,23 +44,7 @@ export async function SiteNav() {
             </Link>
           </Button>
           
-          {user ? (
-            <Button
-              asChild
-              variant="outline"
-              size="sm"
-              className="hidden sm:inline-flex border-primary/20 bg-primary/5 text-primary hover:bg-primary/10 font-medium"
-            >
-              <Link href="/dashboard">
-                <UserIcon className="h-4 w-4" aria-hidden="true" />
-                Account
-              </Link>
-            </Button>
-          ) : (
-            <Button asChild size="sm" className="hidden sm:inline-flex font-medium">
-              <Link href="/auth/sign-in">Sign in</Link>
-            </Button>
-          )}
+          <NavAuth initialUser={user} />
 
           <details className="group relative md:hidden">
             <summary className="inline-flex h-10 w-10 cursor-pointer list-none items-center justify-center rounded-md text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
@@ -84,35 +70,7 @@ export async function SiteNav() {
               
               <div className="my-2 border-t" />
               
-              <div className="px-2 py-1.5">
-                <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Account</p>
-              </div>
-              {user ? (
-                <>
-                  <Link
-                    href="/dashboard"
-                    className="flex items-center gap-2 rounded-md px-3 py-2.5 text-sm font-medium text-primary hover:bg-accent"
-                  >
-                    <UserIcon className="h-4 w-4" />
-                    My Dashboard
-                  </Link>
-                  <form action={signOutAction}>
-                    <button
-                      type="submit"
-                      className="flex w-full items-center rounded-md px-3 py-2.5 text-sm font-medium text-destructive hover:bg-destructive/5 transition-colors"
-                    >
-                      Sign out
-                    </button>
-                  </form>
-                </>
-              ) : (
-                <Link
-                  href="/auth/sign-in"
-                  className="flex items-center rounded-md px-3 py-2.5 text-sm font-medium bg-primary text-primary-foreground hover:bg-primary/90 shadow-sm"
-                >
-                  Sign in
-                </Link>
-              )}
+              <MobileNavAuth initialUser={user} />
             </nav>
           </details>
         </div>
