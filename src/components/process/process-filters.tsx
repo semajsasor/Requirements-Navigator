@@ -56,7 +56,7 @@ export function ProcessFilters({
             <Input
               value={filters.query}
               onChange={(event) => updateFilter("query", event.target.value)}
-              placeholder="Search by process, document, fee, agency, or keyword"
+              placeholder="Search guides"
               className="h-11 bg-white pl-9"
             />
           </label>
@@ -113,7 +113,7 @@ export function ProcessFilters({
               className="mt-2 h-10 bg-white"
             />
             <p className="mt-2 text-xs leading-5 text-muted-foreground">
-              Placeholder-ready for server-side location facets later.
+              Use a place name when requirements vary by location.
             </p>
           </div>
 

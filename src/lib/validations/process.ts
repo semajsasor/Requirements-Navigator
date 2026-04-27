@@ -41,9 +41,12 @@ export const processFeeSchema = z.object({
 
 export const estimatedProcessingTimeSchema = z.object({
   min: z.number().int().nonnegative(),
-  max: z.number().int().positive(),
+  max: z.number().int().nonnegative(),
   unit: z.enum(["minutes", "hours", "days", "weeks", "months"]),
   display: z.string().trim().min(1).max(120),
+}).refine((value) => value.max >= value.min, {
+  message: "Maximum processing time must be greater than or equal to minimum processing time.",
+  path: ["max"],
 });
 
 export const processFaqSchema = z.object({

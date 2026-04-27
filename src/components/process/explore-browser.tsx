@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo, useState, useSyncExternalStore } from "react";
 import Link from "next/link";
 import { ArrowRight, TrendingUp } from "lucide-react";
 
@@ -25,6 +25,10 @@ type ExploreBrowserProps = {
   countries: { code: string; name: string }[];
 };
 
+function subscribeHydration() {
+  return () => {};
+}
+
 export function ExploreBrowser({
   processes,
   popularProcesses,
@@ -32,6 +36,11 @@ export function ExploreBrowser({
   countries,
 }: ExploreBrowserProps) {
   const [filters, setFilters] = useState<ProcessFilterInput>(emptyProcessFilters);
+  const isHydrated = useSyncExternalStore(
+    subscribeHydration,
+    () => true,
+    () => false,
+  );
 
   const filteredProcesses = useMemo(
     () => filterProcesses(processes, filters),
@@ -45,7 +54,7 @@ export function ExploreBrowser({
   }
 
   return (
-    <div className="grid gap-10">
+    <div className="grid gap-8 sm:gap-10" data-hydrated={isHydrated}>
       <ProcessFilters
         filters={filters}
         categories={categories}

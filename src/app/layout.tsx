@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 import { PageShell } from "@/components/layout/page-shell";
 
@@ -16,7 +18,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://requirements-navigator.example.com"),
+  metadataBase: new URL("https://requirements-navigator.vercel.app"),
   title: {
     default: "Requirements Navigator",
     template: "%s | Requirements Navigator",
@@ -37,6 +39,8 @@ export default function RootLayout({
     >
       <body className="flex min-h-full flex-col">
         <PageShell>{children}</PageShell>
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
