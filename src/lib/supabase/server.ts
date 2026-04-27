@@ -1,10 +1,11 @@
 import { createServerClient } from "@supabase/ssr";
 import { cookies } from "next/headers";
+import { cache } from "react";
 
 import type { Database } from "@/types/database";
 import { getSupabaseBrowserEnv } from "./env";
 
-export async function createClient() {
+export const createClient = cache(async () => {
   const { url, anonKey } = getSupabaseBrowserEnv();
   const cookieStore = await cookies();
 
