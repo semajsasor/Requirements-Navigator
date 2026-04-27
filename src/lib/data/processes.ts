@@ -2681,7 +2681,6 @@ export const processGuides: ProcessGuide[] = [
     reviewStatus: "reviewed",
     difficulty: "High",
     tags: ["travel", "visa", "uk", "tourism"],
-    tags: ["travel", "visa", "uk", "tourism"],
     status: "published",
   },
   {
@@ -3367,7 +3366,6 @@ export const processGuides: ProcessGuide[] = [
     reviewStatus: "reviewed",
     difficulty: "Medium",
     tags: ["tin", "bir", "taxes", "philippines"],
-    tags: ["tin", "bir", "taxes", "philippines"],
     status: "published",
   },
   {
@@ -3591,7 +3589,6 @@ export const processGuides: ProcessGuide[] = [
     lastReviewedDate: "2026-04-27",
     reviewStatus: "reviewed",
     difficulty: "Low",
-    tags: ["banking", "savings", "finance", "philippines"],
     tags: ["banking", "savings", "finance", "philippines"],
     status: "published",
   },
