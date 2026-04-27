@@ -1,3 +1,6 @@
+"use client";
+
+import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import {
   AlertTriangle,
@@ -52,6 +55,52 @@ export function ProcessDetailView({
   process,
   isSignedIn = false,
 }: ProcessDetailViewProps) {
+  const storageKey = `requirements-navigator:progress:${process.slug}`;
+
+  const [checkedIds, setCheckedIds] = useState<Set<string>>(new Set());
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  // Load progress from localStorage
+  useEffect(() => {
+    const saved = window.localStorage.getItem(storageKey);
+    if (saved) {
+      try {
+        const parsed = JSON.parse(saved);
+        if (Array.isArray(parsed)) {
+          setCheckedIds(new Set(parsed)); // eslint-disable-line react-hooks/set-state-in-effect
+        }
+      } catch (e) {
+        console.error("Failed to load progress", e);
+      }
+    }
+    setIsLoaded(true);
+  }, [storageKey]);
+
+  // Save progress to localStorage
+  useEffect(() => {
+    if (isLoaded) {
+      window.localStorage.setItem(storageKey, JSON.stringify([...checkedIds]));
+    }
+  }, [checkedIds, storageKey, isLoaded]);
+
+  const handleToggle = (id: string) => {
+    setCheckedIds((prev) => {
+      const next = new Set(prev);
+      if (next.has(id)) {
+        next.delete(id);
+      } else {
+        next.add(id);
+      }
+      return next;
+    });
+  };
+
+  const handleClearProgress = () => {
+    if (window.confirm("Are you sure you want to clear all progress for this checklist?")) {
+      setCheckedIds(new Set());
+    }
+  };
+
   const documentItems: ChecklistItem[] = process.requiredDocuments.map((document) => ({
     id: getDocumentChecklistItemId(document.name),
     title: document.name,
@@ -79,8 +128,42 @@ export function ProcessDetailView({
   const checklistText = buildProcessChecklistText(process);
   const location = formatProcessLocation(process);
 
+  const allItemsCount = documentItems.length + stepItems.length;
+  const totalCompletedCount = checkedIds.size;
+  const overallProgressPercent =
+    allItemsCount > 0 ? (totalCompletedCount / allItemsCount) * 100 : 0;
+
+  const docCheckedIds = useMemo(
+    () => new Set([...checkedIds].filter((id) => documentItems.some((item) => item.id === id))),
+    [checkedIds, documentItems]
+  );
+
+  const stepCheckedIds = useMemo(
+    () => new Set([...checkedIds].filter((id) => stepItems.some((item) => item.id === id))),
+    [checkedIds, stepItems]
+  );
+
   return (
     <div className="mx-auto w-full max-w-7xl px-4 py-5 sm:px-6 sm:py-8 lg:px-8">
+      {/* Overall Progress Bar - Sticky */}
+      <div className="no-print sticky top-0 z-50 -mx-4 mb-6 border-b bg-background/95 px-4 py-3 backdrop-blur sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
+        <div className="flex items-center justify-between gap-4">
+          <div className="flex items-center gap-2 min-w-0">
+            <ListChecks className="h-5 w-5 text-primary shrink-0" />
+            <span className="text-sm font-medium truncate">Overall Progress</span>
+          </div>
+          <span className="text-sm font-bold text-primary">
+            {Math.round(overallProgressPercent)}%
+          </span>
+        </div>
+        <div className="mt-2 h-2 w-full overflow-hidden rounded-full bg-secondary">
+          <div
+            className="h-full bg-primary transition-all duration-500 ease-in-out"
+            style={{ width: `${overallProgressPercent}%` }}
+          />
+        </div>
+      </div>
+
       <RecentGuideTracker
         slug={process.slug}
         title={process.title}
@@ -174,6 +257,8 @@ export function ProcessDetailView({
               title="Required documents checklist"
               description="Tap each item as you gather it. This progress stays in your browser for the current page session."
               items={documentItems}
+              checkedIds={docCheckedIds}
+              onToggle={handleToggle}
             />
           </div>
 
@@ -183,6 +268,8 @@ export function ProcessDetailView({
               description="Use this as a working checklist from preparation through submission."
               items={stepItems}
               ordered
+              checkedIds={stepCheckedIds}
+              onToggle={handleToggle}
             />
           </div>
 
@@ -266,6 +353,13 @@ export function ProcessDetailView({
             </CardHeader>
             <CardContent className="grid gap-4 text-sm">
               <ProcessActions checklistText={checklistText} />
+              <Button
+                variant="ghost"
+                className="w-full text-muted-foreground hover:text-destructive"
+                onClick={handleClearProgress}
+              >
+                Clear all progress
+              </Button>
               <form action={saveGuideAction}>
                 <input type="hidden" name="slug" value={process.slug} />
                 <Button type="submit" variant="secondary" className="mt-2 w-full">

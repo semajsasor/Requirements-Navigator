@@ -42,5 +42,29 @@ export default async function ProcessPage({ params }: ProcessPageProps) {
 
   const user = await getCurrentUser();
 
-  return <ProcessDetailView process={process} isSignedIn={Boolean(user)} />;
+  const howToSchema = {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": process.title,
+    "description": process.summary,
+    "step": process.instructions.map((step) => ({
+      "@type": "HowToStep",
+      "name": step.title,
+      "text": step.description,
+    })),
+    "supply": process.requiredDocuments.map((doc) => ({
+      "@type": "HowToSupply",
+      "name": doc.name,
+    })),
+  };
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }}
+      />
+      <ProcessDetailView process={process} isSignedIn={Boolean(user)} />
+    </>
+  );
 }

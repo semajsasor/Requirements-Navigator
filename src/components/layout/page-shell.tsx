@@ -3,7 +3,7 @@ import type { ReactNode } from "react";
 import { SiteFooter } from "./site-footer";
 import { SiteNav } from "./site-nav";
 
-export function PageShell({ children }: { children: ReactNode }) {
+export async function PageShell({ children }: { children: ReactNode }) {
   return (
     <>
       <SiteNav />

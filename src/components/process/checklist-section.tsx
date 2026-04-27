@@ -21,6 +21,8 @@ type ChecklistSectionProps = {
   ordered?: boolean;
   initialCheckedIds?: string[];
   onItemToggle?: (item: ChecklistItem, completed: boolean) => Promise<void> | void;
+  checkedIds?: Set<string>;
+  onToggle?: (id: string) => void;
 };
 
 export function ChecklistSection({
@@ -30,31 +32,39 @@ export function ChecklistSection({
   ordered = false,
   initialCheckedIds = [],
   onItemToggle,
+  checkedIds: propsCheckedIds,
+  onToggle,
 }: ChecklistSectionProps) {
-  const [checkedIds, setCheckedIds] = useState<Set<string>>(
+  const [internalCheckedIds, setInternalCheckedIds] = useState<Set<string>>(
     () => new Set(initialCheckedIds),
   );
 
+  const checkedIds = propsCheckedIds ?? internalCheckedIds;
   const completedCount = checkedIds.size;
+  const progressPercent = items.length > 0 ? (completedCount / items.length) * 100 : 0;
+
   const progressLabel = useMemo(
-    () => `${completedCount} of ${items.length} complete`,
-    [completedCount, items.length],
+    () => (progressPercent === 100 ? "Section Complete!" : `${completedCount} of ${items.length} complete`),
+    [completedCount, items.length, progressPercent],
   );
 
   function toggleItem(item: ChecklistItem) {
-    const nextCompleted = !checkedIds.has(item.id);
+    const isChecked = checkedIds.has(item.id);
+    const nextCompleted = !isChecked;
 
-    setCheckedIds((current) => {
-      const next = new Set(current);
-
-      if (next.has(item.id)) {
-        next.delete(item.id);
-      } else {
-        next.add(item.id);
-      }
-
-      return next;
-    });
+    if (onToggle) {
+      onToggle(item.id);
+    } else {
+      setInternalCheckedIds((current) => {
+        const next = new Set(current);
+        if (next.has(item.id)) {
+          next.delete(item.id);
+        } else {
+          next.add(item.id);
+        }
+        return next;
+      });
+    }
 
     void onItemToggle?.(item, nextCompleted);
   }
@@ -62,15 +72,27 @@ export function ChecklistSection({
   return (
     <section className="scroll-mt-24">
       <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
-        <div>
+        <div className="flex-1">
           <h2 className="text-2xl font-semibold tracking-normal">{title}</h2>
           {description ? (
             <p className="mt-2 text-sm leading-6 text-muted-foreground">{description}</p>
           ) : null}
         </div>
-        <Badge variant="secondary" className="w-fit">
-          {progressLabel}
-        </Badge>
+        <div className="flex flex-col items-end gap-2">
+          <Badge variant={progressPercent === 100 ? "default" : "secondary"} className="w-fit transition-colors">
+            {progressLabel}
+          </Badge>
+        </div>
+      </div>
+
+      <div className="mt-4 h-2 w-full overflow-hidden rounded-full bg-secondary">
+        <div
+          className={cn(
+            "h-full transition-all duration-500 ease-in-out",
+            progressPercent === 100 ? "bg-[#16a34a]" : "bg-primary"
+          )}
+          style={{ width: `${progressPercent}%` }}
+        />
       </div>
 
       <div className="mt-4 grid gap-3">

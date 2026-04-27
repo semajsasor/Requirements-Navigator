@@ -3867,6 +3867,1496 @@ export const processGuides: ProcessGuide[] = [
     tags: ["career", "part-time", "jobs", "philippines"],
     status: "published",
   },
+  {
+    slug: "french-passport-renewal",
+    title: "Renew a French Passport",
+    category: "Government services",
+    location: { countryCode: "FR", countryName: "France" },
+    summary: "Prepare your identity documents, photos, and fiscal stamps for your appointment at the local town hall.",
+    audience: "French citizens needing to renew an expired or soon-to-expire passport.",
+    eligibility: [
+      { label: "Citizenship", description: "You must be a French citizen with a valid or recently expired passport." },
+    ],
+    requiredDocuments: [
+      { name: "Current Passport", description: "Your existing passport, even if expired.", required: true },
+      { name: "Passport Photo", description: "Recent photo meeting official French standards (35mm x 45mm).", required: true },
+      { name: "Fiscal Stamp", description: "Digital or paper stamp (timbre fiscal) for the application fee.", required: true },
+      { name: "Proof of Address", description: "Utility bill or rent receipt less than a year old.", required: true },
+    ],
+    instructions: [
+      { order: 1, title: "Purchase fiscal stamp", description: "Buy your digital stamp online or at a licensed tobacco shop (bureau de tabac)." },
+      { order: 2, title: "Pre-fill application", description: "Complete the 'pré-demande' online on the ANTS website to save time." },
+      { order: 3, title: "Book appointment", description: "Make an appointment at any town hall (mairie) equipped with a biometric station." },
+      { order: 4, title: "Attend appointment", description: "Submit your documents and provide fingerprints in person." },
+    ],
+    fees: [
+      { label: "Adult passport fee", amount: 86, currency: "EUR", required: true, notes: "Digital fiscal stamp required." }
+    ],
+    estimatedProcessingTime: { min: 3, max: 8, unit: "weeks", display: "3 to 8 weeks" },
+    commonMistakes: [
+      "Using non-compliant photos (French standards are very strict regarding glasses and expressions).",
+      "Forgetting the digital stamp code during the appointment.",
+      "Not checking the validity of the proof of address (must be less than 1 year old)."
+    ],
+    tips: [
+      "Start the process at least 3 months before your planned travel, especially during holiday seasons.",
+      "You can track your application status on the ANTS website using your request number.",
+      "The pre-fill (pré-demande) is valid for 6 months from the date of creation."
+    ],
+    faq: [
+      { question: "Can I renew my passport abroad?", answer: "Yes, you can apply at a French consulate or embassy in your country of residence." },
+      { question: "Do I need to leave my old passport?", answer: "No, you keep it until the new one is ready, then you exchange it." },
+      { question: "How long is a French passport valid?", answer: "10 years for adults and 5 years for minors." }
+    ],
+    officialSourceLinks: [
+      { title: "Service-Public: Passport", publisher: "French Government", url: "https://www.service-public.fr/particuliers/vosdroits/N360" },
+      { title: "ANTS Portal", publisher: "French Ministry of Interior", url: "https://ants.gouv.fr/" }
+    ],
+    lastReviewedDate: "2026-04-27",
+    reviewStatus: "reviewed",
+    difficulty: "Medium",
+    tags: ["passport", "renewal", "france"],
+    status: "published",
+  },
+  {
+    slug: "register-address-france",
+    title: "Obtain Proof of Address in France",
+    category: "Government services",
+    location: { countryCode: "FR", countryName: "France" },
+    summary: "Secure the 'Justificatif de domicile' required for all French administrative and banking procedures.",
+    audience: "New residents, expats, and students moving to France.",
+    eligibility: [
+      { label: "Residency", description: "You must have a physical address where you live permanently or semi-permanently." },
+    ],
+    requiredDocuments: [
+      { name: "Lease Agreement", description: "Signed 'bail' or rental contract.", required: true },
+      { name: "Utility Bill", description: "Electricity, gas, or water bill in your name.", required: true },
+      { name: "Attestation d'hébergement", description: "If staying with someone, a signed letter from the host and their ID copy.", required: false },
+    ],
+    instructions: [
+      { order: 1, title: "Secure housing", description: "Sign a rental contract or obtain a hosting certificate from your host." },
+      { order: 2, title: "Set up utilities", description: "Register for electricity or gas to get a bill in your name as soon as possible." },
+      { order: 3, title: "Collect 'Justificatif'", description: "Keep your latest bill (quittance de loyer or utility bill) as proof for future tasks." },
+    ],
+    fees: [
+      { label: "Registration fee", amount: 0, currency: "EUR", required: false, notes: "Registering an address is free, but utility setup may have costs." }
+    ],
+    estimatedProcessingTime: { min: 1, max: 7, unit: "days", display: "Instant once bill is issued" },
+    commonMistakes: [
+      "Using a bill older than 3 months for official applications.",
+      "Not having your name exactly as it appears on your ID on the utility bill.",
+      "Assuming a mobile phone bill is sufficient (most offices reject them)."
+    ],
+    tips: [
+      "A home internet or landline bill is generally accepted, unlike mobile phone bills.",
+      "If you are 'hébergé' (hosted), make sure the host's bill is also recent and include their ID copy.",
+      "Keep digital and physical copies of your latest three bills."
+    ],
+    faq: [
+      { question: "What counts as valid proof?", answer: "Electricity/gas bills, water bills, landline internet bills, and latest tax assessments are standard." },
+      { question: "Can I use a hotel receipt?", answer: "Only for very temporary needs; most long-term services require a lease or utility bill." },
+      { question: "What if the bill is in my partner's name?", answer: "You will need an 'attestation d'hébergement' from them, even if you are married." }
+    ],
+    officialSourceLinks: [
+      { title: "Service-Public: Proof of Address", publisher: "French Government", url: "https://www.service-public.fr/particuliers/vosdroits/F1028" },
+      { title: "L'Assurance Maladie", publisher: "French Healthcare", url: "https://www.ameli.fr/" }
+    ],
+    lastReviewedDate: "2026-04-27",
+    reviewStatus: "reviewed",
+    difficulty: "Low",
+    tags: ["residency", "address", "france"],
+    status: "published",
+  },
+  {
+    slug: "spain-student-visa",
+    title: "Apply for a Spanish Student Visa",
+    category: "Immigration",
+    location: { countryCode: "ES", countryName: "Spain" },
+    summary: "Secure your study permit by preparing academic, financial, and medical documents for your consulate appointment.",
+    audience: "Non-EU students planning to study in Spain for more than 90 days.",
+    eligibility: [
+      { label: "Enrollment", description: "Must be accepted into a recognized Spanish educational institution for at least 20 hours per week." },
+    ],
+    requiredDocuments: [
+      { name: "Letter of Acceptance", description: "Official 'Carta de Aceptación' from the school or university.", required: true },
+      { name: "Proof of Funds", description: "Bank statements showing at least 100% of the IPREM monthly amount.", required: true },
+      { name: "Health Insurance", description: "Private insurance from a provider authorized to operate in Spain (no co-pay).", required: true },
+      { name: "Medical Certificate", description: "Official letter stating you do not suffer from diseases with public health implications.", required: true },
+      { name: "Criminal Record Check", description: "Background check from countries you lived in for the last 5 years.", required: true },
+    ],
+    instructions: [
+      { order: 1, title: "Gather academic documents", description: "Obtain your acceptance letter and proof of tuition payment." },
+      { order: 2, title: "Prepare legal documents", description: "Get your background check and medical certificate translated and apostilled." },
+      { order: 3, title: "Book consulate appointment", description: "Schedule an interview at the Spanish consulate serving your jurisdiction." },
+      { order: 4, title: "Attend interview", description: "Submit all originals and copies and pay the visa fee." },
+    ],
+    fees: [
+      { label: "Visa application fee", amount: 80, currency: "EUR", required: true, notes: "Varies by country of origin (e.g., higher for US citizens)." }
+    ],
+    estimatedProcessingTime: { min: 4, max: 12, unit: "weeks", display: "1 to 3 months" },
+    commonMistakes: [
+      "Providing insurance with a co-payment (Spanish visas require zero co-payment insurance).",
+      "Not translating documents into Spanish using a sworn translator (Traductor Jurado).",
+      "Booking the appointment too late (slots fill up months in advance)."
+    ],
+    tips: [
+      "Apply at least 2-3 months before your course starts, as appointments can be hard to find.",
+      "If staying more than 180 days, you must apply for a TIE card within 30 days of arrival in Spain.",
+      "Keep a photocopy of every document you submit to the consulate."
+    ],
+    faq: [
+      { question: "Can I work on a student visa?", answer: "Yes, usually up to 30 hours per week, provided it doesn't interfere with your studies." },
+      { question: "Do I need to apostille my degree?", answer: "Yes, if it's from outside the EU/EEA, to prove its validity in Spain." },
+      { question: "What is the IPREM?", answer: "A public income index used as a reference for financial requirements (approx €600/month)." }
+    ],
+    officialSourceLinks: [
+      { title: "Ministry of Foreign Affairs", publisher: "Spanish Government", url: "https://www.exteriores.gob.es/en/ServiciosAlCiudadano/Paginas/Visados-Etapa-Larga.aspx" },
+      { title: "Spanish Ministry of Education", publisher: "Spanish Government", url: "https://www.educacionyfp.gob.es/en/portada.html" }
+    ],
+    lastReviewedDate: "2026-04-27",
+    reviewStatus: "reviewed",
+    difficulty: "High",
+    tags: ["visa", "student", "spain"],
+    status: "published",
+  },
+  {
+    slug: "spain-empadronamiento",
+    title: "Register for Municipal Residency (Padrón)",
+    category: "Government services",
+    location: { countryCode: "ES", countryName: "Spain" },
+    summary: "Register on the 'Padrón' to become an official resident of your municipality and access local services.",
+    audience: "Anyone living in Spain, including foreigners (EU and non-EU).",
+    eligibility: [
+      { label: "Residency", description: "You must live at an address within the municipality." },
+    ],
+    requiredDocuments: [
+      { name: "Identity Document", description: "Passport, DNI, or NIE card.", required: true },
+      { name: "Rental Contract", description: "Signed lease for at least 6 months.", required: true },
+      { name: "Latest Utility Bill", description: "Recent water or electricity bill for the property.", required: false },
+    ],
+    instructions: [
+      { order: 1, title: "Book a 'Cita Previa'", description: "Schedule an appointment at your local 'Ayuntamiento' (Town Hall)." },
+      { order: 2, title: "Prepare documents", description: "Bring your ID and proof of address (original and copy)." },
+      { order: 3, title: "Attend appointment", description: "Submit documents and receive your 'Volante de Empadronamiento'." },
+    ],
+    fees: [
+      { label: "Registration fee", amount: 0, currency: "EUR", required: false, notes: "Usually free of charge." }
+    ],
+    estimatedProcessingTime: { min: 1, max: 1, unit: "days", display: "Same day" },
+    commonMistakes: [
+      "Not bringing the original lease (digital copies are often rejected).",
+      "If you aren't on the lease, not bringing the owner's authorization and ID copy.",
+      "Forgetting that the certificate expires after 3 months for some administrative uses."
+    ],
+    tips: [
+      "The 'Padrón' is required for health cards (SIP), school enrollment, and many immigration procedures.",
+      "Non-EU citizens without permanent residency must renew their Padrón every 2 years.",
+      "Always ask for multiple copies of the 'Volante' during your appointment."
+    ],
+    faq: [
+      { question: "Why do I need this?", answer: "It proves you live in the town and allows the local government to allocate resources and services." },
+      { question: "Does it give me legal residency?", answer: "No, it is a municipal registration of where you live, not a legal residency permit." },
+      { question: "What is the Volante vs Certificado?", answer: "The Volante is an informal proof, while the Certificado is an official signed document for court or marriage." }
+    ],
+    officialSourceLinks: [
+      { title: "Sede Electrónica", publisher: "Spanish Government", url: "https://sede.administracion.gob.es/" },
+      { title: "Ayuntamiento de Madrid", publisher: "City of Madrid", url: "https://www.madrid.es/portales/mondo/es/Inicio/Tramites/Padron-Municipal/" }
+    ],
+    lastReviewedDate: "2026-04-27",
+    reviewStatus: "reviewed",
+    difficulty: "Medium",
+    tags: ["residency", "padrón", "spain"],
+    status: "published",
+  },
+  {
+    slug: "italy-codice-fiscale",
+    title: "Obtain an Italian Tax Code",
+    category: "Government services",
+    location: { countryCode: "IT", countryName: "Italy" },
+    summary: "Get your Codice Fiscale, the essential identifier for banking, renting, and working in Italy.",
+    audience: "Foreigners moving to Italy or needing to conduct official business there.",
+    eligibility: [
+      { label: "Need", description: "Anyone who needs to interact with Italian public administration or sign contracts." },
+    ],
+    requiredDocuments: [
+      { name: "Passport/ID", description: "Valid passport or national identity card.", required: true },
+      { name: "Application Form", description: "Modello AA4/8 filled out in Italian.", required: true },
+      { name: "Permit of Stay", description: "If already in Italy and non-EU, a copy of your Permesso di Soggiorno.", required: false },
+    ],
+    instructions: [
+      { order: 1, title: "Download form", description: "Get Modello AA4/8 from the official Agenzia delle Entrate website." },
+      { order: 2, title: "Find nearest office", description: "Locate the 'Agenzia delle Entrate' office in your city." },
+      { order: 3, title: "Submit application", description: "Visit the office (often requires an appointment) and submit your ID and form." },
+    ],
+    fees: [
+      { label: "Issuance fee", amount: 0, currency: "EUR", required: false, notes: "The tax code is issued free of charge." }
+    ],
+    estimatedProcessingTime: { min: 1, max: 1, unit: "days", display: "Same day (in person)" },
+    commonMistakes: [
+      "Trying to use a 'generator' online (only codes issued by the Agenzia are legally valid).",
+      "Forgetting to bring a high-quality photocopy of your passport.",
+      "Not checking if your local office requires a prior appointment via the app."
+    ],
+    tips: [
+      "You can often apply for this at an Italian consulate in your home country before you move.",
+      "The Codice Fiscale is a green plastic card, but the paper certificate is equally valid.",
+      "Download the 'AgenziaEntrate' app to book your appointment slot and avoid long queues."
+    ],
+    faq: [
+      { question: "Can I get it online?", answer: "Usually requires an in-person visit or a request via email to the local office depending on current rules." },
+      { question: "Is it the same as a VAT number?", answer: "No, the Codice Fiscale is for individuals; businesses need a Partita IVA." },
+      { question: "Does it expire?", answer: "No, the number is assigned for life." }
+    ],
+    officialSourceLinks: [
+      { title: "Agenzia delle Entrate", publisher: "Italian Government", url: "https://www.agenziaentrate.gov.it/" },
+      { title: "Italian Ministry of Foreign Affairs", publisher: "Italian Government", url: "https://www.esteri.it/en/" }
+    ],
+    lastReviewedDate: "2026-04-27",
+    reviewStatus: "reviewed",
+    difficulty: "Medium",
+    tags: ["tax", "government", "italy"],
+    status: "published",
+  },
+  {
+    slug: "italy-university-enrollment",
+    title: "Enroll in an Italian University",
+    category: "Education",
+    location: { countryCode: "IT", countryName: "Italy" },
+    summary: "Organize your academic records for the official 'Pre-enrollment' and 'Declaration of Value' process.",
+    audience: "International students applying to Italian higher education institutions.",
+    eligibility: [
+      { label: "Academic", description: "Must hold a high school diploma or degree valid for the chosen level of study." },
+    ],
+    requiredDocuments: [
+      { name: "Diplomas/Transcripts", description: "Original academic records, officially translated into Italian.", required: true },
+      { name: "Declaration of Value", description: "Dichiarazione di Valore issued by the Italian consulate.", required: true },
+      { name: "Universitaly Summary", description: "Proof of pre-enrollment from the Universitaly portal.", required: true },
+      { name: "CIMEA Statement", description: "Statement of Comparability (often an alternative to the DoV).", required: false },
+    ],
+    instructions: [
+      { order: 1, title: "Pre-enroll on Universitaly", description: "Register and submit your application to your chosen university via the official portal." },
+      { order: 2, title: "Legalize documents", description: "Get your diplomas apostilled in your home country." },
+      { order: 3, title: "Apply for DoV or CIMEA", description: "Contact the consulate for a Declaration of Value or use the CIMEA online service." },
+      { order: 4, title: "Finalize enrollment", description: "Present all legalized documents to the university registrar upon arrival." },
+    ],
+    fees: [
+      { label: "Consular legalization", amount: 50, currency: "EUR", required: false, notes: "Varies by consulate; CIMEA costs approx. €150." }
+    ],
+    estimatedProcessingTime: { min: 4, max: 16, unit: "weeks", display: "1 to 4 months" },
+    commonMistakes: [
+      "Waiting too late to request the Declaration of Value (it can take months).",
+      "Not checking if the specific university requires CIMEA instead of DoV.",
+      "Failing to verify if the translation must be done by a 'sworn' translator."
+    ],
+    tips: [
+      "The 'Dichiarazione di Valore' is often free if you can prove it's for study purposes.",
+      "Ensure your translations are done by a translator recognized by the Italian consulate.",
+      "Check the specific university's deadline for international students, which is often earlier than for locals."
+    ],
+    faq: [
+      { question: "What is the Universitaly portal?", answer: "The mandatory gateway for all international students applying to Italian universities." },
+      { question: "Can I use English translations?", answer: "Only if explicitly allowed by the university; otherwise, Italian is mandatory." },
+      { question: "What is an Apostille?", answer: "A stamp that authenticates your public documents for use in other countries." }
+    ],
+    officialSourceLinks: [
+      { title: "Universitaly", publisher: "Ministry of University and Research", url: "https://www.universitaly.it/" },
+      { title: "CIMEA", publisher: "NARIC Italy", url: "https://www.cimea.it/en/" }
+    ],
+    lastReviewedDate: "2026-04-27",
+    reviewStatus: "reviewed",
+    difficulty: "Medium",
+    tags: ["education", "university", "italy"],
+    status: "published",
+  },
+  {
+    slug: "korea-job-seeker",
+    title: "Obtain a Korean Job Seeker Visa (D-10)",
+    category: "Career",
+    location: { countryCode: "KR", countryName: "South Korea" },
+    summary: "Register for a D-10 visa using the points-based system to legally look for work in South Korea.",
+    audience: "Foreigners looking for professional employment in South Korea.",
+    eligibility: [
+      { label: "Points System", description: "Must meet the minimum score on the points-based system (age, education, experience, Korean proficiency)." },
+    ],
+    requiredDocuments: [
+      { name: "Passport & ARC", description: "Valid passport and Alien Registration Card.", required: true },
+      { name: "Job Search Plan", description: "Detailed monthly plan of how you will look for work.", required: true },
+      { name: "Educational Proof", description: "Degree certificate (often needs apostille/consular verification).", required: true },
+      { name: "Proof of Funds", description: "Bank statement showing approx. 5 million KRW or more.", required: true },
+    ],
+    instructions: [
+      { order: 1, title: "Calculate points", description: "Ensure you have at least 60 points total (and 20 from basic categories)." },
+      { order: 2, title: "Book HiKorea appointment", description: "Schedule a visit to your local immigration office via the HiKorea website." },
+      { order: 3, title: "Submit application", description: "Present your plan and proof of funds to the immigration officer." },
+    ],
+    fees: [
+      { label: "Visa extension/change fee", amount: 130000, currency: "KRW", required: true, notes: "Approximate cost for processing and card issuance." }
+    ],
+    estimatedProcessingTime: { min: 2, max: 4, unit: "weeks", display: "2 to 4 weeks" },
+    commonMistakes: [
+      "Vague job search plans (be specific about companies and platforms).",
+      "Not having enough funds in your Korean bank account at the time of application.",
+      "Assuming any degree qualifies (must be from a recognized 4-year university)."
+    ],
+    tips: [
+      "Keep records of every interview or application you send while on a D-10 visa for future extensions.",
+      "TOPIK scores (Korean proficiency) significantly boost your points.",
+      "If you graduated from a Top 200 global university, you get bonus points."
+    ],
+    faq: [
+      { question: "Can I do part-time work?", answer: "Yes, but you must report it and get permission from immigration first." },
+      { question: "How long is the visa valid?", answer: "Initial stay is 6 months, renewable up to 2 years depending on your points." },
+      { question: "What if I find a job?", answer: "You must change your status to an E-7 (Specialized Professional) visa before starting work." }
+    ],
+    officialSourceLinks: [
+      { title: "HiKorea Portal", publisher: "Korean Immigration", url: "https://www.hikorea.go.kr/" },
+      { title: "Study in Korea", publisher: "Korean Government", url: "https://www.studyinkorea.go.kr/" }
+    ],
+    lastReviewedDate: "2026-04-27",
+    reviewStatus: "reviewed",
+    difficulty: "Medium",
+    tags: ["career", "visa", "korea"],
+    status: "published",
+  },
+  {
+    slug: "korea-bank-account",
+    title: "Open a Bank Account in South Korea",
+    category: "Banking",
+    location: { countryCode: "KR", countryName: "South Korea" },
+    summary: "Secure a local bank account with or without an Alien Registration Card (ARC).",
+    audience: "Expats, students, and workers in South Korea.",
+    eligibility: [
+      { label: "Residency", description: "Usually requires a valid visa and proof of residence." },
+    ],
+    requiredDocuments: [
+      { name: "Passport", description: "Standard for initial identification.", required: true },
+      { name: "Alien Registration Card", description: "Essential for full-service accounts (limitless).", required: false },
+      { name: "Proof of Employment/Study", description: "Work contract or Certificate of Enrollment.", required: true },
+      { name: "Korean Phone Number", description: "Required for SMS verification and online banking.", required: true },
+    ],
+    instructions: [
+      { order: 1, title: "Choose a bank", description: "KB, Shinhan, and Hana are popular and expat-friendly." },
+      { order: 2, title: "Visit a branch", description: "Go in person (mornings are usually less busy)." },
+      { order: 3, title: "Select services", description: "Ask for a 'Check Card' (debit) and 'Internet Banking' setup." },
+    ],
+    fees: [
+      { label: "Minimum deposit", amount: 10000, currency: "KRW", required: false, notes: "Often not required, but good to have." }
+    ],
+    estimatedProcessingTime: { min: 1, max: 2, unit: "hours", display: "1 to 2 hours" },
+    commonMistakes: [
+      "Opening an account before getting an ARC (you will have strict daily withdrawal limits).",
+      "Not bringing your physical passport.",
+      "Forgetting to ask for a 'Certificate of Deposit' if you need it for visa renewals."
+    ],
+    tips: [
+      "Ask for a 'global' branch if you prefer an English-speaking teller.",
+      "Set up 'Hana 1Q' or similar apps immediately for easy transfers.",
+      "Ask for a 'Digital Security Key' (OTP) for higher transfer limits."
+    ],
+    faq: [
+      { question: "Can I open an account with just a passport?", answer: "Yes, at some banks, but it will be a 'limited' account until you provide an ARC." },
+      { question: "Are there monthly fees?", answer: "Generally, Korean banks do not charge monthly maintenance fees for basic accounts." },
+      { question: "Can I use my card abroad?", answer: "Yes, if you ask for a 'Global Check Card' during the setup." }
+    ],
+    officialSourceLinks: [
+      { title: "Financial Supervisory Service", publisher: "Korean Government", url: "https://www.fss.or.kr/eng/index.do" },
+      { title: "Bank of Korea", publisher: "Korean Government", url: "https://www.bok.or.kr/eng/main/main.do" }
+    ],
+    lastReviewedDate: "2026-04-27",
+    reviewStatus: "reviewed",
+    difficulty: "Medium",
+    tags: ["banking", "money", "korea"],
+    status: "published",
+  },
+  {
+    slug: "thailand-tourist-visa",
+    title: "Apply for a Thai Tourist Visa",
+    category: "Travel",
+    location: { countryCode: "TH", countryName: "Thailand" },
+    summary: "Prepare your SETV or METV application for a 60-day stay in Thailand.",
+    audience: "Travelers from countries not eligible for visa-free entry or wanting a longer stay.",
+    eligibility: [
+      { label: "Passport Validity", description: "Must have at least 6 months validity remaining." },
+    ],
+    requiredDocuments: [
+      { name: "Visa Application Form", description: "Completed form (often online).", required: true },
+      { name: "Passport Photo", description: "Color photo taken within the last 6 months.", required: true },
+      { name: "Flight Itinerary", description: "Proof of travel in and out of Thailand.", required: true },
+      { name: "Accommodation Proof", description: "Hotel booking or invitation letter.", required: true },
+      { name: "Financial Proof", description: "Bank statement showing at least 20,000 THB per person.", required: true },
+    ],
+    instructions: [
+      { order: 1, title: "Register on E-Visa portal", description: "Most Thai embassies now use the official Thai E-Visa website." },
+      { order: 2, title: "Upload documents", description: "Provide clear scans of your passport, photos, and flights." },
+      { order: 3, title: "Pay fee", description: "Pay the non-refundable processing fee online." },
+      { order: 4, title: "Receive E-Visa", description: "Wait for approval and print the visa certificate sent to your email." },
+    ],
+    fees: [
+      { label: "Single entry fee", amount: 40, currency: "USD", required: true, notes: "Varies by country and currency." }
+    ],
+    estimatedProcessingTime: { min: 3, max: 10, unit: "days", display: "3 to 10 working days" },
+    commonMistakes: [
+      "Providing a screenshot of a flight booking instead of the official itinerary.",
+      "Uploading low-quality scans of identity documents.",
+      "Not checking the E-Visa portal for messages from the officer requesting more info."
+    ],
+    tips: [
+      "Check if your country is on the 'Visa Exemption' list first—you might not even need a visa for 30-60 days.",
+      "You can extend a 60-day tourist visa for another 30 days at a local Thai immigration office.",
+      "The 20,000 THB requirement can be in any equivalent currency."
+    ],
+    faq: [
+      { question: "Can I apply while in Thailand?", answer: "No, you must apply from outside Thailand (either your home country or a neighboring one)." },
+      { question: "What is the SETV vs METV?", answer: "SETV is Single Entry (valid 3 months); METV is Multiple Entry (valid 6 months)." },
+      { question: "Do I need travel insurance?", answer: "While not always mandatory for tourist visas, it is highly recommended and often requested at the border." }
+    ],
+    officialSourceLinks: [
+      { title: "Thai E-Visa Official Site", publisher: "Thai Government", url: "https://www.thaievisa.go.th/" },
+      { title: "Tourism Authority of Thailand", publisher: "Thai Government", url: "https://www.tourismthailand.org/" }
+    ],
+    lastReviewedDate: "2026-04-27",
+    reviewStatus: "reviewed",
+    difficulty: "Medium",
+    tags: ["travel", "visa", "thailand"],
+    status: "published",
+  },
+  {
+    slug: "thailand-small-business",
+    title: "Register a Thai Small Business",
+    category: "Business",
+    location: { countryCode: "TH", countryName: "Thailand" },
+    summary: "Understand the steps for company registration and VAT setup for entrepreneurs in Thailand.",
+    audience: "Entrepreneurs and expats looking to start a business in Thailand.",
+    eligibility: [
+      { label: "Foreign Ownership", description: "Most businesses require 51% Thai ownership unless a BOI promotion or Foreign Business License is obtained." },
+    ],
+    requiredDocuments: [
+      { name: "Company Name Reservation", description: "Approved name from the Department of Business Development.", required: true },
+      { name: "Memorandum of Association", description: "Signed 'MOA' by at least 2 promoters.", required: true },
+      { name: "Proof of Address", description: "Rental agreement and 'Tabien Baan' of the office space.", required: true },
+      { name: "Shareholder List", description: "Details of Thai and foreign shareholders.", required: true },
+    ],
+    instructions: [
+      { order: 1, title: "Reserve business name", description: "Search and reserve a unique name on the DBD website." },
+      { order: 2, title: "File MOA", description: "Submit the Memorandum of Association to the registrar." },
+      { order: 3, title: "Register company", description: "Submit all statutory documents and register the company as a legal entity." },
+      { order: 4, title: "Register for Tax/VAT", description: "Obtain a Tax ID and register for VAT if annual revenue exceeds 1.8M THB." },
+    ],
+    fees: [
+      { label: "Registration capital fee", amount: 5500, currency: "THB", required: true, notes: "Cost per 1 million THB of registered capital." }
+    ],
+    estimatedProcessingTime: { min: 2, max: 6, unit: "weeks", display: "2 to 6 weeks" },
+    commonMistakes: [
+      "Using 'nominee' Thai shareholders (this is illegal and strictly scrutinized).",
+      "Not checking zoning laws before signing a lease for a physical shop or restaurant."
+    ],
+    tips: [
+      "Hire a reputable Thai law firm or accounting agency to handle the paperwork.",
+      "Look into BOI (Board of Investment) incentives if your business is in tech, manufacturing, or export."
+    ],
+    faq: [
+      { question: "How much capital is required?", answer: "Usually 2 million THB if you need a work permit for a foreign employee/owner." }
+    ],
+    officialSourceLinks: [
+      { title: "Dept of Business Development", publisher: "Thai Government", url: "https://www.dbd.go.th/index.php" },
+    ],
+    lastReviewedDate: "2026-04-27",
+    reviewStatus: "reviewed",
+    difficulty: "High",
+    tags: ["business", "registration", "thailand"],
+    status: "published",
+  },
+  {
+    slug: "vietnam-work-permit",
+    title: "Obtain a Vietnamese Work Permit",
+    category: "Immigration",
+    location: { countryCode: "VN", countryName: "Vietnam" },
+    summary: "Secure your legal right to work in Vietnam by organizing your health check, criminal record, and professional certificates.",
+    audience: "Foreign workers and specialists hired by companies in Vietnam.",
+    eligibility: [
+      { label: "Qualifications", description: "Must be a manager, executive, specialist, or technical worker with relevant degrees or experience." },
+    ],
+    requiredDocuments: [
+      { name: "Health Check Certificate", description: "Issued by an authorized hospital in Vietnam or your home country.", required: true },
+      { name: "Criminal Record Certificate", description: "Clean background check from your home country and Vietnam (if applicable).", required: true },
+      { name: "Professional Certificates", description: "Bachelor's degree or higher and proof of 3+ years of experience in the field.", required: true },
+      { name: "Sponsorship Documents", description: "Business license and approval of foreign labor demand from the employer.", required: true },
+    ],
+    instructions: [
+      { order: 1, title: "Legalize documents", description: "Get your degree and background check apostilled and legalized by the Vietnamese embassy." },
+      { order: 2, title: "Obtain health check", description: "Visit a designated hospital in Vietnam for a 'Work Permit' health screening." },
+      { order: 3, title: "Submit application", description: "The employer submits the file to the Department of Labor (DOLISA)." },
+    ],
+    fees: [
+      { label: "Application fee", amount: 600000, currency: "VND", required: true, notes: "Official state fee; employer service fees may vary." }
+    ],
+    estimatedProcessingTime: { min: 2, max: 4, unit: "weeks", display: "2 to 4 weeks" },
+    commonMistakes: [
+      "Not having the job title on the experience certificate match the degree exactly.",
+      "Using a health check from a non-authorized clinic.",
+      "Submitting documents that were legalized more than 6 months ago."
+    ],
+    tips: [
+      "Ensure all foreign documents are translated into Vietnamese by a certified translator.",
+      "The work permit is required to apply for a Temporary Residence Card (TRC).",
+      "Keep the original work permit safely as it is required for bank account updates."
+    ],
+    faq: [
+      { question: "Can I apply myself?", answer: "No, the work permit application must be sponsored and submitted by your employer in Vietnam." },
+      { question: "How long is it valid?", answer: "Usually valid for up to 2 years, matching your labor contract." },
+      { question: "Can I change employers?", answer: "No, a work permit is tied to a specific employer; you must apply for a new one if you switch jobs." }
+    ],
+    officialSourceLinks: [
+      { title: "Ministry of Labour (MOLISA)", publisher: "Vietnamese Government", url: "http://www.molisa.gov.vn/" },
+      { title: "Vietnam Immigration Department", publisher: "Vietnamese Government", url: "https://xuatnhapcanh.gov.vn/" }
+    ],
+    lastReviewedDate: "2026-04-27",
+    reviewStatus: "reviewed",
+    difficulty: "High",
+    tags: ["visa", "work", "vietnam"],
+    status: "published",
+  },
+  {
+    slug: "vietnam-bank-account",
+    title: "Open a Vietnamese Bank Account",
+    category: "Banking",
+    location: { countryCode: "VN", countryName: "Vietnam" },
+    summary: "Establish your financial presence in Vietnam with a local or multi-currency account.",
+    audience: "Expats, workers, and long-term residents in Vietnam.",
+    eligibility: [
+      { label: "Visa Status", description: "Must have a visa or residence card valid for at least 3-6 months (varies by bank)." },
+    ],
+    requiredDocuments: [
+      { name: "Passport", description: "Original passport with a valid entry stamp.", required: true },
+      { name: "Work Permit/TRC", description: "Temporary Residence Card or Work Permit (required by many banks).", required: true },
+      { name: "Labor Contract", description: "Signed contract with a local employer.", required: false },
+    ],
+    instructions: [
+      { order: 1, title: "Select a bank", description: "Vietcombank, Techcombank, or international banks like HSBC are common choices." },
+      { order: 2, title: "Visit branch", description: "Bring your original documents to the branch in person." },
+      { order: 3, title: "Set up E-banking", description: "Register your Vietnamese phone number for SMS OTP and app access." },
+    ],
+    fees: [
+      { label: "Minimum balance", amount: 50000, currency: "VND", required: false, notes: "Very low for local banks." }
+    ],
+    estimatedProcessingTime: { min: 1, max: 2, unit: "hours", display: "1 to 2 hours" },
+    commonMistakes: [
+      "Not having a long-term visa (tourist visas are often not enough).",
+      "Forgetting that foreign currency deposits may have strict source-of-fund rules.",
+      "Not registering your phone number in your own name, which can block OTPs."
+    ],
+    tips: [
+      "International banks like HSBC may allow you to start the process from your home country.",
+      "Use the 'Napas' network for fee-free ATM withdrawals at many local banks.",
+      "Keep your 'entry stamp' page photocopied as banks often request it."
+    ],
+    faq: [
+      { question: "Can I use my account for international transfers?", answer: "Yes, but you will need to provide proof of income (tax receipts/contract) for each outward transfer." },
+      { question: "Is online banking available in English?", answer: "Yes, most major banks like Techcombank and HSBC have full English app support." },
+      { question: "Can I get a credit card?", answer: "Usually requires 3-6 months of salary history and a valid TRC/Work Permit." }
+    ],
+    officialSourceLinks: [
+      { title: "State Bank of Vietnam", publisher: "Vietnamese Government", url: "https://www.sbv.gov.vn/" },
+      { title: "Vietcombank Foreign Services", publisher: "Vietcombank", url: "https://www.vietcombank.com.vn/" }
+    ],
+    lastReviewedDate: "2026-04-27",
+    reviewStatus: "reviewed",
+    difficulty: "Medium",
+    tags: ["banking", "money", "vietnam"],
+    status: "published",
+  },
+  {
+    slug: "indonesia-tax-number",
+    title: "Obtain an Indonesian Tax Number (NPWP)",
+    category: "Government services",
+    location: { countryCode: "ID", countryName: "Indonesia" },
+    summary: "Register for your NPWP to fulfill tax obligations and access financial services in Indonesia.",
+    audience: "Foreigners with a KITAS/KITAP or locals starting employment.",
+    eligibility: [
+      { label: "Income", description: "Required for anyone earning income above the non-taxable threshold in Indonesia." },
+    ],
+    requiredDocuments: [
+      { name: "Passport", description: "Valid passport copy.", required: true },
+      { name: "KITAS/KITAP", description: "Residence permit (for foreigners).", required: true },
+      { name: "Work Contract", description: "Proof of employment from an Indonesian company.", required: true },
+      { name: "Application Form", description: "Available at the tax office or online.", required: true },
+    ],
+    instructions: [
+      { order: 1, title: "Apply online", description: "Register via the official 'e-Reg Pajak' website." },
+      { order: 2, title: "Upload documents", description: "Submit digital copies of your ID and residence permit." },
+      { order: 3, title: "Receive card", description: "The physical NPWP card is usually mailed to your registered address." },
+    ],
+    fees: [
+      { label: "Registration fee", amount: 0, currency: "IDR", required: false, notes: "Issuance is free." }
+    ],
+    estimatedProcessingTime: { min: 1, max: 2, unit: "weeks", display: "1 to 2 weeks" },
+    commonMistakes: [
+      "Delaying the application (employers need your NPWP by the first month to avoid higher tax rates).",
+      "Inputting an address that doesn't match your KITAS exactly.",
+      "Not checking the status of your physical card delivery."
+    ],
+    tips: [
+      "An NPWP is often required to open a bank account or buy a vehicle in Indonesia.",
+      "Check with your HR department as they often handle the application for you.",
+      "You can download a digital version of your NPWP through the Pajak.go.id portal."
+    ],
+    faq: [
+      { question: "Can I apply without a KITAS?", answer: "Generally no; the tax number is tied to your legal residence permit for foreigners." },
+      { question: "What is the tax year?", answer: "The calendar year (January to December)." },
+      { question: "Do I need to file annually?", answer: "Yes, every resident must file an annual tax return (SPT) by the end of March." }
+    ],
+    officialSourceLinks: [
+      { title: "Direktorat Jenderal Pajak", publisher: "Indonesian Government", url: "https://www.pajak.go.id/" },
+      { title: "Kemenkeu (Ministry of Finance)", publisher: "Indonesian Government", url: "https://www.kemenkeu.go.id/" }
+    ],
+    lastReviewedDate: "2026-04-27",
+    reviewStatus: "reviewed",
+    difficulty: "Medium",
+    tags: ["tax", "government", "indonesia"],
+    status: "published",
+  },
+  {
+    slug: "indonesia-microbusiness",
+    title: "Register an Indonesian Microbusiness",
+    category: "Business",
+    location: { countryCode: "ID", countryName: "Indonesia" },
+    summary: "Obtain an NIB through the OSS system for low-risk business activities.",
+    audience: "Local entrepreneurs and eligible residents starting small businesses.",
+    eligibility: [
+      { label: "Risk Level", description: "This streamlined process is for 'Low Risk' activities (e.g., retail, small services)." },
+    ],
+    requiredDocuments: [
+      { name: "KTP/NIK", description: "Indonesian National ID for the owner.", required: true },
+      { name: "NPWP", description: "Personal or business tax number.", required: true },
+      { name: "Business Description", description: "Details of activities, capital, and location.", required: true },
+    ],
+    instructions: [
+      { order: 1, title: "Register on OSS", description: "Create an account on the Online Single Submission (OSS) portal." },
+      { order: 2, title: "Input business data", description: "Fill in the KBLI (business activity code) and investment details." },
+      { order: 3, title: "Download NIB", description: "The system generates your NIB instantly for low-risk microbusinesses." },
+    ],
+    fees: [
+      { label: "Registration fee", amount: 0, currency: "IDR", required: false, notes: "OSS registration for micro-enterprises is free." }
+    ],
+    estimatedProcessingTime: { min: 1, max: 2, unit: "days", display: "Instant online" },
+    commonMistakes: [
+      "Choosing the wrong KBLI code (this affects your licensing requirements).",
+      "Not registering for BPJS (social security) which is integrated into the OSS flow.",
+      "Forgetting to update your NIB if you change your business location."
+    ],
+    tips: [
+      "The NIB acts as your business ID, import permit (API), and customs access (NIK).",
+      "Micro-enterprises (UMKM) often qualify for special tax rates and government grants.",
+      "Join a local UMKM association to get networking and support from the government."
+    ],
+    faq: [
+      { question: "What is OSS?", answer: "The centralized platform for all business licensing in Indonesia." },
+      { question: "Can foreigners open a microbusiness?", answer: "Usually no; foreign investment (PMA) has much higher capital requirements and different rules." },
+      { question: "Is the NIB valid forever?", answer: "Yes, as long as the business is active and the data is accurate." }
+    ],
+    officialSourceLinks: [
+      { title: "OSS Indonesia", publisher: "Ministry of Investment", url: "https://oss.go.id/" },
+      { title: "Ministry of Cooperatives and SMEs", publisher: "Indonesian Government", url: "https://www.kemenkopukm.go.id/" }
+    ],
+    lastReviewedDate: "2026-04-27",
+    reviewStatus: "reviewed",
+    difficulty: "High",
+    tags: ["business", "registration", "indonesia"],
+    status: "published",
+  },
+  {
+    slug: "uae-residence-visa",
+    title: "Apply for a UAE Residence Visa",
+    category: "Immigration",
+    location: { countryCode: "AE", countryName: "United Arab Emirates" },
+    summary: "Navigate the medical tests, Emirates ID application, and visa process for your residency in the UAE.",
+    audience: "Employees, investors, and dependents moving to the UAE.",
+    eligibility: [
+      { label: "Sponsorship", description: "Must be sponsored by a company (work), a family member, or have an investment (Golden Visa)." },
+    ],
+    requiredDocuments: [
+      { name: "Entry Permit", description: "Valid entry visa for residency purposes.", required: true },
+      { name: "Passport", description: "Original passport with at least 6 months validity.", required: true },
+      { name: "Medical Fitness Result", description: "Blood test and X-ray from an authorized center in the UAE.", required: true },
+      { name: "Emirates ID Application", description: "Stamped application form from a typing center or online.", required: true },
+    ],
+    instructions: [
+      { order: 1, title: "Enter UAE", description: "Arrive on an entry permit or change your status if already inside." },
+      { order: 2, title: "Complete medical test", description: "Visit a DHA or SEHA medical center for the mandatory screening." },
+      { order: 3, title: "Apply for Emirates ID", description: "Visit a typing center for biometrics (fingerprints) if it's your first time." },
+      { order: 4, title: "Visa approval", description: "Submit your passport for the residence visa stamp (or receive digital approval)." },
+    ],
+    fees: [
+      { label: "Total processing fee", amount: 2500, currency: "AED", required: true, notes: "Includes medical, ID, and visa fees; varies by visa type." }
+    ],
+    estimatedProcessingTime: { min: 2, max: 4, unit: "weeks", display: "2 to 4 weeks" },
+    commonMistakes: [
+      "Leaving the country while the visa is in process (this cancels the application).",
+      "Using an unofficial medical center (only government-approved ones are valid).",
+      "Not checking the validity of your entry permit (usually 60 days)."
+    ],
+    tips: [
+      "The 'Golden Visa' offers 5-10 years of residency and does not require a local employer sponsor.",
+      "Download the 'UAE Pass' app early to access government services digitally.",
+      "Check with your employer if they cover the Emirates ID and medical fees (most do for employees)."
+    ],
+    faq: [
+      { question: "Is a medical test mandatory?", answer: "Yes, for everyone over 18, checking for communicable diseases like TB and HIV." },
+      { question: "What is the Emirates ID?", answer: "The mandatory national identity card for all UAE residents." },
+      { question: "Can I sponsor my family?", answer: "Yes, if you meet the minimum salary requirement (usually 4,000 AED per month)." }
+    ],
+    officialSourceLinks: [
+      { title: "ICP Portal", publisher: "UAE Government", url: "https://smartservices.icp.gov.ae/" },
+      { title: "DOH Medical Fitness", publisher: "Abu Dhabi Government", url: "https://www.doh.gov.ae/" }
+    ],
+    lastReviewedDate: "2026-04-27",
+    reviewStatus: "reviewed",
+    difficulty: "High",
+    tags: ["visa", "residency", "uae"],
+    status: "published",
+  },
+  {
+    slug: "uae-bank-account",
+    title: "Open a UAE Bank Account",
+    category: "Banking",
+    location: { countryCode: "AE", countryName: "United Arab Emirates" },
+    summary: "Prepare your Emirates ID and salary certificate to open a local bank account.",
+    audience: "Residents with a valid UAE residence visa.",
+    eligibility: [
+      { label: "Residency", description: "Requires a valid residence visa and Emirates ID." },
+    ],
+    requiredDocuments: [
+      { name: "Passport & Visa", description: "Original passport with residence visa page.", required: true },
+      { name: "Emirates ID", description: "Physical card or digital version via ICA app.", required: true },
+      { name: "Salary Certificate", description: "Official letter from your employer stating your position and salary.", required: true },
+      { name: "Proof of Address", description: "Ejari (rental contract) or a utility bill.", required: false },
+    ],
+    instructions: [
+      { order: 1, title: "Choose a bank", description: "Emirates NBD, ADCB, and FAB are the largest and most widely used." },
+      { order: 2, title: "Submit application", description: "Apply via the bank's app (often very fast) or visit a branch." },
+      { order: 3, title: "Verification", description: "An agent will visit you or you visit a branch to scan your Emirates ID." },
+    ],
+    fees: [
+      { label: "Minimum balance", amount: 3000, currency: "AED", required: false, notes: "Varies by account type; some 'salary transfer' accounts have no minimum." }
+    ],
+    estimatedProcessingTime: { min: 2, max: 7, unit: "days", display: "2 to 7 working days" },
+    commonMistakes: [
+      "Trying to open an account before your residence visa is stamped.",
+      "Not checking the 'minimum balance' fees (can be 25-50 AED per month if not met).",
+      "Forgetting to update the bank when your Emirates ID expires."
+    ],
+    tips: [
+      "Digital banks like Liv. or Mashreq Neo allow for instant setup for younger residents.",
+      "Ask for a 'Checkbook' immediately if you plan on renting (post-dated checks are standard).",
+      "Most banks offer 'Zero Balance' accounts if you transfer your salary to them."
+    ],
+    faq: [
+      { question: "Can non-residents open an account?", answer: "Yes, but it is usually a 'Savings' account only and requires a higher minimum balance." },
+      { question: "Do I need a salary letter?", answer: "Yes, for a 'Current Account' with checkbook facilities, it is mandatory." },
+      { question: "Can I use Apple Pay?", answer: "Yes, almost all UAE banks support Apple Pay, Google Pay, and Samsung Pay." }
+    ],
+    officialSourceLinks: [
+      { title: "Central Bank of the UAE", publisher: "UAE Government", url: "https://www.centralbank.ae/en/" },
+      { title: "Emirates NBD New Resident Guide", publisher: "Emirates NBD", url: "https://www.emiratesnbd.com/" }
+    ],
+    lastReviewedDate: "2026-04-27",
+    reviewStatus: "reviewed",
+    difficulty: "Medium",
+    tags: ["banking", "money", "uae"],
+    status: "published",
+  },
+  {
+    slug: "saudi-iqama-checklist",
+    title: "Obtain a Saudi Residence Permit (Iqama)",
+    category: "Government services",
+    location: { countryCode: "SA", countryName: "Saudi Arabia" },
+    summary: "Complete the mandatory medical and registration steps to issue your Iqama within 90 days.",
+    audience: "Expats arriving in Saudi Arabia on a work visa.",
+    eligibility: [
+      { label: "Sponsorship", description: "Must have an 'Absher' registered sponsor (employer)." },
+    ],
+    requiredDocuments: [
+      { name: "Passport", description: "With valid entry visa and border number.", required: true },
+      { name: "Medical Report", description: "Digital report from an approved KSA clinic uploaded to the 'Efada' system.", required: true },
+      { name: "Health Insurance", description: "Active cooperative insurance policy linked to your border number.", required: true },
+      { name: "Biometrics", description: "Fingerprints taken at the airport or a Jawazat office.", required: true },
+    ],
+    instructions: [
+      { order: 1, title: "Register on Absher", description: "Create your profile on the Absher portal (Individual) for all future services." },
+      { order: 2, title: "Complete medical", description: "Visit a 'MOH' authorized clinic for the Iqama medical check (results upload to Efada)." },
+      { order: 3, title: "Employer submission", description: "Employer pays fees (Iqama + HRSD Work Permit) and submits via Qiwa or Muqeem." },
+      { order: 4, title: "Collect card", description: "The physical Iqama card is delivered via SPL (Saudi Post) to your address." },
+    ],
+    fees: [
+      { label: "Iqama (Jawazat)", amount: 500, currency: "SAR", required: true, notes: "Per year; usually covered by the employer." },
+      { label: "Work Permit (HRSD)", amount: 150, currency: "SAR", required: true, notes: "Annual processing fee." },
+      { label: "Expat Levy", amount: 9600, currency: "SAR", required: true, notes: "Approx. 800 SAR/month; mandatory for work residency (usually employer paid)." }
+    ],
+    estimatedProcessingTime: { min: 1, max: 3, unit: "weeks", display: "1 to 3 weeks" },
+    commonMistakes: [
+      "Delaying the medical test (Iqama must be issued within 90 days of entry to avoid a 500 SAR fine).",
+      "Not verifying your name in English and Arabic on the draft Iqama before issuance.",
+      "Leaving KSA before the physical card is delivered (requires Exit-Reentry visa)."
+    ],
+    tips: [
+      "The 'Border Number' is a 10-digit number written by the immigration officer at the airport.",
+      "The 'Qiwa' platform is mandatory for signing and viewing your digital labor contract.",
+      "Use the 'Absher Individual' app to view your Digital ID, which is legally valid in the Kingdom."
+    ],
+    faq: [
+      { question: "What is Efada?", answer: "The digital system used by clinics to send medical results directly to the Ministry of Interior." },
+      { question: "How long is it valid?", answer: "Usually 1 year, but employers can now renew in 3-month increments in some cases." },
+      { question: "Can I sponsor my family?", answer: "Yes, if your profession is eligible and you meet the minimum salary requirement." }
+    ],
+    officialSourceLinks: [
+      { title: "Absher Individuals", publisher: "Ministry of Interior", url: "https://www.absher.sa/wps/portal/individuals" },
+      { title: "Qiwa Portal", publisher: "Ministry of Human Resources", url: "https://qiwa.sa/en" },
+      { title: "Jawazat (Directorate of Passports)", publisher: "KSA Government", url: "https://www.gdp.gov.sa/" }
+    ],
+    lastReviewedDate: "2026-04-27",
+    reviewStatus: "reviewed",
+    difficulty: "High",
+    tags: ["residency", "iqama", "saudi"],
+    status: "published",
+  },
+  {
+    slug: "saudi-health-insurance",
+    title: "Obtain Saudi Health Insurance",
+    category: "Healthcare",
+    location: { countryCode: "SA", countryName: "Saudi Arabia" },
+    summary: "Understand the mandatory health insurance requirements for residents.",
+    audience: "Expats and their dependents living in Saudi Arabia.",
+    eligibility: [
+      { label: "Mandatory", description: "All private-sector employees and their dependents must have health insurance to issue or renew an Iqama." },
+    ],
+    requiredDocuments: [
+      { name: "Iqama/Border Number", description: "Used to link the policy to your identity.", required: true },
+      { name: "Employer Records", description: "Confirmation that the company has registered you with a CCHI-approved provider.", required: true },
+    ],
+    instructions: [
+      { order: 1, title: "Verify with employer", description: "Ensure your employer has purchased a policy from a licensed provider." },
+      { order: 2, title: "Check CCHI status", description: "Visit the CCHI website and enter your Iqama/Border number to verify coverage." },
+      { order: 3, title: "Download provider app", description: "Use the insurance company's app to see your digital card and network list." },
+    ],
+    fees: [
+      { label: "Premium cost", amount: 0, currency: "SAR", required: false, notes: "Employers are legally required to pay for the employee's and dependents' insurance." }
+    ],
+    estimatedProcessingTime: { min: 2, max: 5, unit: "days", display: "2 to 5 days for activation" },
+    commonMistakes: [
+      "Accepting 'fake' insurance just for Iqama renewal (this will leave you with zero medical coverage).",
+      "Not checking the network of hospitals before visiting a doctor.",
+      "Assuming insurance covers all costs (co-payments of 10-20% are common)."
+    ],
+    tips: [
+      "Class A, B, and C policies have different hospital networks; check which one you have.",
+      "Dental and optical coverage levels vary significantly between policies.",
+      "Keep a screenshot of your digital insurance card in case you have no internet access."
+    ],
+    faq: [
+      { question: "Can I buy my own insurance?", answer: "Usually, the employer must provide it, but individuals can buy plans for family members or domestic workers." },
+      { question: "What is the CCHI?", answer: "The Council of Health Insurance, the regulator for all health insurance in KSA." },
+      { question: "Does it cover pre-existing conditions?", answer: "Standard policies have rules regarding this; check your specific policy wording." }
+    ],
+    officialSourceLinks: [
+      { title: "CCHI Portal", publisher: "Council of Health Insurance", url: "https://www.cchi.gov.sa/en/" },
+      { title: "MOH Saudi Arabia", publisher: "Ministry of Health", url: "https://www.moh.gov.sa/" }
+    ],
+    lastReviewedDate: "2026-04-27",
+    reviewStatus: "reviewed",
+    difficulty: "Medium",
+    tags: ["healthcare", "insurance", "saudi"],
+    status: "published",
+  },
+  {
+    slug: "qatar-residence-permit",
+    title: "Obtain a Qatar Residence Permit (QID)",
+    category: "Immigration",
+    location: { countryCode: "QA", countryName: "Qatar" },
+    summary: "Complete the post-arrival requirements including the medical commission and fingerprints for your QID.",
+    audience: "Expatriate workers and their families newly arrived in Qatar.",
+    eligibility: [
+      { label: "Sponsorship", description: "Must be sponsored by a Qatari employer or a resident family member." },
+    ],
+    requiredDocuments: [
+      { name: "Passport", description: "Original with valid entry visa stamp.", required: true },
+      { name: "Medical Certificate", description: "Result of the exam (Blood test and Chest X-ray) at the Medical Commission.", required: true },
+      { name: "Blood Group Certificate", description: "Mandatory for first-time QID; from any recognized clinic in Qatar.", required: true },
+    ],
+    instructions: [
+      { order: 1, title: "Medical commission", description: "Visit the Medical Commission in Doha for blood tests (HIV/Hepatitis) and X-ray." },
+      { order: 2, title: "Fingerprints", description: "Visit the CEID (Criminal Evidence and Investigation Department) for biometrics." },
+      { order: 3, title: "QID Issuance", description: "The sponsor submits the application via Metrash2 or at a service center." },
+    ],
+    fees: [
+      { label: "QID processing (Work)", amount: 1000, currency: "QAR", required: true, notes: "Annual fee for work residency." },
+      { label: "QID processing (Family)", amount: 500, currency: "QAR", required: true, notes: "Annual fee for dependents." }
+    ],
+    estimatedProcessingTime: { min: 2, max: 6, unit: "weeks", display: "2 to 6 weeks" },
+    commonMistakes: [
+      "Not completing the medical test within the first 30 days of arrival.",
+      "Leaving Qatar before the QID is issued (requires specific re-entry permission).",
+      "Forgetting to link your mobile number to your QID at the service center."
+    ],
+    tips: [
+      "The 'Metrash2' app is mandatory for tracking residency and managing all MOI services.",
+      "Keep your original blood group report as you may need it for your Qatar Driving License later.",
+      "The Medical Commission results are usually available within 2-3 working days."
+    ],
+    faq: [
+      { question: "What is Metrash2?", answer: "The Ministry of Interior's mobile app for visas, permits, and traffic services." },
+      { question: "Is the medical test painful?", answer: "It is a standard blood draw and chest X-ray; the process is very efficient." },
+      { question: "Can I use my QID to travel?", answer: "Yes, once you have your QID, you use it along with your passport for entry and exit via e-gates." }
+    ],
+    officialSourceLinks: [
+      { title: "MOI Qatar: Residence Services", publisher: "Ministry of Interior", url: "https://www.moi.gov.qa/site/english/departments/ImmigrationDept/index.html" },
+      { title: "Medical Commission Portal", publisher: "Ministry of Public Health", url: "https://www.moph.gov.qa/english/OurServices/Pages/Medical-Commission.aspx" },
+      { title: "Hukoomi Qatar", publisher: "Qatar Government Portal", url: "https://hukoomi.gov.qa/" }
+    ],
+    lastReviewedDate: "2026-04-27",
+    reviewStatus: "reviewed",
+    difficulty: "High",
+    tags: ["visa", "residency", "qatar"],
+    status: "published",
+  },
+  {
+    slug: "qatar-bank-account",
+    title: "Open a Qatari Bank Account",
+    category: "Banking",
+    location: { countryCode: "QA", countryName: "Qatar" },
+    summary: "Secure a local bank account using your QID and salary transfer letter.",
+    audience: "Residents of Qatar with a valid QID.",
+    eligibility: [
+      { label: "Residency", description: "Requires a valid Qatar ID (QID)." },
+    ],
+    requiredDocuments: [
+      { name: "Qatar ID", description: "Original physical card.", required: true },
+      { name: "Salary Letter", description: "Official 'Salary Transfer Letter' from your employer.", required: true },
+      { name: "Passport", description: "Copy of your passport and visa page.", required: true },
+    ],
+    instructions: [
+      { order: 1, title: "Choose a bank", description: "QNB, CBQ, and Doha Bank are popular choices with many branches." },
+      { order: 2, title: "Get salary letter", description: "Request the specific bank-addressed salary letter from your HR." },
+      { order: 3, title: "Visit branch", description: "Open the account in person and collect your debit card." },
+    ],
+    fees: [
+      { label: "Minimum balance", amount: 5000, currency: "QAR", required: false, notes: "Often waived if salary is transferred to the account." }
+    ],
+    estimatedProcessingTime: { min: 1, max: 5, unit: "days", display: "1 to 5 working days" },
+    commonMistakes: [
+      "Providing a general salary letter instead of one addressed to the specific bank.",
+      "Not checking for 'no-fee' accounts if you are a student or low-income worker.",
+      "Attempting to open an account before your QID is issued."
+    ],
+    tips: [
+      "QNB has an extensive ATM network and is the largest bank in the country.",
+      "Make sure your mobile number is linked to your QID to set up mobile banking smoothly.",
+      "Most banks offer 'SMS Banking' which is very useful for tracking local transactions."
+    ],
+    faq: [
+      { question: "Can I open an account without a QID?", answer: "Only a temporary 'visitor' account is possible, and it has very limited features." },
+      { question: "What is a salary transfer letter?", answer: "A formal document where your employer agrees to send your monthly salary to that specific bank." },
+      { question: "Are there credit card options?", answer: "Yes, once your salary is successfully transferred for 1-3 months." }
+    ],
+    officialSourceLinks: [
+      { title: "Qatar Central Bank", publisher: "Qatari Government", url: "https://www.qcb.gov.qa/" },
+      { title: "QNB Personal Banking", publisher: "QNB", url: "https://www.qnb.com/" }
+    ],
+    lastReviewedDate: "2026-04-27",
+    reviewStatus: "reviewed",
+    difficulty: "Medium",
+    tags: ["banking", "money", "qatar"],
+    status: "published",
+  },
+  {
+    slug: "netherlands-municipality-registration",
+    title: "Register at a Dutch Municipality",
+    category: "Government services",
+    location: { countryCode: "NL", countryName: "Netherlands" },
+    summary: "Register in the BRP to obtain your BSN and officially start your life in the Netherlands.",
+    audience: "Expats, students, and workers moving to the Netherlands for more than 4 months.",
+    eligibility: [
+      { label: "Duration", description: "Mandatory if you intend to stay in the Netherlands for more than 4 months." },
+    ],
+    requiredDocuments: [
+      { name: "Passport", description: "Valid passport or national ID card.", required: true },
+      { name: "Rental Contract", description: "Signed lease or a 'statement of consent' from the main occupant.", required: true },
+      { name: "Birth Certificate", description: "Legalized/Apostilled and translated (if not in English, Dutch, French, or German).", required: true },
+    ],
+    instructions: [
+      { order: 1, title: "Book appointment", description: "Contact the 'Gemeente' (municipality) of the city where you live." },
+      { order: 2, title: "Gather documents", description: "Ensure your birth certificate is properly legalized for international use." },
+      { order: 3, title: "Attend registration", description: "Visit the city hall in person to register and receive your BSN." },
+    ],
+    fees: [
+      { label: "Registration fee", amount: 0, currency: "EUR", required: false, notes: "Registration is free." }
+    ],
+    estimatedProcessingTime: { min: 1, max: 4, unit: "weeks", display: "1 to 4 weeks for BSN issuance" },
+    commonMistakes: [
+      "Not having a legalized birth certificate (this is the most common reason for delays).",
+      "Moving to a house where 'registration is not possible' (this will block your admin setup).",
+      "Forgetting to update the municipality if you move to a different city in the NL."
+    ],
+    tips: [
+      "Your BSN (Burgerservicenummer) is required for working, banking, and healthcare.",
+      "If you are staying for less than 4 months, you can register as a non-resident (RNI).",
+      "Book your appointment as soon as you have a signed lease, as slots fill up fast."
+    ],
+    faq: [
+      { question: "What is a BSN?", answer: "The unique citizen service number used for all government interactions in the Netherlands." },
+      { question: "Do I need an apostille?", answer: "Yes, for most non-EU birth certificates, to prove they are authentic." },
+      { question: "Can I register at a friend's house?", answer: "Only if they provide a signed consent form and a copy of their ID/lease." }
+    ],
+    officialSourceLinks: [
+      { title: "Government.nl: BRP", publisher: "Dutch Government", url: "https://www.government.nl/topics/personal-data/registration-in-the-brp" },
+      { title: "Gemeente Amsterdam", publisher: "City of Amsterdam", url: "https://www.amsterdam.nl/en/civil-affairs/first-registration/" }
+    ],
+    lastReviewedDate: "2026-04-27",
+    reviewStatus: "reviewed",
+    difficulty: "Medium",
+    tags: ["residency", "bsn", "netherlands"],
+    status: "published",
+  },
+  {
+    slug: "netherlands-health-insurance",
+    title: "Obtain Dutch Health Insurance",
+    category: "Healthcare",
+    location: { countryCode: "NL", countryName: "Netherlands" },
+    summary: "Register for mandatory basic health insurance within 4 months of arrival.",
+    audience: "Anyone living or working in the Netherlands.",
+    eligibility: [
+      { label: "Mandatory", description: "All residents and people paying income tax in the Netherlands must have Dutch health insurance." },
+    ],
+    requiredDocuments: [
+      { name: "BSN", description: "Your Dutch citizen service number.", required: true },
+      { name: "Dutch Bank Account", description: "Required for monthly premium payments (IBAN).", required: true },
+    ],
+    instructions: [
+      { order: 1, title: "Compare providers", description: "Use websites like Independer or Zorgkiezer to compare policies." },
+      { order: 2, title: "Choose a plan", description: "Select between 'Natura' (contracted providers) or 'Restitutie' (free choice)." },
+      { order: 3, title: "Sign up", description: "Apply online via the provider's website; coverage is retroactive to your start date." },
+    ],
+    fees: [
+      { label: "Monthly premium", amount: 140, currency: "EUR", required: true, notes: "Average cost for basic insurance; varies by provider." }
+    ],
+    estimatedProcessingTime: { min: 1, max: 5, unit: "days", display: "Instant online approval" },
+    commonMistakes: [
+      "Waiting longer than 4 months to sign up (you will be fined and still have to pay retroactive premiums).",
+      "Forgetting to check if you are eligible for 'Zorgtoeslag' (healthcare allowance) to help pay premiums.",
+      "Assuming travel insurance is sufficient once you start working."
+    ],
+    tips: [
+      "The 'Eigen Risico' (deductible) is usually €385 per year; increasing it can lower your premium.",
+      "Basic insurance covers GP visits and hospital care, but dental often requires extra insurance.",
+      "You can only change your provider once a year, during the December 'switching window'."
+    ],
+    faq: [
+      { question: "Can I use my EHIC?", answer: "Only if you are a temporary student or visitor; if you work, you MUST have Dutch insurance." },
+      { question: "What is Zorgtoeslag?", answer: "A government subsidy for those with lower incomes to help cover health insurance costs." },
+      { question: "Do I need a GP?", answer: "Yes, you should register with a 'Huisarts' in your neighborhood as soon as you have insurance." }
+    ],
+    officialSourceLinks: [
+      { title: "Zorgverzekeringslijn", publisher: "Dutch Government", url: "https://www.zorgverzekeringslijn.nl/english/" },
+      { title: "Independer Health Insurance", publisher: "Comparison Site", url: "https://www.independer.nl/zorgverzekering/intro.aspx" }
+    ],
+    lastReviewedDate: "2026-04-27",
+    reviewStatus: "reviewed",
+    difficulty: "Medium",
+    tags: ["healthcare", "insurance", "netherlands"],
+    status: "published",
+  },
+  {
+    slug: "ireland-pps-number",
+    title: "Obtain an Irish PPS Number",
+    category: "Government services",
+    location: { countryCode: "IE", countryName: "Ireland" },
+    summary: "Secure your PPS number to access public services, social welfare, and taxation in Ireland.",
+    audience: "Residents in Ireland needing a tax/services identifier.",
+    eligibility: [
+      { label: "Need", description: "You must have a valid reason for needing a PPS number (e.g., starting a job, accessing state services)." },
+    ],
+    requiredDocuments: [
+      { name: "Identity Proof", description: "Passport or Public Services Card.", required: true },
+      { name: "Address Proof", description: "Utility bill or household document in your name.", required: true },
+      { name: "Reason for Application", description: "Job offer letter or proof of service requirement.", required: true },
+    ],
+    instructions: [
+      { order: 1, title: "Create MyWelfare account", description: "Register for a MyGovID to access the online application." },
+      { order: 2, title: "Submit application", description: "Upload your ID, address proof, and reason for application online." },
+      { order: 3, title: "Receive letter", description: "Your PPS number will be sent to your registered address by post." },
+    ],
+    fees: [
+      { label: "Application fee", amount: 0, currency: "EUR", required: false, notes: "Issuance is free." }
+    ],
+    estimatedProcessingTime: { min: 2, max: 6, unit: "weeks", display: "2 to 6 weeks" },
+    commonMistakes: [
+      "Applying before you have a solid reason (they will reject 'just in case' applications).",
+      "Using a non-standard address proof (utility bills or official bank statements are safest).",
+      "Forgetting to verify your MyGovID before starting the application."
+    ],
+    tips: [
+      "If you need a PPS number to start a job, your employer's letter must be on company letterhead.",
+      "Apply as soon as you have your job offer, as wait times can fluctuate.",
+      "You can use a digital version of your address proof if it is an official PDF from the provider."
+    ],
+    faq: [
+      { question: "Can I apply from outside Ireland?", answer: "Usually no; you must be resident in Ireland to apply for a PPS number." },
+      { question: "What is a Public Services Card?", answer: "A card containing your photo and signature used to verify your identity for state services." },
+      { question: "Is a PPS number the same as a visa?", answer: "No, it is a service and tax identifier, not a residence permit." }
+    ],
+    officialSourceLinks: [
+      { title: "Department of Social Protection", publisher: "Irish Government", url: "https://www.gov.ie/en/service/11d821-applying-for-a-pps-number/" },
+      { title: "MyWelfare.ie", publisher: "Irish Government", url: "https://www.mywelfare.ie/" }
+    ],
+    lastReviewedDate: "2026-04-27",
+    reviewStatus: "reviewed",
+    difficulty: "Medium",
+    tags: ["government", "pps", "ireland"],
+    status: "published",
+  },
+  {
+    slug: "ireland-bank-account",
+    title: "Open an Irish Bank Account",
+    category: "Banking",
+    location: { countryCode: "IE", countryName: "Ireland" },
+    summary: "Open a current account with a local provider like AIB, BOI, or a digital alternative.",
+    audience: "Residents and new arrivals in Ireland.",
+    eligibility: [
+      { label: "Residency", description: "Usually requires a physical address in Ireland." },
+    ],
+    requiredDocuments: [
+      { name: "Passport", description: "Original valid passport.", required: true },
+      { name: "Proof of Address", description: "Recent utility bill or official government letter in your name.", required: true },
+    ],
+    instructions: [
+      { order: 1, title: "Choose a bank", description: "Traditional banks (AIB, BOI) or digital-first (Revolut, N26) are common." },
+      { order: 2, title: "Visit branch/App", description: "Many banks now allow you to open an account via their mobile app." },
+      { order: 3, title: "Verify identity", description: "Complete the KYC process and wait for your card to arrive in the post." },
+    ],
+    fees: [
+      { label: "Quarterly fee", amount: 6, currency: "EUR", required: false, notes: "Varies by bank; some offer free student accounts." }
+    ],
+    estimatedProcessingTime: { min: 1, max: 5, unit: "days", display: "1 to 5 working days" },
+    commonMistakes: [
+      "Not having a 'hard' proof of address (utility bills are better than foreign bank statements).",
+      "Ignoring the 'Government Stamp Duty' on debit cards (approx. €2.50 per year).",
+      "Forgetting to ask for an IBAN for salary transfers."
+    ],
+    tips: [
+      "Revolut is extremely popular in Ireland for instant P2P transfers and easy setup.",
+      "If using a traditional bank, check for 'student' or 'graduate' accounts to save on fees.",
+      "Ask if the bank has 'Cash-back' features at supermarkets, which are very common in Ireland."
+    ],
+    faq: [
+      { question: "Is my money safe?", answer: "Yes, deposits up to €100,000 are protected by the Irish Deposit Guarantee Scheme." },
+      { question: "Can I open an account before I arrive?", answer: "Digital banks like Revolut allow this, but traditional banks usually require local address proof." },
+      { question: "What is an IBAN?", answer: "The International Bank Account Number used for all transfers within Europe." }
+    ],
+    officialSourceLinks: [
+      { title: "Citizens Information: Banking", publisher: "Irish Government", url: "https://www.citizensinformation.ie/en/money-and-tax/personal-finance/banking-and-saving/opening-a-bank-account/" },
+      { title: "Competition and Consumer Protection", publisher: "CCPC Ireland", url: "https://www.ccpc.ie/consumers/money/banking/" }
+    ],
+    lastReviewedDate: "2026-04-27",
+    reviewStatus: "reviewed",
+    difficulty: "Low",
+    tags: ["banking", "money", "ireland"],
+    status: "published",
+  },
+  {
+    slug: "switzerland-local-residence",
+    title: "Register Swiss Local Residence",
+    category: "Government services",
+    location: { countryCode: "CH", countryName: "Switzerland" },
+    summary: "Register at your local 'Gemeinde' within 14 days of arrival to become an official resident.",
+    audience: "Anyone moving to a new address in Switzerland (EU and non-EU citizens).",
+    eligibility: [
+      { label: "Deadline", description: "You must register within 14 days of arrival or before starting work." },
+    ],
+    requiredDocuments: [
+      { name: "Passport", description: "Valid passport or ID card.", required: true },
+      { name: "Employment Contract", description: "Proof of work in Switzerland (if applicable).", required: true },
+      { name: "Rental Contract", description: "Signed lease for your residence.", required: true },
+      { name: "Passport Photos", description: "Recent photos for your residence permit application.", required: true },
+    ],
+    instructions: [
+      { order: 1, title: "Find your office", description: "Identify the 'Einwohnerkontrolle' or 'Contrôle des habitants' for your town." },
+      { order: 2, title: "Attend in person", description: "Visit the office with all your physical documents." },
+      { order: 3, title: "Pay registration fee", description: "Pay the administrative fee for your permit application." },
+    ],
+    fees: [
+      { label: "Permit fee", amount: 100, currency: "CHF", required: true, notes: "Varies by canton and nationality." }
+    ],
+    estimatedProcessingTime: { min: 2, max: 6, unit: "weeks", display: "2 to 6 weeks for permit card" },
+    commonMistakes: [
+      "Missing the 14-day deadline (can result in fines).",
+      "Not bringing enough physical passport photos.",
+      "Assuming registration in one town carries over if you move to another (it doesn't)."
+    ],
+    tips: [
+      "Rules and fees can differ significantly between Cantons (e.g., Zurich vs. Geneva).",
+      "Registration is the first step before you can open a bank account or get a mobile contract.",
+      "Always ask for an official 'Registration Certificate' (Meldebescheinigung) during the appointment."
+    ],
+    faq: [
+      { question: "Do I need an appointment?", answer: "Depends on the municipality; larger cities usually require one, smaller villages may allow walk-ins." },
+      { question: "What is a 'Canton'?", answer: "A semi-autonomous state in Switzerland; there are 26 in total." },
+      { question: "Do I need health insurance first?", answer: "No, but you must prove you have a policy within 3 months of registration." }
+    ],
+    officialSourceLinks: [
+      { title: "Ch.ch: Moving to Switzerland", publisher: "Swiss Government", url: "https://www.ch.ch/en/moving-switzerland/" },
+      { title: "Swiss Migration (SEM)", publisher: "Swiss Government", url: "https://www.sem.admin.ch/sem/en/home.html" }
+    ],
+    lastReviewedDate: "2026-04-27",
+    reviewStatus: "reviewed",
+    difficulty: "Medium",
+    tags: ["residency", "government", "switzerland"],
+    status: "published",
+  },
+  {
+    slug: "switzerland-student-permit",
+    title: "Obtain a Swiss Student Residence Permit",
+    category: "Immigration",
+    location: { countryCode: "CH", countryName: "Switzerland" },
+    summary: "Organize your university acceptance and financial proof to secure your B-Permit.",
+    audience: "Non-EU/EFTA students planning to study in Switzerland for more than 3 months.",
+    eligibility: [
+      { label: "Acceptance", description: "Must be enrolled in a recognized Swiss university or institution." },
+    ],
+    requiredDocuments: [
+      { name: "Certificate of Enrollment", description: "Official letter from the university.", required: true },
+      { name: "Proof of Financial Means", description: "Bank statement showing approx. 21,000 CHF.", required: true },
+      { name: "Proof of Address", description: "Lease or letter from a student residence.", required: true },
+      { name: "Study Plan", description: "Signed statement detailing your academic goals and commitment to leave after graduation.", required: true },
+    ],
+    instructions: [
+      { order: 1, title: "Apply for entry visa", description: "If non-EU, apply for a Type D visa at the Swiss embassy in your country." },
+      { order: 2, title: "Register upon arrival", description: "Visit the local cantonal migration office within 14 days." },
+      { order: 3, title: "Submit documents", description: "Provide all academic and financial proof to the cantonal authorities." },
+    ],
+    fees: [
+      { label: "Permit fee", amount: 150, currency: "CHF", required: true, notes: "Varies by canton." }
+    ],
+    estimatedProcessingTime: { min: 4, max: 12, unit: "weeks", display: "1 to 3 months" },
+    commonMistakes: [
+      "Not having the bank statement from a bank with a Swiss branch or recognized partner.",
+      "Insufficient health insurance (Swiss authorities require specific coverage levels).",
+      "Providing a study plan that sounds like you intend to stay permanently."
+    ],
+    tips: [
+      "The 'B-Permit' for students is usually valid for one year and must be renewed annually.",
+      "Check with your university's international office; they often provide templates for the study plan.",
+      "Ensure your bank statement is in your own name or provides a signed guarantee from a sponsor."
+    ],
+    faq: [
+      { question: "Can I work while studying?", answer: "Yes, usually up to 15 hours per week, but only after 6 months of residency for non-EU students." },
+      { question: "Do I need to speak the local language?", answer: "For the permit, no, but it's essential for daily life and many English-taught programs still require basic local language skills." },
+      { question: "What is a B-Permit?", answer: "A residence permit for foreigners who live in Switzerland for a specific purpose (like study or work)." }
+    ],
+    officialSourceLinks: [
+      { title: "SEM: Student Permits", publisher: "State Secretariat for Migration", url: "https://www.sem.admin.ch/sem/en/home/themen/einreise/faq.html" },
+      { title: "ETH Zurich: Immigration", publisher: "ETH Zurich", url: "https://ethz.ch/en/studies/international-students/after-arrival/immigration.html" }
+    ],
+    lastReviewedDate: "2026-04-27",
+    reviewStatus: "reviewed",
+    difficulty: "High",
+    tags: ["visa", "student", "switzerland"],
+    status: "published",
+  },
+  {
+    slug: "swedish-personal-identity-number",
+    title: "Obtain a Swedish Personal Identity Number",
+    category: "Government services",
+    location: { countryCode: "SE", countryName: "Sweden" },
+    summary: "Register with Skatteverket to obtain your 'Personnummer', the key to all services in Sweden.",
+    audience: "People moving to Sweden for at least one year.",
+    eligibility: [
+      { label: "Duration", description: "You must intend to live in Sweden for at least 12 months." },
+    ],
+    requiredDocuments: [
+      { name: "Passport", description: "Valid passport copy.", required: true },
+      { name: "Residence Permit", description: "Proof of your right to live in Sweden (for non-EU).", required: true },
+      { name: "Employment/Study Proof", description: "Contract or enrollment letter.", required: true },
+      { name: "Civil Status Documents", description: "Marriage or birth certificates (must be originals or certified copies).", required: false },
+    ],
+    instructions: [
+      { order: 1, title: "Visit Skatteverket", description: "Go in person to a service center (Statens servicecenter)." },
+      { order: 2, title: "Submit application", description: "Answer questions about your move and provide your documents." },
+      { order: 3, title: "Identity check", description: "The officer will verify your passport and take your details." },
+    ],
+    fees: [
+      { label: "Registration fee", amount: 0, currency: "SEK", required: false, notes: "The number is issued for free." }
+    ],
+    estimatedProcessingTime: { min: 2, max: 18, unit: "weeks", display: "2 to 18 weeks (highly variable)" },
+    commonMistakes: [
+      "Applying if your contract is less than 12 months (you will get a 'Samordningsnummer' instead).",
+      "Not bringing your original marriage certificate if you are moving with a spouse.",
+      "Forgetting to notify Skatteverket if you change your address within Sweden."
+    ],
+    tips: [
+      "The 'Personnummer' is used for everything from BankID to gym memberships.",
+      "While waiting, you cannot get a BankID or a Swedish phone contract easily.",
+      "Ensure your name is clearly visible on your mailbox to receive your identity number letter."
+    ],
+    faq: [
+      { question: "Can I speed it up?", answer: "No, the processing times at Skatteverket are strictly first-come, first-served." },
+      { question: "What is BankID?", answer: "The primary digital identity tool used for secure logins and signatures in Sweden." },
+      { question: "Is it the same as a tax ID?", answer: "Yes, it serves as both your personal and tax identification number." }
+    ],
+    officialSourceLinks: [
+      { title: "Skatteverket: Moving to Sweden", publisher: "Swedish Tax Agency", url: "https://www.skatteverket.se/servicelankar/otherlanguages/inenglish/movingtosweden.4.7be5832b106090a3f99800045864.html" },
+      { title: "Information Sverige", publisher: "Swedish Regions", url: "https://www.informationsverige.se/en/" }
+    ],
+    lastReviewedDate: "2026-04-27",
+    reviewStatus: "reviewed",
+    difficulty: "High",
+    tags: ["government", "identity", "sweden"],
+    status: "published",
+  },
+  {
+    slug: "sweden-healthcare",
+    title: "Access Swedish Healthcare",
+    category: "Healthcare",
+    location: { countryCode: "SE", countryName: "Sweden" },
+    summary: "Register with a local health center once you have your personnummer.",
+    audience: "Residents in Sweden with a personal identity number.",
+    eligibility: [
+      { label: "Residency", description: "Must have a 'Personnummer' or 'Samordningsnummer'." },
+    ],
+    requiredDocuments: [
+      { name: "Personnummer", description: "Your Swedish identity number.", required: true },
+      { name: "ID-card", description: "Swedish ID-card or passport.", required: true },
+    ],
+    instructions: [
+      { order: 1, title: "Choose a Vårdcentral", description: "Select a health center near your home or work via 1177.se." },
+      { order: 2, title: "Register", description: "Log in to 1177.se with your BankID to list yourself at the center." },
+      { order: 3, title: "Book appointment", description: "Call the center or use the 1177 app to schedule a visit." },
+    ],
+    fees: [
+      { label: "GP visit fee", amount: 200, currency: "SEK", required: true, notes: "Varies slightly by region; capped by annual limit." }
+    ],
+    estimatedProcessingTime: { min: 1, max: 1, unit: "days", display: "Instant online registration" },
+    commonMistakes: [
+      "Assuming healthcare is 100% free (small co-pays exist until you hit the cap).",
+      "Calling 112 for non-emergencies (use 1177 instead).",
+      "Not registering at a 'Vårdcentral' before you actually get sick."
+    ],
+    tips: [
+      "Sweden has 'Högkostnadsskydd' (High-cost protection) which caps your annual healthcare costs.",
+      "The '1177.se' portal is the central hub for all healthcare in Sweden.",
+      "Dental care is not part of the same high-cost protection and can be expensive."
+    ],
+    faq: [
+      { question: "Can I choose any doctor?", answer: "Yes, you can register at any public or private Vårdcentral that has a contract with the region." },
+      { question: "What is 1177?", answer: "A national medical advice line and web portal available 24/7." },
+      { question: "Is there English support?", answer: "Yes, the 1177 phone line and most doctors speak excellent English." }
+    ],
+    officialSourceLinks: [
+      { title: "1177 Vårdguiden", publisher: "Swedish Regions", url: "https://www.1177.se/" },
+      { title: "Försäkringskassan", publisher: "Swedish Social Insurance Agency", url: "https://www.forsakringskassan.se/" }
+    ],
+    lastReviewedDate: "2026-04-27",
+    reviewStatus: "reviewed",
+    difficulty: "Medium",
+    tags: ["healthcare", "government", "sweden"],
+    status: "published",
+  },
+  {
+    slug: "norway-address-change",
+    title: "Register a Norwegian Address Change",
+    category: "Government services",
+    location: { countryCode: "NO", countryName: "Norway" },
+    summary: "Update your residential address with the National Registry to ensure tax and mail records are correct.",
+    audience: "Anyone moving within or to Norway.",
+    eligibility: [
+      { label: "Deadline", description: "You must report your move within 8 days of moving." },
+    ],
+    requiredDocuments: [
+      { name: "BankID/MinID", description: "Electronic ID for online reporting.", required: true },
+      { name: "New Address", description: "Full address including the 'apartment number' (H-number).", required: true },
+    ],
+    instructions: [
+      { order: 1, title: "Log in to Skatteetaten", description: "Access the 'Report a move' service on the Tax Administration website." },
+      { order: 2, title: "Submit details", description: "Enter your new address and the date you moved in." },
+      { order: 3, title: "Post Office update", description: "Separately notify 'Posten' to have your mail forwarded." },
+    ],
+    fees: [
+      { label: "Registration fee", amount: 0, currency: "NOK", required: false, notes: "Updating your address is free." }
+    ],
+    estimatedProcessingTime: { min: 1, max: 10, unit: "days", display: "Instant online; up to 10 days for processing" },
+    commonMistakes: [
+      "Forgetting to update both the National Registry AND the Post Office.",
+      "Not knowing your H-number (apartment number).",
+      "Using a nickname on your mailbox (must match your registered name for Posten)."
+    ],
+    tips: [
+      "The H-number is often found on a sticker on your door frame.",
+      "Updating the Folkeregisteret automatically notifies many agencies, but not all.",
+      "Posten offers a free mail forwarding service for the first 2 months if you notify them early."
+    ],
+    faq: [
+      { question: "What is an H-number?", answer: "A code like H0101 that identifies your specific apartment within a building." },
+      { question: "What is BankID?", answer: "The primary digital identity tool for secure logins in Norway." },
+      { question: "Can I register late?", answer: "Yes, but you should do it as soon as possible to avoid missing important government mail." }
+    ],
+    officialSourceLinks: [
+      { title: "Skatteetaten: Moving", publisher: "Norwegian Tax Administration", url: "https://www.skatteetaten.no/en/person/national-registry/moving/" },
+      { title: "Posten Norway", publisher: "Norwegian Post", url: "https://www.posten.no/en/receive/address-services" }
+    ],
+    lastReviewedDate: "2026-04-27",
+    reviewStatus: "reviewed",
+    difficulty: "Low",
+    tags: ["residency", "address", "norway"],
+    status: "published",
+  },
+  {
+    slug: "denmark-cpr-number",
+    title: "Obtain a Danish CPR Number",
+    category: "Government services",
+    location: { countryCode: "DK", countryName: "Denmark" },
+    summary: "Register with your local Citizen Service to get your CPR number and 'Yellow Card'.",
+    audience: "Expats, students, and workers moving to Denmark for more than 3 months.",
+    eligibility: [
+      { label: "Duration", description: "Mandatory if you stay in Denmark for more than 3 months (6 months for EU/Nordic citizens)." },
+    ],
+    requiredDocuments: [
+      { name: "Residence Permit", description: "Your EU residence document or non-EU residence permit.", required: true },
+      { name: "Proof of Address", description: "Rental contract or a signed lodger's form.", required: true },
+      { name: "Passport", description: "Valid passport or national ID card.", required: true },
+      { name: "Civil Status", description: "Marriage or birth certificates (if applicable).", required: false },
+    ],
+    instructions: [
+      { order: 1, title: "Apply for residence", description: "EU citizens must first get an EU residence document from SIRI." },
+      { order: 2, title: "Book appointment", description: "Schedule a visit to 'Borgerservice' or an International House." },
+      { order: 3, title: "Attend registration", description: "Visit in person to have your documents checked and your CPR issued." },
+    ],
+    fees: [
+      { label: "Registration fee", amount: 0, currency: "DKK", required: false, notes: "Issuance is free." }
+    ],
+    estimatedProcessingTime: { min: 1, max: 4, unit: "weeks", display: "1 to 4 weeks for the Yellow Card" },
+    commonMistakes: [
+      "Applying for a CPR before you have a permanent address where your name is on the mailbox.",
+      "Not bringing your original marriage certificate if applicable.",
+      "Assuming SIRI registration and CPR registration are the same step (they are separate)."
+    ],
+    tips: [
+      "The 'Yellow Card' (Sundhedskort) is your proof of CPR and your health insurance card.",
+      "You need a MitID to access almost all Danish services, which you get after your CPR.",
+      "Ensure your name is clearly marked on your mailbox to receive your CPR letter and Yellow Card."
+    ],
+    faq: [
+      { question: "What is a CPR number?", answer: "The Danish personal identification number used for taxes, healthcare, and banking." },
+      { question: "What is MitID?", answer: "The national digital identification system for secure online self-service in Denmark." },
+      { question: "Can I use my private insurance?", answer: "While you can, the CPR gives you access to the Danish public healthcare system for free." }
+    ],
+    officialSourceLinks: [
+      { title: "Life in Denmark", publisher: "Danish Government", url: "https://lifeindenmark.borger.dk/coming-to-denmark/cpr-number" },
+      { title: "International House Copenhagen", publisher: "City of Copenhagen", url: "https://ihcph.kk.dk/" }
+    ],
+    lastReviewedDate: "2026-04-27",
+    reviewStatus: "reviewed",
+    difficulty: "High",
+    tags: ["government", "cpr", "denmark"],
+    status: "published",
+  },
 ];
 
 export function getProcessBySlug(slug: string) {

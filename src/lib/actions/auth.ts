@@ -2,6 +2,7 @@
 
 import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
+import { headers } from "next/headers";
 
 import { createClient } from "@/lib/supabase/server";
 
@@ -37,6 +38,7 @@ export async function signUpAction(formData: FormData) {
   const fullName = getString(formData, "fullName");
   const redirectTo = getRedirectTo(formData);
 
+  const origin = (await headers()).get("origin");
   const supabase = await createClient();
   const { error } = await supabase.auth.signUp({
     email,
@@ -45,6 +47,7 @@ export async function signUpAction(formData: FormData) {
       data: {
         full_name: fullName,
       },
+      emailRedirectTo: `${origin}/auth/callback?next=${encodeURIComponent(redirectTo)}`,
     },
   });
 
@@ -55,7 +58,7 @@ export async function signUpAction(formData: FormData) {
   revalidatePath("/", "layout");
   redirect(
     `/auth/sign-in?message=${encodeURIComponent(
-      "Account created. Check your email if confirmation is enabled, then sign in.",
+      "Confirmation email sent! Please check your inbox and Spam/Promotions folders to verify your account.",
     )}&redirectTo=${encodeURIComponent(redirectTo)}`,
   );
 }
