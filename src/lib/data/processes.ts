@@ -1993,7 +1993,6 @@ export const processGuides: ProcessGuide[] = [
     reviewStatus: "reviewed",
     difficulty: "Low",
     tags: ["travel", "singapore", "tourist visa", "tourism"],
-    tags: ["travel", "singapore", "tourist visa", "tourism"],
     status: "published",
   },
   {
