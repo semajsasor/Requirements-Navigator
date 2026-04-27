@@ -80,14 +80,14 @@ export function ProcessDetailView({
   const location = formatProcessLocation(process);
 
   return (
-    <div className="mx-auto w-full max-w-7xl px-4 py-6 sm:px-6 sm:py-8 lg:px-8">
+    <div className="mx-auto w-full max-w-7xl px-4 py-5 sm:px-6 sm:py-8 lg:px-8">
       <RecentGuideTracker
         slug={process.slug}
         title={process.title}
         category={process.category}
       />
       <div className="no-print">
-        <Button asChild variant="ghost" className="mb-6 -ml-3">
+        <Button asChild variant="ghost" className="mb-4 -ml-3 sm:mb-6">
           <Link href="/explore">
             <ArrowLeft className="h-4 w-4" aria-hidden="true" />
             Back to explore
@@ -95,7 +95,7 @@ export function ProcessDetailView({
         </Button>
       </div>
 
-      <div className="grid gap-8 lg:grid-cols-[1fr_360px] lg:items-start">
+      <div className="grid gap-6 lg:grid-cols-[1fr_360px] lg:items-start">
         <article className="min-w-0">
           <div className="flex flex-wrap gap-2">
             <Badge variant="accent">{process.category}</Badge>
@@ -104,25 +104,25 @@ export function ProcessDetailView({
             <TrustBadge reviewStatus={process.reviewStatus} />
           </div>
 
-          <h1 className="mt-4 max-w-4xl text-2xl font-semibold leading-tight tracking-normal sm:text-5xl">
+          <h1 className="mt-3 max-w-4xl text-2xl font-semibold leading-tight tracking-normal sm:mt-4 sm:text-5xl">
             {process.title}
           </h1>
-          <p className="mt-4 max-w-3xl text-sm leading-6 text-muted-foreground sm:mt-5 sm:text-lg sm:leading-7">
+          <p className="mt-3 max-w-3xl text-sm leading-6 text-muted-foreground sm:mt-5 sm:text-lg sm:leading-7">
             {process.summary}
           </p>
-          <p className="mt-4 max-w-3xl rounded-md border bg-white p-4 text-sm leading-6 text-muted-foreground">
+          <p className="mt-4 max-w-3xl rounded-md border bg-white p-3 text-sm leading-6 text-muted-foreground sm:p-4">
             This guide is for planning and preparation. Details may change, so
             verify current requirements with the official sources before applying,
             paying fees, or submitting documents.
           </p>
 
-          <div className="no-print sticky top-16 z-30 -mx-4 mt-7 overflow-x-auto border-y bg-background/95 px-4 py-3 backdrop-blur lg:hidden">
+          <div className="no-print sticky top-16 z-30 -mx-4 mt-5 overflow-x-auto border-y bg-background/95 px-4 py-2 backdrop-blur sm:mt-7 sm:py-3 lg:hidden">
             <nav className="flex gap-2" aria-label="Process sections">
               {sectionLinks.map((link) => (
                 <a
                   key={link.href}
                   href={link.href}
-                  className="shrink-0 rounded-md border bg-white px-3 py-2 text-sm font-medium text-muted-foreground"
+                  className="shrink-0 rounded-md border bg-white px-3 py-1.5 text-sm font-medium text-muted-foreground sm:py-2"
                 >
                   {link.label}
                 </a>
@@ -130,7 +130,7 @@ export function ProcessDetailView({
             </nav>
           </div>
 
-          <div className="mt-8 grid gap-4 sm:grid-cols-2">
+          <div className="mt-6 grid gap-3 sm:mt-8 sm:grid-cols-2 sm:gap-4">
             <ProcessInfoCard
               icon={<Clock className="h-5 w-5" aria-hidden="true" />}
               label="Estimated timeline"

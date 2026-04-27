@@ -67,6 +67,15 @@ npx playwright install chromium
 
 Authenticated e2e tests run only when Supabase env plus `E2E_AUTH_EMAIL` and `E2E_AUTH_PASSWORD` are set.
 
+To run the authenticated saved-guide flows:
+
+1. Create a disposable test user in Supabase Auth.
+2. Add that user's email and password to `.env.local` as `E2E_AUTH_EMAIL` and `E2E_AUTH_PASSWORD`.
+3. Make sure the user can sign in at `/auth/sign-in`.
+4. Run `npm run test:e2e`.
+
+Without those credentials, Playwright intentionally skips the saved-guide tests and still runs the public launch checks.
+
 ## Supabase Setup
 
 1. Create a Supabase project.

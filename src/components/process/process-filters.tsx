@@ -68,81 +68,129 @@ export function ProcessFilters({
           </div>
         </div>
 
-        <div className="grid gap-4 lg:grid-cols-[1fr_1fr]">
-          <FilterGroup label="Category">
-            {["All", ...categories].map((category) => (
-              <FilterButton
-                key={category}
-                active={filters.category === category}
-                onClick={() => updateFilter("category", category)}
-              >
-                {category}
-              </FilterButton>
-            ))}
-          </FilterGroup>
+        <details className="group md:hidden">
+          <summary className="flex cursor-pointer list-none items-center justify-between rounded-md border bg-white px-3 py-2 text-sm font-medium">
+            <span className="flex items-center gap-2">
+              <SlidersHorizontal className="h-4 w-4 text-primary" aria-hidden="true" />
+              Filters
+            </span>
+            <span className="text-xs text-muted-foreground group-open:hidden">
+              Show
+            </span>
+            <span className="hidden text-xs text-muted-foreground group-open:inline">
+              Hide
+            </span>
+          </summary>
+          <FilterControls
+            filters={filters}
+            categories={categories}
+            countries={countries}
+            updateFilter={updateFilter}
+            onReset={onReset}
+            className="mt-4"
+          />
+        </details>
 
-          <FilterGroup label="Country">
-            {[
-              { code: "All", name: "All countries" },
-              ...countries,
-            ].map((country) => (
-              <FilterButton
-                key={country.code}
-                active={filters.countryCode === country.code}
-                onClick={() => updateFilter("countryCode", country.code)}
-              >
-                {country.name}
-              </FilterButton>
-            ))}
-          </FilterGroup>
-        </div>
+        <FilterControls
+          filters={filters}
+          categories={categories}
+          countries={countries}
+          updateFilter={updateFilter}
+          onReset={onReset}
+          className="hidden md:grid"
+        />
+      </CardContent>
+    </Card>
+  );
+}
 
-        <div className="grid gap-4 md:grid-cols-[1fr_1fr_auto] md:items-end">
-          <div>
-            <label
-              htmlFor="region-filter"
-              className="text-sm font-medium text-foreground"
+function FilterControls({
+  filters,
+  categories,
+  countries,
+  updateFilter,
+  onReset,
+  className,
+}: {
+  filters: ProcessFilterInput;
+  categories: string[];
+  countries: { code: string; name: string }[];
+  updateFilter: <Key extends keyof ProcessFilterInput>(
+    key: Key,
+    value: ProcessFilterInput[Key],
+  ) => void;
+  onReset: () => void;
+  className?: string;
+}) {
+  return (
+    <div className={cn("grid gap-4", className)}>
+      <div className="grid gap-4 lg:grid-cols-[1fr_1fr]">
+        <FilterGroup label="Category">
+          {["All", ...categories].map((category) => (
+            <FilterButton
+              key={category}
+              active={filters.category === category}
+              onClick={() => updateFilter("category", category)}
             >
-              Region or city
-            </label>
+              {category}
+            </FilterButton>
+          ))}
+        </FilterGroup>
+
+        <FilterGroup label="Country">
+          {[{ code: "All", name: "All countries" }, ...countries].map((country) => (
+            <FilterButton
+              key={country.code}
+              active={filters.countryCode === country.code}
+              onClick={() => updateFilter("countryCode", country.code)}
+            >
+              {country.name}
+            </FilterButton>
+          ))}
+        </FilterGroup>
+      </div>
+
+      <div className="grid gap-4 md:grid-cols-[1fr_1fr_auto] md:items-end">
+        <div>
+          <label className="text-sm font-medium text-foreground">
+            Region or city
             <Input
-              id="region-filter"
               value={filters.region}
               onChange={(event) => updateFilter("region", event.target.value)}
               placeholder="State, province, city, or district"
               className="mt-2 h-10 bg-white"
             />
-            <p className="mt-2 text-xs leading-5 text-muted-foreground">
-              Use a place name when requirements vary by location.
-            </p>
-          </div>
-
-          <div>
-            <p className="text-sm font-medium text-foreground">Difficulty</p>
-            <div className="mt-2 flex flex-wrap gap-2">
-              {difficulties.map((difficulty) => (
-                <FilterButton
-                  key={difficulty}
-                  active={filters.difficulty === difficulty}
-                  onClick={() => updateFilter("difficulty", difficulty)}
-                >
-                  {difficulty}
-                </FilterButton>
-              ))}
-            </div>
-          </div>
-
-          <Button
-            variant="outline"
-            onClick={onReset}
-            className="w-full bg-white md:w-auto"
-          >
-            <RotateCcw className="h-4 w-4" aria-hidden="true" />
-            Reset
-          </Button>
+          </label>
+          <p className="mt-2 text-xs leading-5 text-muted-foreground">
+            Use a place name when requirements vary by location.
+          </p>
         </div>
-      </CardContent>
-    </Card>
+
+        <div>
+          <p className="text-sm font-medium text-foreground">Difficulty</p>
+          <div className="mt-2 flex flex-wrap gap-2">
+            {difficulties.map((difficulty) => (
+              <FilterButton
+                key={difficulty}
+                active={filters.difficulty === difficulty}
+                onClick={() => updateFilter("difficulty", difficulty)}
+              >
+                {difficulty}
+              </FilterButton>
+            ))}
+          </div>
+        </div>
+
+        <Button
+          variant="outline"
+          onClick={onReset}
+          className="w-full bg-white md:w-auto"
+        >
+          <RotateCcw className="h-4 w-4" aria-hidden="true" />
+          Reset
+        </Button>
+      </div>
+    </div>
   );
 }
 

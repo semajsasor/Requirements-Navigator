@@ -35,36 +35,36 @@ export default function Home() {
   return (
     <>
       <section className="relative overflow-hidden bg-[#f8faf9]">
-        <div className="absolute inset-x-0 top-0 h-72 bg-[#e2f4ee]" aria-hidden="true" />
-        <div className="relative mx-auto grid w-full max-w-7xl gap-8 px-4 py-10 sm:px-6 md:grid-cols-[1.02fr_0.98fr] md:items-center md:py-18 lg:px-8 lg:py-24">
+        <div className="absolute inset-x-0 top-0 h-56 bg-[#e2f4ee] sm:h-72" aria-hidden="true" />
+        <div className="relative mx-auto grid w-full max-w-7xl gap-7 px-4 py-8 sm:px-6 md:grid-cols-[1.02fr_0.98fr] md:items-center md:py-18 lg:px-8 lg:py-24">
           <div>
-            <Badge variant="accent" className="mb-5 shadow-sm">
+            <Badge variant="accent" className="mb-4 shadow-sm sm:mb-5">
               {landingPage.hero.eyebrow}
             </Badge>
-            <h1 className="max-w-4xl text-3xl font-semibold leading-tight tracking-normal text-foreground sm:text-5xl lg:text-6xl">
+            <h1 className="max-w-4xl text-2xl font-semibold leading-tight tracking-normal text-foreground sm:text-5xl lg:text-6xl">
               {landingPage.hero.headline}
             </h1>
-            <p className="mt-4 max-w-2xl text-sm leading-6 text-muted-foreground sm:mt-5 sm:text-lg sm:leading-7">
+            <p className="mt-3 max-w-2xl text-sm leading-6 text-muted-foreground sm:mt-5 sm:text-lg sm:leading-7">
               {landingPage.hero.subheadline}
             </p>
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <Button asChild size="lg" className="shadow-lg shadow-primary/15">
+            <div className="mt-6 flex flex-col gap-3 sm:mt-8 sm:flex-row">
+              <Button asChild size="lg" className="h-10 shadow-lg shadow-primary/15 sm:h-11">
                 <Link href="/explore">
                   {landingPage.hero.primaryCta}
                   <ArrowRight className="h-4 w-4" aria-hidden="true" />
                 </Link>
               </Button>
-              <Button asChild size="lg" variant="outline" className="bg-white/70">
+              <Button asChild size="lg" variant="outline" className="h-10 bg-white/70 sm:h-11">
                 <Link href="#how-it-works">{landingPage.hero.secondaryCta}</Link>
               </Button>
             </div>
-            <div className="mt-7 flex items-start gap-3 text-sm leading-6 text-muted-foreground">
+            <div className="mt-5 flex items-start gap-3 text-sm leading-6 text-muted-foreground sm:mt-7">
               <ShieldCheck className="mt-0.5 h-5 w-5 shrink-0 text-primary" aria-hidden="true" />
               <p>{landingPage.hero.trustText}</p>
             </div>
           </div>
 
-          <div className="rounded-lg border bg-white/90 p-3 shadow-xl shadow-[#0b3d2d]/10 backdrop-blur">
+          <div className="hidden rounded-lg border bg-white/90 p-3 shadow-xl shadow-[#0b3d2d]/10 backdrop-blur md:block">
             <div className="rounded-md bg-[#123c33] p-5 text-white">
               <div className="flex items-start justify-between gap-4">
                 <div>
