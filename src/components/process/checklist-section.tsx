@@ -73,7 +73,7 @@ export function ChecklistSection({
     <section className="scroll-mt-24">
       <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
         <div className="flex-1">
-          <h2 className="text-2xl font-semibold tracking-normal">{title}</h2>
+          <h2 className="text-xl font-semibold tracking-normal sm:text-2xl">{title}</h2>
           {description ? (
             <p className="mt-2 text-sm leading-6 text-muted-foreground">{description}</p>
           ) : null}
@@ -105,7 +105,7 @@ export function ChecklistSection({
               type="button"
               onClick={() => toggleItem(item)}
               className={cn(
-                "group w-full rounded-lg border bg-white p-4 text-left shadow-sm transition-colors hover:border-primary/40 hover:bg-[#fbfdfc]",
+                "group w-full rounded-lg border bg-white p-3.5 text-left shadow-sm transition-colors hover:border-primary/40 hover:bg-[#fbfdfc] sm:p-4",
                 checked && "border-primary/40 bg-accent/40",
               )}
             >
@@ -126,7 +126,7 @@ export function ChecklistSection({
                     ) : null}
                     <h3
                       className={cn(
-                        "font-semibold leading-6",
+                        "text-sm font-semibold leading-6 sm:text-base",
                         checked && "text-muted-foreground line-through",
                       )}
                     >

@@ -3,7 +3,7 @@ import type { ProcessGuide } from "@/types/process";
 
 export function ProcessList({ processes }: { processes: ProcessGuide[] }) {
   return (
-    <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+    <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-5">
       {processes.map((process) => (
         <ProcessCard key={process.slug} process={process} />
       ))}

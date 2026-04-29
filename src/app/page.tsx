@@ -35,19 +35,19 @@ export default function Home() {
   return (
     <>
       <section className="relative overflow-hidden bg-[#f8faf9]">
-        <div className="absolute inset-x-0 top-0 h-56 bg-[#e2f4ee] sm:h-72" aria-hidden="true" />
-        <div className="relative mx-auto grid w-full max-w-7xl gap-7 px-4 py-8 sm:px-6 md:grid-cols-[1.02fr_0.98fr] md:items-center md:py-18 lg:px-8 lg:py-24">
+        <div className="absolute inset-x-0 top-0 h-56 bg-[linear-gradient(180deg,#def2eb_0%,#edf7f3_72%,rgba(248,250,249,0)_100%)] sm:h-72" aria-hidden="true" />
+        <div className="relative mx-auto grid w-full max-w-7xl gap-7 px-4 py-7 sm:px-6 sm:py-9 md:grid-cols-[1.02fr_0.98fr] md:items-center md:py-18 lg:px-8 lg:py-24">
           <div>
             <Badge variant="accent" className="mb-4 shadow-sm sm:mb-5">
               {landingPage.hero.eyebrow}
             </Badge>
-            <h1 className="max-w-4xl text-2xl font-semibold leading-tight tracking-normal text-foreground sm:text-5xl lg:text-6xl">
+            <h1 className="max-w-4xl text-2xl font-semibold leading-[1.12] tracking-normal text-foreground min-[420px]:text-3xl sm:text-5xl lg:text-6xl">
               {landingPage.hero.headline}
             </h1>
             <p className="mt-3 max-w-2xl text-sm leading-6 text-muted-foreground sm:mt-5 sm:text-lg sm:leading-7">
               {landingPage.hero.subheadline}
             </p>
-            <div className="mt-6 flex flex-col gap-3 sm:mt-8 sm:flex-row">
+            <div className="mt-5 flex flex-col gap-3 sm:mt-8 sm:flex-row">
               <Button asChild size="lg" className="h-10 shadow-lg shadow-primary/15 sm:h-11">
                 <Link href="/explore">
                   {landingPage.hero.primaryCta}
@@ -58,14 +58,14 @@ export default function Home() {
                 <Link href="#how-it-works">{landingPage.hero.secondaryCta}</Link>
               </Button>
             </div>
-            <div className="mt-5 flex items-start gap-3 text-sm leading-6 text-muted-foreground sm:mt-7">
+            <div className="mt-4 flex items-start gap-3 text-sm leading-6 text-muted-foreground sm:mt-7">
               <ShieldCheck className="mt-0.5 h-5 w-5 shrink-0 text-primary" aria-hidden="true" />
               <p>{landingPage.hero.trustText}</p>
             </div>
           </div>
 
-          <div className="hidden rounded-lg border bg-white/90 p-3 shadow-xl shadow-[#0b3d2d]/10 backdrop-blur md:block">
-            <div className="rounded-md bg-[#123c33] p-5 text-white">
+          <div className="hidden rounded-lg border bg-white/90 p-3 shadow-2xl shadow-[#0b3d2d]/10 backdrop-blur md:block">
+            <div className="rounded-md bg-[#123c33] p-5 text-white shadow-inner shadow-white/5">
               <div className="flex items-start justify-between gap-4">
                 <div>
                   <p className="text-sm text-white/70">{landingPage.hero.previewLabel}</p>
@@ -104,10 +104,10 @@ export default function Home() {
       </section>
 
       <section id="how-it-works" className="bg-white">
-        <div className="mx-auto w-full max-w-7xl px-4 py-14 sm:px-6 lg:px-8 lg:py-18">
+        <div className="mx-auto w-full max-w-7xl px-4 py-11 sm:px-6 sm:py-14 lg:px-8 lg:py-18">
           <div className="mx-auto max-w-3xl text-center">
             <p className="text-sm font-medium text-primary">{landingPage.howItWorks.eyebrow}</p>
-            <h2 className="mt-3 text-3xl font-semibold tracking-normal sm:text-4xl">
+            <h2 className="mt-2 text-2xl font-semibold tracking-normal sm:mt-3 sm:text-4xl">
               {landingPage.howItWorks.title}
             </h2>
             <p className="mt-4 text-base leading-7 text-muted-foreground">
@@ -115,14 +115,14 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="mt-10 grid gap-4 md:grid-cols-3">
+          <div className="mt-8 grid gap-4 sm:mt-10 md:grid-cols-3">
             {landingPage.howItWorks.steps.map((item, index) => {
               const Icon = howItWorksIcons[index];
 
               return (
                 <Card
                   key={item.title}
-                  className="border-[#dce8e2] bg-white shadow-lg shadow-[#123c33]/5"
+                  className="border-[#dce8e2] bg-white transition-transform duration-200 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-[#123c33]/10"
                 >
                   <CardHeader>
                     <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-md bg-accent text-accent-foreground">
@@ -141,13 +141,13 @@ export default function Home() {
       </section>
 
       <section className="bg-[#f8faf9]">
-        <div className="mx-auto w-full max-w-7xl px-4 py-14 sm:px-6 lg:px-8 lg:py-18">
+        <div className="mx-auto w-full max-w-7xl px-4 py-11 sm:px-6 sm:py-14 lg:px-8 lg:py-18">
           <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
             <div className="max-w-2xl">
               <p className="text-sm font-medium text-primary">
                 {landingPage.popularProcesses.eyebrow}
               </p>
-              <h2 className="mt-3 text-3xl font-semibold tracking-normal sm:text-4xl">
+              <h2 className="mt-2 text-2xl font-semibold tracking-normal sm:mt-3 sm:text-4xl">
                 {landingPage.popularProcesses.title}
               </h2>
               <p className="mt-4 text-base leading-7 text-muted-foreground">
@@ -163,10 +163,10 @@ export default function Home() {
       </section>
 
       <section className="bg-white">
-        <div className="mx-auto grid w-full max-w-7xl gap-10 px-4 py-14 sm:px-6 lg:grid-cols-[0.9fr_1.1fr] lg:items-center lg:px-8 lg:py-18">
+        <div className="mx-auto grid w-full max-w-7xl gap-8 px-4 py-11 sm:px-6 sm:py-14 lg:grid-cols-[0.9fr_1.1fr] lg:items-center lg:px-8 lg:py-18">
           <div>
             <p className="text-sm font-medium text-primary">{landingPage.benefits.eyebrow}</p>
-            <h2 className="mt-3 text-3xl font-semibold tracking-normal sm:text-4xl">
+            <h2 className="mt-2 text-2xl font-semibold tracking-normal sm:mt-3 sm:text-4xl">
               {landingPage.benefits.title}
             </h2>
             <p className="mt-4 text-base leading-7 text-muted-foreground">
@@ -199,14 +199,14 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="bg-[#f0f7f4]">
-        <div className="mx-auto w-full max-w-7xl px-4 py-14 sm:px-6 lg:px-8 lg:py-18">
+      <section className="bg-[#eef7f3]">
+        <div className="mx-auto w-full max-w-7xl px-4 py-11 sm:px-6 sm:py-14 lg:px-8 lg:py-18">
           <div className="grid gap-8 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
             <div>
               <p className="text-sm font-medium text-primary">
                 {landingPage.trustedSources.eyebrow}
               </p>
-              <h2 className="mt-3 text-3xl font-semibold tracking-normal sm:text-4xl">
+              <h2 className="mt-2 text-2xl font-semibold tracking-normal sm:mt-3 sm:text-4xl">
                 {landingPage.trustedSources.title}
               </h2>
               <p className="mt-4 text-base leading-7 text-muted-foreground">
@@ -236,12 +236,12 @@ export default function Home() {
       </section>
 
       <section className="bg-white">
-        <div className="mx-auto w-full max-w-7xl px-4 py-14 sm:px-6 lg:px-8 lg:py-18">
+        <div className="mx-auto w-full max-w-7xl px-4 py-11 sm:px-6 sm:py-14 lg:px-8 lg:py-18">
           <div className="mx-auto max-w-3xl text-center">
             <p className="text-sm font-medium text-primary">
               {landingPage.testimonials.eyebrow}
             </p>
-            <h2 className="mt-3 text-3xl font-semibold tracking-normal sm:text-4xl">
+            <h2 className="mt-2 text-2xl font-semibold tracking-normal sm:mt-3 sm:text-4xl">
               {landingPage.testimonials.title}
             </h2>
           </div>

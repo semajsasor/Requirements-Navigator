@@ -26,7 +26,7 @@ export default function ExplorePage() {
     <div className="mx-auto w-full max-w-7xl px-4 py-6 sm:px-6 sm:py-10 lg:px-8 lg:py-12">
       <div className="max-w-3xl">
         <Badge variant="accent">Explore</Badge>
-        <h1 className="mt-3 text-2xl font-semibold tracking-normal sm:mt-4 sm:text-4xl">
+        <h1 className="mt-3 text-2xl font-semibold leading-tight tracking-normal sm:mt-4 sm:text-4xl">
           Browse requirement guides
         </h1>
         <p className="mt-3 text-sm leading-6 text-muted-foreground sm:mt-4 sm:text-base sm:leading-7">
@@ -36,7 +36,7 @@ export default function ExplorePage() {
         </p>
       </div>
 
-      <div className="mt-6 sm:mt-8">
+      <div className="mt-5 sm:mt-8">
         <ExploreBrowser
           processes={processGuides}
           popularProcesses={popularProcesses}

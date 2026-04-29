@@ -5,17 +5,17 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex h-10 shrink-0 items-center justify-center gap-2 rounded-md px-4 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
+  "inline-flex h-10 shrink-0 items-center justify-center gap-2 rounded-md px-4 text-sm font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
   {
     variants: {
       variant: {
         default:
-          "bg-primary text-primary-foreground shadow-sm hover:bg-[#0d503d]",
+          "bg-primary text-primary-foreground shadow-sm shadow-primary/15 hover:bg-[#0c523d] hover:shadow-md hover:shadow-primary/20 active:translate-y-px",
         secondary:
-          "bg-secondary text-secondary-foreground hover:bg-[#e0ece7]",
+          "bg-secondary text-secondary-foreground hover:bg-[#dfece7] active:translate-y-px",
         outline:
-          "border bg-background text-foreground hover:bg-accent hover:text-accent-foreground",
-        ghost: "hover:bg-accent hover:text-accent-foreground",
+          "border bg-white text-foreground shadow-sm hover:border-primary/30 hover:bg-accent hover:text-accent-foreground active:translate-y-px",
+        ghost: "hover:bg-accent hover:text-accent-foreground active:translate-y-px",
         link: "h-auto px-0 text-primary underline-offset-4 hover:underline",
       },
       size: {

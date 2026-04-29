@@ -146,7 +146,7 @@ export function ProcessDetailView({
   return (
     <div className="mx-auto w-full max-w-7xl px-4 py-5 sm:px-6 sm:py-8 lg:px-8">
       {/* Overall Progress Bar - Sticky */}
-      <div className="no-print sticky top-0 z-50 -mx-4 mb-6 border-b bg-background/95 px-4 py-3 backdrop-blur sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
+      <div className="no-print sticky top-14 z-40 -mx-4 mb-5 border-b bg-white/92 px-4 py-2.5 shadow-sm backdrop-blur-xl sm:top-16 sm:-mx-6 sm:mb-6 sm:px-6 sm:py-3 lg:-mx-8 lg:px-8">
         <div className="flex items-center justify-between gap-4">
           <div className="flex items-center gap-2 min-w-0">
             <ListChecks className="h-5 w-5 text-primary shrink-0" />
@@ -170,7 +170,7 @@ export function ProcessDetailView({
         category={process.category}
       />
       <div className="no-print">
-        <Button asChild variant="ghost" className="mb-4 -ml-3 sm:mb-6">
+        <Button asChild variant="ghost" className="mb-3 -ml-3 sm:mb-6">
           <Link href="/explore">
             <ArrowLeft className="h-4 w-4" aria-hidden="true" />
             Back to explore
@@ -187,19 +187,19 @@ export function ProcessDetailView({
             <TrustBadge reviewStatus={process.reviewStatus} />
           </div>
 
-          <h1 className="mt-3 max-w-4xl text-2xl font-semibold leading-tight tracking-normal sm:mt-4 sm:text-5xl">
+          <h1 className="mt-3 max-w-4xl text-2xl font-semibold leading-tight tracking-normal min-[420px]:text-3xl sm:mt-4 sm:text-5xl">
             {process.title}
           </h1>
           <p className="mt-3 max-w-3xl text-sm leading-6 text-muted-foreground sm:mt-5 sm:text-lg sm:leading-7">
             {process.summary}
           </p>
-          <p className="mt-4 max-w-3xl rounded-md border bg-white p-3 text-sm leading-6 text-muted-foreground sm:p-4">
+          <p className="mt-4 max-w-3xl rounded-md border bg-white p-3.5 text-sm leading-6 text-muted-foreground shadow-sm sm:p-4">
             This guide is for planning and preparation. Details may change, so
             verify current requirements with the official sources before applying,
             paying fees, or submitting documents.
           </p>
 
-          <div className="no-print sticky top-16 z-30 -mx-4 mt-5 overflow-x-auto border-y bg-background/95 px-4 py-2 backdrop-blur sm:mt-7 sm:py-3 lg:hidden">
+          <div className="no-print sticky top-[6.55rem] z-30 -mx-4 mt-4 overflow-x-auto border-y bg-background/95 px-4 py-2 backdrop-blur sm:top-[7.75rem] sm:mt-7 sm:py-3 lg:hidden">
             <nav className="flex gap-2" aria-label="Process sections">
               {sectionLinks.map((link) => (
                 <a
@@ -213,7 +213,7 @@ export function ProcessDetailView({
             </nav>
           </div>
 
-          <div className="mt-6 grid gap-3 sm:mt-8 sm:grid-cols-2 sm:gap-4">
+          <div className="mt-5 grid gap-3 sm:mt-8 sm:grid-cols-2 sm:gap-4">
             <ProcessInfoCard
               icon={<Clock className="h-5 w-5" aria-hidden="true" />}
               label="Estimated timeline"
@@ -236,7 +236,7 @@ export function ProcessDetailView({
             />
           </div>
 
-          <section className="mt-10 scroll-mt-24">
+          <section className="mt-8 scroll-mt-24 sm:mt-10">
             <h2 className="text-2xl font-semibold tracking-normal">Eligibility</h2>
             <div className="mt-4 grid gap-3 sm:grid-cols-2">
               {process.eligibility.map((item) => (
@@ -252,7 +252,7 @@ export function ProcessDetailView({
             </div>
           </section>
 
-          <div id="documents" className="mt-10">
+          <div id="documents" className="mt-8 sm:mt-10">
             <ChecklistSection
               title="Required documents checklist"
               description="Tap each item as you gather it. This progress stays in your browser for the current page session."
@@ -262,7 +262,7 @@ export function ProcessDetailView({
             />
           </div>
 
-          <div id="steps" className="mt-10">
+          <div id="steps" className="mt-8 sm:mt-10">
             <ChecklistSection
               title="Step-by-step instructions"
               description="Use this as a working checklist from preparation through submission."
@@ -273,7 +273,7 @@ export function ProcessDetailView({
             />
           </div>
 
-          <section id="fees" className="mt-10 scroll-mt-24">
+          <section id="fees" className="mt-8 scroll-mt-24 sm:mt-10">
             <h2 className="text-2xl font-semibold tracking-normal">Estimated fees</h2>
             <div className="mt-4 grid gap-3">
               {process.fees.map((fee) => (
@@ -296,7 +296,7 @@ export function ProcessDetailView({
             </div>
           </section>
 
-          <section id="tips" className="mt-10 grid gap-4 scroll-mt-24 md:grid-cols-2">
+          <section id="tips" className="mt-8 grid gap-4 scroll-mt-24 sm:mt-10 md:grid-cols-2">
             <Card className="bg-white">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
@@ -307,7 +307,7 @@ export function ProcessDetailView({
               <CardContent>
                 <ul className="grid gap-3 text-sm leading-6 text-muted-foreground">
                   {process.commonMistakes.map((mistake) => (
-                    <li key={mistake} className="rounded-md border bg-[#fffdfb] p-3">
+                    <li key={mistake} className="rounded-md border bg-[#fffdfb] p-3 shadow-sm">
                       {mistake}
                     </li>
                   ))}
@@ -325,7 +325,7 @@ export function ProcessDetailView({
               <CardContent>
                 <ul className="grid gap-3 text-sm leading-6 text-muted-foreground">
                   {process.tips.map((tip) => (
-                    <li key={tip} className="rounded-md border bg-[#fbfdfc] p-3">
+                    <li key={tip} className="rounded-md border bg-[#fbfdfc] p-3 shadow-sm">
                       {tip}
                     </li>
                   ))}
@@ -334,11 +334,11 @@ export function ProcessDetailView({
             </Card>
           </section>
 
-          <div className="mt-10">
+          <div className="mt-8 sm:mt-10">
             <ProcessFaq items={process.faq} />
           </div>
 
-          <section id="sources" className="mt-10 scroll-mt-24 lg:hidden">
+          <section id="sources" className="mt-8 scroll-mt-24 sm:mt-10 lg:hidden">
             <SourceReviewSection process={process} />
           </section>
         </article>

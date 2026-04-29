@@ -44,9 +44,9 @@ export function ProcessFilters({
   }
 
   return (
-    <Card className="shadow-lg shadow-[#123c33]/5">
-      <CardContent className="grid gap-5 p-4 sm:p-5">
-        <div className="grid gap-3 lg:grid-cols-[1fr_auto] lg:items-center">
+    <Card className="border-primary/10 bg-white/95 shadow-xl shadow-[#123c33]/5">
+      <CardContent className="grid gap-4 p-3 sm:gap-5 sm:p-5">
+        <div className="grid gap-2.5 lg:grid-cols-[1fr_auto] lg:items-center">
           <label className="relative block">
             <span className="sr-only">Search requirement guides</span>
             <Search
@@ -57,10 +57,10 @@ export function ProcessFilters({
               value={filters.query}
               onChange={(event) => updateFilter("query", event.target.value)}
               placeholder="Search guides"
-              className="h-11 bg-white pl-9"
+              className="h-10 bg-white pl-9 text-sm shadow-inner shadow-[#123c33]/5 sm:h-11"
             />
           </label>
-          <div className="flex items-center gap-2 text-sm text-muted-foreground">
+          <div className="flex items-center gap-2 rounded-md bg-secondary px-3 py-2 text-sm font-medium text-secondary-foreground lg:bg-transparent lg:px-0 lg:py-0 lg:text-muted-foreground">
             <SlidersHorizontal className="h-4 w-4 text-primary" aria-hidden="true" />
             <span>
               {resultCount} of {totalCount} guides
@@ -69,7 +69,7 @@ export function ProcessFilters({
         </div>
 
         <details className="group md:hidden">
-          <summary className="flex cursor-pointer list-none items-center justify-between rounded-md border bg-white px-3 py-2 text-sm font-medium">
+          <summary className="flex cursor-pointer list-none items-center justify-between rounded-md border bg-white px-3 py-2 text-sm font-medium shadow-sm">
             <span className="flex items-center gap-2">
               <SlidersHorizontal className="h-4 w-4 text-primary" aria-hidden="true" />
               Filters
@@ -87,7 +87,7 @@ export function ProcessFilters({
             countries={countries}
             updateFilter={updateFilter}
             onReset={onReset}
-            className="mt-4"
+            className="mt-3"
           />
         </details>
 
@@ -123,8 +123,8 @@ function FilterControls({
   className?: string;
 }) {
   return (
-    <div className={cn("grid gap-4", className)}>
-      <div className="grid gap-4 lg:grid-cols-[1fr_1fr]">
+    <div className={cn("grid gap-3 sm:gap-4", className)}>
+      <div className="grid gap-3 sm:gap-4 lg:grid-cols-[1fr_1fr]">
         <FilterGroup label="Category">
           {["All", ...categories].map((category) => (
             <FilterButton
@@ -150,7 +150,7 @@ function FilterControls({
         </FilterGroup>
       </div>
 
-      <div className="grid gap-4 md:grid-cols-[1fr_1fr_auto] md:items-end">
+      <div className="grid gap-3 sm:gap-4 md:grid-cols-[1fr_1fr_auto] md:items-end">
         <div>
           <label className="text-sm font-medium text-foreground">
             Region or city
@@ -158,7 +158,7 @@ function FilterControls({
               value={filters.region}
               onChange={(event) => updateFilter("region", event.target.value)}
               placeholder="State, province, city, or district"
-              className="mt-2 h-10 bg-white"
+              className="mt-2 h-10 bg-white text-sm"
             />
           </label>
           <p className="mt-2 text-xs leading-5 text-muted-foreground">
@@ -204,7 +204,7 @@ function FilterGroup({
   return (
     <div>
       <p className="text-sm font-medium text-foreground">{label}</p>
-      <div className="mt-2 flex flex-wrap gap-2">{children}</div>
+      <div className="mt-2 flex flex-wrap gap-1.5 sm:gap-2">{children}</div>
     </div>
   );
 }
@@ -219,8 +219,8 @@ function FilterButton({
       type="button"
       aria-pressed={active}
       className={cn(
-        "rounded-md border bg-white px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:border-primary/40 hover:text-foreground",
-        active && "border-primary bg-accent text-accent-foreground",
+        "rounded-md border bg-white px-2.5 py-1.5 text-sm font-medium text-muted-foreground shadow-sm transition-all duration-200 hover:border-primary/40 hover:text-foreground active:translate-y-px sm:px-3 sm:py-2",
+        active && "border-primary/35 bg-accent text-accent-foreground shadow-primary/5",
         className,
       )}
       {...props}
