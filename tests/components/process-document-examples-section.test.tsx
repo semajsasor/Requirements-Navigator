@@ -14,12 +14,29 @@ describe("ProcessDocumentExamplesSection", () => {
     expect(hasDocumentExamples([])).toBe(false);
   });
 
-  it("renders labels, accepted types, notes, and the verification disclaimer", () => {
+  it("does not render examples without real preview media", () => {
     const examples = [
       {
         label: "Proof of identity",
         acceptedTypes: ["Passport", "PhilSys ID"],
         notes: "Bring the original and a clear photocopy.",
+      },
+    ];
+
+    const { container } = render(<ProcessDocumentExamplesSection examples={examples} />);
+
+    expect(container).toBeEmptyDOMElement();
+    expect(hasDocumentExamples(examples)).toBe(false);
+  });
+
+  it("renders labels, accepted types, notes, image previews, and the verification disclaimer", () => {
+    const examples = [
+      {
+        label: "Proof of identity",
+        acceptedTypes: ["Passport", "PhilSys ID"],
+        notes: "Bring the original and a clear photocopy.",
+        previewImageUrl: "https://example.com/proof-of-identity.png",
+        previewImageAlt: "Sample proof of identity document",
       },
     ];
 
@@ -32,6 +49,12 @@ describe("ProcessDocumentExamplesSection", () => {
     expect(screen.getByText("Passport")).toBeInTheDocument();
     expect(screen.getByText("PhilSys ID")).toBeInTheDocument();
     expect(screen.getByText(/bring the original/i)).toBeInTheDocument();
+    expect(screen.getByText("Preview asset attached")).toBeInTheDocument();
+    expect(screen.getByText("Sample proof of identity document")).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: /open preview/i })).toHaveAttribute(
+      "href",
+      "https://example.com/proof-of-identity.png",
+    );
     expect(screen.getByText(/final acceptance depends/i)).toBeInTheDocument();
     expect(hasDocumentExamples(examples)).toBe(true);
   });

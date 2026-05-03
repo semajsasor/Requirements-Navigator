@@ -41,8 +41,8 @@ describe("ProcessVideoTutorialSection", () => {
     expect(screen.getByText(/bring originals/i)).toBeInTheDocument();
   });
 
-  it("uses a link placeholder when only a video URL is available", () => {
-    render(
+  it("does not render a placeholder when only a non-media video URL is available", () => {
+    const { container } = render(
       <ProcessVideoTutorialSection
         tutorial={{
           title: "Quick overview",
@@ -54,11 +54,23 @@ describe("ProcessVideoTutorialSection", () => {
       />,
     );
 
-    expect(screen.getByText(/video opens in a new tab/i)).toBeInTheDocument();
-    expect(screen.getByRole("link", { name: /open tutorial/i })).toHaveAttribute(
-      "href",
-      "https://example.com/tutorial",
+    expect(container).toBeEmptyDOMElement();
+  });
+
+  it("renders a native player for direct video files", () => {
+    const { container } = render(
+      <ProcessVideoTutorialSection
+        tutorial={{
+          title: "Direct tutorial",
+          url: "https://example.com/tutorial.mp4",
+          duration: "2 minutes",
+          captionsAvailable: false,
+          type: "quick overview",
+        }}
+      />,
     );
+
+    expect(container.querySelector("video")).toBeInTheDocument();
   });
 
   it("strips autoplay from embedded tutorial URLs", () => {
@@ -79,8 +91,8 @@ describe("ProcessVideoTutorialSection", () => {
     );
   });
 
-  it("shows a visible placeholder for demo embed URLs", () => {
-    render(
+  it("does not render demo embed placeholders", () => {
+    const { container } = render(
       <ProcessVideoTutorialSection
         tutorial={{
           title: "Demo tutorial",
@@ -93,7 +105,7 @@ describe("ProcessVideoTutorialSection", () => {
       />,
     );
 
-    expect(screen.getByText(/demo video placeholder/i)).toBeInTheDocument();
+    expect(container).toBeEmptyDOMElement();
     expect(screen.queryByTitle("Demo tutorial")).not.toBeInTheDocument();
   });
 });

@@ -1,4 +1,4 @@
-import { FileCheck2, ImageIcon, ShieldCheck } from "lucide-react";
+import { ExternalLink, FileCheck2, ShieldCheck } from "lucide-react";
 
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -8,14 +8,35 @@ type ProcessDocumentExamplesSectionProps = {
   examples?: ProcessGuide["documentExamples"];
 };
 
+function hasHttpPreviewUrl(value?: string) {
+  if (!value?.trim()) {
+    return false;
+  }
+
+  try {
+    const url = new URL(value);
+
+    return url.protocol === "https:" || url.protocol === "http:";
+  } catch {
+    return false;
+  }
+}
+
 export function hasDocumentExamples(examples?: ProcessGuide["documentExamples"]) {
-  return Boolean(examples?.some((example) => example.label.trim()));
+  return Boolean(
+    examples?.some(
+      (example) => example.label.trim() && hasHttpPreviewUrl(example.previewImageUrl),
+    ),
+  );
 }
 
 export function ProcessDocumentExamplesSection({
   examples,
 }: ProcessDocumentExamplesSectionProps) {
-  const visibleExamples = examples?.filter((example) => example.label.trim()) ?? [];
+  const visibleExamples =
+    examples?.filter(
+      (example) => example.label.trim() && hasHttpPreviewUrl(example.previewImageUrl),
+    ) ?? [];
 
   if (visibleExamples.length === 0) {
     return null;
@@ -52,26 +73,22 @@ export function ProcessDocumentExamplesSection({
               </CardTitle>
             </CardHeader>
             <CardContent className="grid gap-4 p-4 pt-0 sm:p-5 sm:pt-0">
-              <div className="flex min-h-32 items-center justify-center rounded-lg border border-dashed bg-[#fbfdfc] p-4 text-center">
-                <div>
-                  <ImageIcon className="mx-auto h-7 w-7 text-primary" aria-hidden="true" />
-                  <p className="mt-2 text-sm font-medium">
-                    {example.previewImageUrl ? "Preview image available" : "Preview placeholder"}
-                  </p>
+              <div className="rounded-lg border bg-[#fbfdfc] p-3">
+                <p className="text-sm font-medium">Preview asset attached</p>
+                {example.previewImageAlt ? (
                   <p className="mt-1 text-xs leading-5 text-muted-foreground">
-                    {example.previewImageAlt ?? "A future preview can show layout or formatting cues without storing sensitive details."}
+                    {example.previewImageAlt}
                   </p>
-                  {example.previewImageUrl ? (
-                    <a
-                      href={example.previewImageUrl}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="mt-2 inline-flex text-xs font-semibold text-primary underline-offset-4 hover:underline"
-                    >
-                      Open preview
-                    </a>
-                  ) : null}
-                </div>
+                ) : null}
+                <a
+                  href={example.previewImageUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="mt-2 inline-flex items-center gap-1.5 text-xs font-semibold text-primary underline-offset-4 hover:underline"
+                >
+                  Open preview
+                  <ExternalLink className="h-3.5 w-3.5" aria-hidden="true" />
+                </a>
               </div>
 
               {example.acceptedTypes.length > 0 ? (

@@ -19,15 +19,33 @@ describe("ProcessCard", () => {
   });
 
   it("shows a video badge only when a guide has usable video data", () => {
-    const guideWithVideo = processGuides.find((guide) => guide.videoTutorials?.length);
+    const guideWithVideo = {
+      ...processGuides[0]!,
+      videoTutorials: [
+        {
+          title: "Real tutorial",
+          embedUrl: "https://www.youtube.com/embed/real-tutorial",
+          captionsAvailable: true,
+          type: "quick overview" as const,
+        },
+      ],
+    };
 
-    expect(guideWithVideo).toBeDefined();
-
-    const { rerender } = render(<ProcessCard process={guideWithVideo!} />);
+    const { rerender } = render(<ProcessCard process={guideWithVideo} />);
 
     expect(screen.getByText("Video available")).toBeInTheDocument();
 
-    rerender(<ProcessCard process={{ ...guideWithVideo!, videoTutorials: undefined }} />);
+    rerender(<ProcessCard process={{ ...guideWithVideo, videoTutorials: undefined }} />);
+
+    expect(screen.queryByText("Video available")).not.toBeInTheDocument();
+  });
+
+  it("does not show a video badge for seeded demo-only tutorial data", () => {
+    const guideWithDemoVideo = processGuides.find((guide) => guide.videoTutorials?.length);
+
+    expect(guideWithDemoVideo).toBeDefined();
+
+    render(<ProcessCard process={guideWithDemoVideo!} />);
 
     expect(screen.queryByText("Video available")).not.toBeInTheDocument();
   });

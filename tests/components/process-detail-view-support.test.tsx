@@ -10,13 +10,22 @@ vi.mock("@/lib/actions/saved-guides", () => ({
 
 describe("ProcessDetailView guide-support rendering", () => {
   it("shows video support sections when a guide has video data", () => {
-    const guideWithVideo = processGuides.find(
-      (guide) => guide.videoTutorials?.length,
-    );
+    const guideWithVideo = {
+      ...processGuides[0]!,
+      videoTutorials: [
+        {
+          title: "Real tutorial",
+          description: "A real embedded tutorial.",
+          embedUrl: "https://www.youtube.com/embed/real-tutorial",
+          duration: "3 minutes",
+          transcript: "Prepare your documents before you go.",
+          captionsAvailable: true,
+          type: "quick overview" as const,
+        },
+      ],
+    };
 
-    expect(guideWithVideo).toBeDefined();
-
-    render(<ProcessDetailView process={guideWithVideo!} />);
+    render(<ProcessDetailView process={guideWithVideo} />);
 
     expect(
       screen.getByRole("heading", { name: /watch quick tutorial/i }),
@@ -53,6 +62,24 @@ describe("ProcessDetailView guide-support rendering", () => {
       screen.queryByRole("heading", { name: /document examples/i }),
     ).not.toBeInTheDocument();
     expect(container.querySelector("#tips")).not.toBeInTheDocument();
+    expect(
+      screen.getByRole("heading", { name: /required documents checklist/i }),
+    ).toBeInTheDocument();
+  });
+
+  it("hides seeded demo-only media sections cleanly", () => {
+    const guideWithDemoMedia = processGuides.find((guide) => guide.videoTutorials?.length);
+
+    expect(guideWithDemoMedia).toBeDefined();
+
+    const { container } = render(<ProcessDetailView process={guideWithDemoMedia!} />);
+
+    expect(
+      screen.queryByRole("heading", { name: /watch quick tutorial/i }),
+    ).not.toBeInTheDocument();
+    expect(screen.queryByText("Video available")).not.toBeInTheDocument();
+    expect(container.querySelector("#tutorial")).not.toBeInTheDocument();
+    expect(container.querySelector("#document-examples")).not.toBeInTheDocument();
     expect(
       screen.getByRole("heading", { name: /required documents checklist/i }),
     ).toBeInTheDocument();
