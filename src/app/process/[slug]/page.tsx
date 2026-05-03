@@ -25,8 +25,6 @@ export function applySeedSupportContent(
 
   return {
     ...process,
-    videoTutorials: process.videoTutorials ?? seedProcess.videoTutorials,
-    documentExamples: process.documentExamples ?? seedProcess.documentExamples,
     plainEnglishSummary:
       process.plainEnglishSummary ?? seedProcess.plainEnglishSummary,
     prepareFirst: process.prepareFirst ?? seedProcess.prepareFirst,

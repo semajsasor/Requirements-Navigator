@@ -63,6 +63,9 @@ describe("ProcessDetailView guide-support rendering", () => {
     ).not.toBeInTheDocument();
     expect(container.querySelector("#tips")).not.toBeInTheDocument();
     expect(
+      screen.queryByRole("link", { name: /avoid mistakes/i }),
+    ).not.toBeInTheDocument();
+    expect(
       screen.getByRole("heading", { name: /required documents checklist/i }),
     ).toBeInTheDocument();
   });
@@ -80,6 +83,8 @@ describe("ProcessDetailView guide-support rendering", () => {
     expect(screen.queryByText("Video available")).not.toBeInTheDocument();
     expect(container.querySelector("#tutorial")).not.toBeInTheDocument();
     expect(container.querySelector("#document-examples")).not.toBeInTheDocument();
+    expect(screen.queryByRole("link", { name: /video/i })).not.toBeInTheDocument();
+    expect(screen.queryByRole("link", { name: /examples/i })).not.toBeInTheDocument();
     expect(
       screen.getByRole("heading", { name: /required documents checklist/i }),
     ).toBeInTheDocument();

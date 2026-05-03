@@ -25,7 +25,10 @@ import {
 } from "@/components/process/process-document-examples-section";
 import { ProcessFaq } from "@/components/process/process-faq";
 import { ProcessInfoCard } from "@/components/process/process-info-card";
-import { ProcessMistakePreventionSection } from "@/components/process/process-mistake-prevention-section";
+import {
+  hasMistakePreventionContent,
+  ProcessMistakePreventionSection,
+} from "@/components/process/process-mistake-prevention-section";
 import { ProcessStepTimeline } from "@/components/process/process-step-timeline";
 import { ProcessVideoTutorialSection } from "@/components/process/process-video-tutorial-section";
 import { RecentGuideTracker } from "@/components/process/recent-guide-tracker";
@@ -50,12 +53,11 @@ import {
 import { getFirstUsableVideoTutorial } from "@/lib/process/video";
 import type { ProcessGuide } from "@/types/process";
 
-const sectionLinks = [
+const coreSectionLinks = [
   { href: "#documents", label: "Documents" },
   { href: "#step-flow", label: "Flow" },
   { href: "#steps", label: "Steps" },
   { href: "#fees", label: "Fees" },
-  { href: "#tips", label: "Avoid mistakes" },
   { href: "#faq", label: "FAQ" },
   { href: "#sources", label: "Sources" },
 ];
@@ -159,11 +161,14 @@ export function ProcessDetailView({
   const videoTutorial = getFirstUsableVideoTutorial(process);
   const hasGuideHelp = hasProcessGuideHelp(process);
   const hasExamples = hasDocumentExamples(process.documentExamples);
+  const hasMistakePrevention = hasMistakePreventionContent(process);
   const processSectionLinks = [
     ...(videoTutorial ? [{ href: "#tutorial", label: "Video" }] : []),
     ...(hasGuideHelp ? [{ href: "#guide-help", label: "Help" }] : []),
     ...(hasExamples ? [{ href: "#document-examples", label: "Examples" }] : []),
-    ...sectionLinks,
+    ...coreSectionLinks.slice(0, 4),
+    ...(hasMistakePrevention ? [{ href: "#tips", label: "Avoid mistakes" }] : []),
+    ...coreSectionLinks.slice(4),
   ];
 
   const allItemsCount = documentItems.length + stepItems.length;

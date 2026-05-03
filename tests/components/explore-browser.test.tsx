@@ -1,5 +1,4 @@
-import { render, screen } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
+import { fireEvent, render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 
 import { ExploreBrowser } from "@/components/process/explore-browser";
@@ -11,8 +10,6 @@ import {
 
 describe("ExploreBrowser", () => {
   it("filters guides and shows an empty state", async () => {
-    const user = userEvent.setup();
-
     render(
       <ExploreBrowser
         processes={processGuides}
@@ -24,9 +21,9 @@ describe("ExploreBrowser", () => {
 
     expect(screen.getByText(/Popular processes/i)).toBeInTheDocument();
 
-    await user.type(
+    fireEvent.change(
       screen.getByRole("textbox", { name: /search requirement guides/i }),
-      "zzzzzzzzz",
+      { target: { value: "zzzzzzzzz" } },
     );
 
     expect(screen.getByText(/No matching guides found/i)).toBeInTheDocument();
