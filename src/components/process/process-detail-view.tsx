@@ -31,6 +31,7 @@ import { ProcessVideoTutorialSection } from "@/components/process/process-video-
 import { RecentGuideTracker } from "@/components/process/recent-guide-tracker";
 import { SourceReviewSection } from "@/components/process/source-review-section";
 import { TrustBadge } from "@/components/process/trust-badge";
+import { VideoAvailableBadge } from "@/components/process/video-available-badge";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -46,6 +47,7 @@ import {
   formatProcessFee,
   formatProcessLocation,
 } from "@/lib/process/format";
+import { getFirstUsableVideoTutorial } from "@/lib/process/video";
 import type { ProcessGuide } from "@/types/process";
 
 const sectionLinks = [
@@ -154,7 +156,7 @@ export function ProcessDetailView({
   const checklistText = buildProcessChecklistText(process);
   const location = formatProcessLocation(process);
   const downloadFilename = `${process.slug}-requirements-summary.txt`;
-  const videoTutorial = process.videoTutorials?.[0];
+  const videoTutorial = getFirstUsableVideoTutorial(process);
   const hasGuideHelp = hasProcessGuideHelp(process);
   const hasExamples = hasDocumentExamples(process.documentExamples);
   const processSectionLinks = [
@@ -217,14 +219,19 @@ export function ProcessDetailView({
 
       <div className="screen-print-hidden grid gap-6 lg:grid-cols-[minmax(0,1fr)_340px] lg:items-start xl:grid-cols-[minmax(0,1fr)_360px]">
         <article className="min-w-0">
-          <div className="flex flex-wrap gap-2">
-            <Badge variant="accent">{process.category}</Badge>
-            <Badge variant="outline">{process.difficulty}</Badge>
-            <Badge variant="secondary">{location}</Badge>
-            <TrustBadge
-              reviewStatus={process.reviewStatus}
-              lastReviewedDate={process.lastReviewedDate}
-            />
+          <div className="grid gap-2">
+            <div className="flex flex-wrap gap-1.5 sm:gap-2">
+              <Badge variant="accent">{process.category}</Badge>
+              <Badge variant="outline">{process.difficulty}</Badge>
+              <Badge variant="secondary">{location}</Badge>
+            </div>
+            <div className="flex flex-wrap gap-1.5 sm:gap-2">
+              <TrustBadge
+                reviewStatus={process.reviewStatus}
+                lastReviewedDate={process.lastReviewedDate}
+              />
+              {videoTutorial ? <VideoAvailableBadge /> : null}
+            </div>
           </div>
 
           <h1 className="mt-3 max-w-4xl text-2xl font-semibold leading-tight tracking-normal break-words min-[420px]:text-3xl sm:mt-4 sm:text-4xl lg:text-5xl">

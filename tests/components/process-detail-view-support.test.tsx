@@ -21,6 +21,7 @@ describe("ProcessDetailView guide-support rendering", () => {
     expect(
       screen.getByRole("heading", { name: /watch quick tutorial/i }),
     ).toBeInTheDocument();
+    expect(screen.getByText("Video available")).toBeInTheDocument();
     expect(screen.getByRole("button", { name: /transcript/i })).toHaveAttribute(
       "aria-expanded",
       "false",
@@ -44,6 +45,7 @@ describe("ProcessDetailView guide-support rendering", () => {
     expect(
       screen.queryByRole("heading", { name: /watch quick tutorial/i }),
     ).not.toBeInTheDocument();
+    expect(screen.queryByText("Video available")).not.toBeInTheDocument();
     expect(
       screen.queryByRole("heading", { name: /plain english summary/i }),
     ).not.toBeInTheDocument();

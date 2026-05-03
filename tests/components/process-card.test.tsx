@@ -17,4 +17,18 @@ describe("ProcessCard", () => {
       "/process/government-id-us",
     );
   });
+
+  it("shows a video badge only when a guide has usable video data", () => {
+    const guideWithVideo = processGuides.find((guide) => guide.videoTutorials?.length);
+
+    expect(guideWithVideo).toBeDefined();
+
+    const { rerender } = render(<ProcessCard process={guideWithVideo!} />);
+
+    expect(screen.getByText("Video available")).toBeInTheDocument();
+
+    rerender(<ProcessCard process={{ ...guideWithVideo!, videoTutorials: undefined }} />);
+
+    expect(screen.queryByText("Video available")).not.toBeInTheDocument();
+  });
 });
