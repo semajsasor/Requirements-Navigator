@@ -17,7 +17,11 @@ export function ProcessSourceLinks({
           Trusted official sources
         </CardTitle>
       </CardHeader>
-      <CardContent>
+      <CardContent className="grid gap-3">
+        <p className="text-sm leading-6 text-muted-foreground">
+          These links point to official publishers. Verify current requirements
+          there before paying fees, booking appointments, or submitting documents.
+        </p>
         <LinkedSourceList sources={sources} />
       </CardContent>
     </Card>

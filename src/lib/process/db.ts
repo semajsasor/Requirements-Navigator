@@ -7,6 +7,14 @@ export type SavedGuideWithGuide =
     process_guides: ProcessGuideRow | null;
   };
 
+function optionalArray<T>(value: T[] | null | undefined) {
+  return Array.isArray(value) && value.length ? value : undefined;
+}
+
+function requiredArray<T>(value: T[] | null | undefined) {
+  return Array.isArray(value) ? value : [];
+}
+
 export function processGuideToInsert(
   seed: ProcessSeedRecord,
 ): ProcessGuideInsert {
@@ -29,6 +37,11 @@ export function processGuideToInsert(
     tips: seed.tips,
     faq: seed.faq,
     official_source_links: seed.official_source_links,
+    video_tutorials: seed.video_tutorials ?? [],
+    document_examples: seed.document_examples ?? [],
+    plain_english_summary: seed.plain_english_summary ?? null,
+    prepare_first: seed.prepare_first ?? [],
+    common_confusions: seed.common_confusions ?? [],
     last_reviewed_date: seed.last_reviewed_date,
     review_status: seed.review_status,
     difficulty: seed.difficulty,
@@ -50,19 +63,24 @@ export function processGuideRowToGuide(row: ProcessGuideRow): ProcessGuide {
     },
     summary: row.summary,
     audience: row.audience,
-    eligibility: row.eligibility,
-    requiredDocuments: row.required_documents,
-    instructions: row.instructions,
-    fees: row.fees,
+    eligibility: requiredArray(row.eligibility),
+    requiredDocuments: requiredArray(row.required_documents),
+    instructions: requiredArray(row.instructions),
+    fees: requiredArray(row.fees),
     estimatedProcessingTime: row.estimated_processing_time,
-    commonMistakes: row.common_mistakes,
-    tips: row.tips,
-    faq: row.faq,
-    officialSourceLinks: row.official_source_links,
+    commonMistakes: requiredArray(row.common_mistakes),
+    tips: requiredArray(row.tips),
+    faq: requiredArray(row.faq),
+    officialSourceLinks: requiredArray(row.official_source_links),
+    videoTutorials: optionalArray(row.video_tutorials),
+    documentExamples: optionalArray(row.document_examples),
+    plainEnglishSummary: row.plain_english_summary ?? undefined,
+    prepareFirst: optionalArray(row.prepare_first),
+    commonConfusions: optionalArray(row.common_confusions),
     lastReviewedDate: row.last_reviewed_date,
     reviewStatus: row.review_status,
     difficulty: row.difficulty,
-    tags: row.tags,
+    tags: requiredArray(row.tags),
     status: row.status,
   };
 }

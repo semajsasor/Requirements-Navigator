@@ -5,6 +5,7 @@ import { redirect } from "next/navigation";
 
 import { getCurrentUser, requireUser } from "@/lib/auth/session";
 import { processSeedRecords } from "@/lib/data/processes";
+import { sanitizeSavedGuideReminders } from "@/lib/dashboard/reminders";
 import { getChecklistItemType } from "@/lib/process/checklist";
 import { processGuideToInsert } from "@/lib/process/db";
 import { createServiceClient } from "@/lib/supabase/service";
@@ -142,12 +143,16 @@ export async function updateChecklistProgressAction(input: {
 export async function updateSavedGuideNotesAction(formData: FormData) {
   const savedGuideId = String(formData.get("savedGuideId") ?? "");
   const notes = String(formData.get("notes") ?? "").trim();
+  const reminders = sanitizeSavedGuideReminders(formData.getAll("reminders"));
   const user = await requireUser();
   const supabase = await createClient();
 
   const { error } = await supabase
     .from("saved_guides")
-    .update({ notes: notes.length ? notes : null })
+    .update({
+      notes: notes.length ? notes : null,
+      reminders,
+    })
     .eq("id", savedGuideId)
     .eq("user_id", user.id);
 

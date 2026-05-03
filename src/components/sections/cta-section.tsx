@@ -9,7 +9,7 @@ export function CtaSection() {
 
   return (
     <section className="bg-[#123c33] text-white">
-      <div className="mx-auto grid w-full max-w-7xl gap-8 px-4 py-14 sm:px-6 md:grid-cols-[1.3fr_0.7fr] md:items-center lg:px-8 lg:py-16">
+      <div className="mx-auto grid w-full max-w-7xl gap-8 px-4 py-14 sm:px-6 sm:py-16 md:grid-cols-[1.3fr_0.7fr] md:items-center lg:px-8 lg:py-18">
         <div>
           <div className="mb-5 flex h-10 w-10 items-center justify-center rounded-md bg-white/12">
             <ShieldCheck className="h-5 w-5" aria-hidden="true" />
@@ -18,7 +18,7 @@ export function CtaSection() {
           <h2 className="max-w-2xl text-2xl font-semibold tracking-normal sm:text-3xl">
             {finalCta.title}
           </h2>
-          <p className="mt-4 max-w-2xl text-sm leading-6 text-white/78">
+          <p className="mt-4 max-w-2xl text-sm leading-6 text-white/80 sm:text-base sm:leading-7">
             {finalCta.description}
           </p>
         </div>

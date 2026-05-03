@@ -3,20 +3,31 @@
 import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import {
-  AlertTriangle,
   ArrowLeft,
   Clock,
   DollarSign,
-  Lightbulb,
   ListChecks,
   MapPin,
   UserRoundCheck,
 } from "lucide-react";
 
 import { ChecklistSection, type ChecklistItem } from "@/components/process/checklist-section";
+import { GuideFreshnessPanel } from "@/components/process/guide-freshness-panel";
+import { PrintableGuideSummary } from "@/components/process/printable-guide-summary";
+import {
+  hasProcessGuideHelp,
+  ProcessGuideHelpSection,
+} from "@/components/process/process-guide-help-section";
 import { ProcessActions } from "@/components/process/process-actions";
+import {
+  hasDocumentExamples,
+  ProcessDocumentExamplesSection,
+} from "@/components/process/process-document-examples-section";
 import { ProcessFaq } from "@/components/process/process-faq";
 import { ProcessInfoCard } from "@/components/process/process-info-card";
+import { ProcessMistakePreventionSection } from "@/components/process/process-mistake-prevention-section";
+import { ProcessStepTimeline } from "@/components/process/process-step-timeline";
+import { ProcessVideoTutorialSection } from "@/components/process/process-video-tutorial-section";
 import { RecentGuideTracker } from "@/components/process/recent-guide-tracker";
 import { SourceReviewSection } from "@/components/process/source-review-section";
 import { TrustBadge } from "@/components/process/trust-badge";
@@ -39,9 +50,10 @@ import type { ProcessGuide } from "@/types/process";
 
 const sectionLinks = [
   { href: "#documents", label: "Documents" },
+  { href: "#step-flow", label: "Flow" },
   { href: "#steps", label: "Steps" },
   { href: "#fees", label: "Fees" },
-  { href: "#tips", label: "Tips" },
+  { href: "#tips", label: "Avoid mistakes" },
   { href: "#faq", label: "FAQ" },
   { href: "#sources", label: "Sources" },
 ];
@@ -62,24 +74,38 @@ export function ProcessDetailView({
 
   // Load progress from localStorage
   useEffect(() => {
-    const saved = window.localStorage.getItem(storageKey);
-    if (saved) {
+    try {
+      const saved = window.localStorage.getItem(storageKey);
+
+      if (!saved) {
+        return;
+      }
+
       try {
         const parsed = JSON.parse(saved);
         if (Array.isArray(parsed)) {
           setCheckedIds(new Set(parsed)); // eslint-disable-line react-hooks/set-state-in-effect
         }
-      } catch (e) {
-        console.error("Failed to load progress", e);
+      } catch {
+        // Ignore stale or malformed local progress data.
       }
+    } catch {
+      // Some browsers block localStorage; the checklist still works in memory.
+    } finally {
+      setIsLoaded(true);
     }
-    setIsLoaded(true);
   }, [storageKey]);
 
   // Save progress to localStorage
   useEffect(() => {
-    if (isLoaded) {
+    if (!isLoaded) {
+      return;
+    }
+
+    try {
       window.localStorage.setItem(storageKey, JSON.stringify([...checkedIds]));
+    } catch {
+      // Keep in-memory progress working even when persistence is unavailable.
     }
   }, [checkedIds, storageKey, isLoaded]);
 
@@ -127,6 +153,16 @@ export function ProcessDetailView({
 
   const checklistText = buildProcessChecklistText(process);
   const location = formatProcessLocation(process);
+  const downloadFilename = `${process.slug}-requirements-summary.txt`;
+  const videoTutorial = process.videoTutorials?.[0];
+  const hasGuideHelp = hasProcessGuideHelp(process);
+  const hasExamples = hasDocumentExamples(process.documentExamples);
+  const processSectionLinks = [
+    ...(videoTutorial ? [{ href: "#tutorial", label: "Video" }] : []),
+    ...(hasGuideHelp ? [{ href: "#guide-help", label: "Help" }] : []),
+    ...(hasExamples ? [{ href: "#document-examples", label: "Examples" }] : []),
+    ...sectionLinks,
+  ];
 
   const allItemsCount = documentItems.length + stepItems.length;
   const totalCompletedCount = checkedIds.size;
@@ -144,9 +180,10 @@ export function ProcessDetailView({
   );
 
   return (
-    <div className="mx-auto w-full max-w-7xl px-4 py-5 sm:px-6 sm:py-8 lg:px-8">
-      {/* Overall Progress Bar - Sticky */}
-      <div className="no-print sticky top-14 z-40 -mx-4 mb-5 border-b bg-white/92 px-4 py-2.5 shadow-sm backdrop-blur-xl sm:top-16 sm:-mx-6 sm:mb-6 sm:px-6 sm:py-3 lg:-mx-8 lg:px-8">
+    <div className="mx-auto w-full max-w-7xl px-4 py-4 sm:px-6 sm:py-7 lg:px-8">
+      <PrintableGuideSummary process={process} />
+
+      <div className="screen-print-hidden sticky top-14 z-40 -mx-4 mb-5 border-b bg-white/92 px-4 py-2.5 shadow-sm backdrop-blur-xl sm:top-16 sm:-mx-6 sm:mb-6 sm:px-6 sm:py-3 lg:-mx-8 lg:px-8">
         <div className="flex items-center justify-between gap-4">
           <div className="flex items-center gap-2 min-w-0">
             <ListChecks className="h-5 w-5 text-primary shrink-0" />
@@ -169,7 +206,7 @@ export function ProcessDetailView({
         title={process.title}
         category={process.category}
       />
-      <div className="no-print">
+      <div className="screen-print-hidden">
         <Button asChild variant="ghost" className="mb-3 -ml-3 sm:mb-6">
           <Link href="/explore">
             <ArrowLeft className="h-4 w-4" aria-hidden="true" />
@@ -178,30 +215,41 @@ export function ProcessDetailView({
         </Button>
       </div>
 
-      <div className="grid gap-6 lg:grid-cols-[1fr_360px] lg:items-start">
+      <div className="screen-print-hidden grid gap-6 lg:grid-cols-[minmax(0,1fr)_340px] lg:items-start xl:grid-cols-[minmax(0,1fr)_360px]">
         <article className="min-w-0">
           <div className="flex flex-wrap gap-2">
             <Badge variant="accent">{process.category}</Badge>
             <Badge variant="outline">{process.difficulty}</Badge>
             <Badge variant="secondary">{location}</Badge>
-            <TrustBadge reviewStatus={process.reviewStatus} />
+            <TrustBadge
+              reviewStatus={process.reviewStatus}
+              lastReviewedDate={process.lastReviewedDate}
+            />
           </div>
 
-          <h1 className="mt-3 max-w-4xl text-2xl font-semibold leading-tight tracking-normal min-[420px]:text-3xl sm:mt-4 sm:text-5xl">
+          <h1 className="mt-3 max-w-4xl text-2xl font-semibold leading-tight tracking-normal break-words min-[420px]:text-3xl sm:mt-4 sm:text-4xl lg:text-5xl">
             {process.title}
           </h1>
           <p className="mt-3 max-w-3xl text-sm leading-6 text-muted-foreground sm:mt-5 sm:text-lg sm:leading-7">
             {process.summary}
           </p>
-          <p className="mt-4 max-w-3xl rounded-md border bg-white p-3.5 text-sm leading-6 text-muted-foreground shadow-sm sm:p-4">
+          <p className="mt-4 max-w-3xl rounded-md border bg-white p-3 text-sm leading-6 text-muted-foreground shadow-sm sm:p-4">
             This guide is for planning and preparation. Details may change, so
             verify current requirements with the official sources before applying,
             paying fees, or submitting documents.
           </p>
 
+          <GuideFreshnessPanel process={process} />
+
+          {videoTutorial ? (
+            <ProcessVideoTutorialSection tutorial={videoTutorial} />
+          ) : null}
+
+          <ProcessGuideHelpSection process={process} />
+
           <div className="no-print sticky top-[6.55rem] z-30 -mx-4 mt-4 overflow-x-auto border-y bg-background/95 px-4 py-2 backdrop-blur sm:top-[7.75rem] sm:mt-7 sm:py-3 lg:hidden">
             <nav className="flex gap-2" aria-label="Process sections">
-              {sectionLinks.map((link) => (
+              {processSectionLinks.map((link) => (
                 <a
                   key={link.href}
                   href={link.href}
@@ -213,7 +261,7 @@ export function ProcessDetailView({
             </nav>
           </div>
 
-          <div className="mt-5 grid gap-3 sm:mt-8 sm:grid-cols-2 sm:gap-4">
+          <div className="mt-6 grid gap-3 sm:mt-8 sm:grid-cols-2 sm:gap-4">
             <ProcessInfoCard
               icon={<Clock className="h-5 w-5" aria-hidden="true" />}
               label="Estimated timeline"
@@ -252,6 +300,8 @@ export function ProcessDetailView({
             </div>
           </section>
 
+          <ProcessDocumentExamplesSection examples={process.documentExamples} />
+
           <div id="documents" className="mt-8 sm:mt-10">
             <ChecklistSection
               title="Required documents checklist"
@@ -260,6 +310,10 @@ export function ProcessDetailView({
               checkedIds={docCheckedIds}
               onToggle={handleToggle}
             />
+          </div>
+
+          <div className="mt-8 sm:mt-10">
+            <ProcessStepTimeline steps={process.instructions} />
           </div>
 
           <div id="steps" className="mt-8 sm:mt-10">
@@ -296,43 +350,7 @@ export function ProcessDetailView({
             </div>
           </section>
 
-          <section id="tips" className="mt-8 grid gap-4 scroll-mt-24 sm:mt-10 md:grid-cols-2">
-            <Card className="bg-white">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <AlertTriangle className="h-5 w-5 text-destructive" aria-hidden="true" />
-                  Common mistakes
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <ul className="grid gap-3 text-sm leading-6 text-muted-foreground">
-                  {process.commonMistakes.map((mistake) => (
-                    <li key={mistake} className="rounded-md border bg-[#fffdfb] p-3 shadow-sm">
-                      {mistake}
-                    </li>
-                  ))}
-                </ul>
-              </CardContent>
-            </Card>
-
-            <Card className="bg-white">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Lightbulb className="h-5 w-5 text-primary" aria-hidden="true" />
-                  Practical tips
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <ul className="grid gap-3 text-sm leading-6 text-muted-foreground">
-                  {process.tips.map((tip) => (
-                    <li key={tip} className="rounded-md border bg-[#fbfdfc] p-3 shadow-sm">
-                      {tip}
-                    </li>
-                  ))}
-                </ul>
-              </CardContent>
-            </Card>
-          </section>
+          <ProcessMistakePreventionSection process={process} />
 
           <div className="mt-8 sm:mt-10">
             <ProcessFaq items={process.faq} />
@@ -352,7 +370,10 @@ export function ProcessDetailView({
               </CardTitle>
             </CardHeader>
             <CardContent className="grid gap-4 text-sm">
-              <ProcessActions checklistText={checklistText} />
+              <ProcessActions
+                checklistText={checklistText}
+                downloadFilename={downloadFilename}
+              />
               <Button
                 variant="ghost"
                 className="w-full text-muted-foreground hover:text-destructive"
@@ -384,7 +405,7 @@ export function ProcessDetailView({
             </CardHeader>
             <CardContent>
               <nav className="grid gap-2" aria-label="Process sections">
-                {sectionLinks.map((link) => (
+                {processSectionLinks.map((link) => (
                   <a
                     key={link.href}
                     href={link.href}

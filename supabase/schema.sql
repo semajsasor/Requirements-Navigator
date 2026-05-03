@@ -39,6 +39,11 @@ create table if not exists public.process_guides (
   tips jsonb not null default '[]'::jsonb,
   faq jsonb not null default '[]'::jsonb,
   official_source_links jsonb not null default '[]'::jsonb,
+  video_tutorials jsonb not null default '[]'::jsonb,
+  document_examples jsonb not null default '[]'::jsonb,
+  plain_english_summary text,
+  prepare_first jsonb not null default '[]'::jsonb,
+  common_confusions jsonb not null default '[]'::jsonb,
   last_reviewed_date date not null,
   review_status text not null default 'draft' check (review_status in ('draft', 'reviewed', 'outdated')),
   difficulty text not null default 'Medium' check (difficulty in ('Low', 'Medium', 'High')),
@@ -55,6 +60,7 @@ create table if not exists public.saved_guides (
   guide_id uuid not null references public.process_guides(id) on delete cascade,
   status text not null default 'Not started' check (status in ('Not started', 'In progress', 'Completed')),
   notes text,
+  reminders jsonb not null default '[]'::jsonb,
   created_at timestamptz not null default now(),
   updated_at timestamptz not null default now(),
   unique (user_id, guide_id)
@@ -63,6 +69,20 @@ create table if not exists public.saved_guides (
 alter table public.process_guides
   add column if not exists review_status text not null default 'draft'
   check (review_status in ('draft', 'reviewed', 'outdated'));
+
+alter table public.process_guides
+  add column if not exists video_tutorials jsonb not null default '[]'::jsonb;
+
+alter table public.process_guides
+  add column if not exists plain_english_summary text,
+  add column if not exists prepare_first jsonb not null default '[]'::jsonb,
+  add column if not exists common_confusions jsonb not null default '[]'::jsonb;
+
+alter table public.process_guides
+  add column if not exists document_examples jsonb not null default '[]'::jsonb;
+
+alter table public.saved_guides
+  add column if not exists reminders jsonb not null default '[]'::jsonb;
 
 create table if not exists public.checklist_progress (
   id uuid primary key default gen_random_uuid(),

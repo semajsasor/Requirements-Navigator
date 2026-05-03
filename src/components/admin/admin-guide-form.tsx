@@ -202,6 +202,38 @@ export function AdminGuideForm({ guide }: AdminGuideFormProps) {
             name="official_source_links"
             value={guide?.official_source_links ?? defaultSources}
           />
+          <JsonField
+            label="Video tutorials JSON"
+            name="video_tutorials"
+            value={guide?.video_tutorials ?? []}
+            required={false}
+          />
+          <JsonField
+            label="Document examples JSON"
+            name="document_examples"
+            value={guide?.document_examples ?? []}
+            required={false}
+          />
+          <label className="grid gap-2 text-sm font-medium">
+            Plain English summary
+            <Textarea
+              name="plain_english_summary"
+              defaultValue={guide?.plain_english_summary ?? ""}
+              className="min-h-28"
+            />
+          </label>
+          <JsonField
+            label="Prepare first JSON"
+            name="prepare_first"
+            value={guide?.prepare_first ?? []}
+            required={false}
+          />
+          <JsonField
+            label="Common confusions JSON"
+            name="common_confusions"
+            value={guide?.common_confusions ?? []}
+            required={false}
+          />
         </CardContent>
       </Card>
 
@@ -242,10 +274,12 @@ function JsonField({
   label,
   name,
   value,
+  required = true,
 }: {
   label: string;
   name: string;
   value: unknown;
+  required?: boolean;
 }) {
   return (
     <label className="grid gap-2 text-sm font-medium">
@@ -254,7 +288,7 @@ function JsonField({
         name={name}
         defaultValue={jsonValue(value)}
         className="min-h-40 font-mono text-xs"
-        required
+        required={required}
       />
     </label>
   );

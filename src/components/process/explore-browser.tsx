@@ -54,7 +54,7 @@ export function ExploreBrowser({
   }
 
   return (
-    <div className="grid gap-8 sm:gap-10" data-hydrated={isHydrated}>
+    <div className="grid gap-9 sm:gap-11" data-hydrated={isHydrated}>
       <ProcessFilters
         filters={filters}
         categories={categories}
@@ -67,13 +67,13 @@ export function ExploreBrowser({
 
       {!activeFilters ? (
         <section>
-          <div className="mb-5 flex items-center justify-between gap-4">
+          <div className="mb-5 flex items-start justify-between gap-4 sm:items-end">
             <div>
               <div className="flex items-center gap-2">
                 <TrendingUp className="h-4 w-4 text-primary" aria-hidden="true" />
                 <p className="text-sm font-medium text-primary">Popular processes</p>
               </div>
-              <h2 className="mt-2 text-2xl font-semibold tracking-normal">
+              <h2 className="mt-2 text-2xl font-semibold leading-tight tracking-normal sm:text-3xl">
                 Start with a frequently used guide
               </h2>
             </div>
@@ -81,10 +81,10 @@ export function ExploreBrowser({
               <Link href="#all-guides">View all</Link>
             </Button>
           </div>
-          <div className="grid gap-4 lg:grid-cols-3">
+          <div className="grid gap-4 lg:grid-cols-3 lg:gap-5">
             {popularProcesses.map((process) => (
-              <Card key={process.slug} className="bg-white shadow-sm">
-                <CardContent className="p-5">
+              <Card key={process.slug} className="bg-white shadow-sm shadow-slate-900/5">
+                <CardContent className="p-5 sm:p-6">
                   <Badge variant="accent">{process.category}</Badge>
                   <h3 className="mt-4 text-lg font-semibold leading-6">
                     {process.title}
@@ -92,7 +92,7 @@ export function ExploreBrowser({
                   <p className="mt-2 text-sm leading-6 text-muted-foreground">
                     {process.summary}
                   </p>
-                  <Button asChild variant="link" className="mt-5">
+                  <Button asChild variant="link" className="mt-5 font-semibold">
                     <Link href={`/process/${process.slug}`}>
                       Open guide
                       <ArrowRight className="h-4 w-4" aria-hidden="true" />
@@ -106,12 +106,12 @@ export function ExploreBrowser({
       ) : null}
 
       <section id="all-guides">
-        <div className="mb-5 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+        <div className="mb-5 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <p className="text-sm font-medium text-primary">
               {activeFilters ? "Filtered results" : "All guides"}
             </p>
-            <h2 className="mt-2 text-2xl font-semibold tracking-normal">
+            <h2 className="mt-2 text-2xl font-semibold tracking-normal sm:text-3xl">
               {filteredProcesses.length} requirement guide
               {filteredProcesses.length === 1 ? "" : "s"}
             </h2>

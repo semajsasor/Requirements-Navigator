@@ -95,7 +95,7 @@ export function ChecklistSection({
         />
       </div>
 
-      <div className="mt-4 grid gap-3">
+      <div className="mt-4 grid gap-2.5 sm:gap-3">
         {items.map((item, index) => {
           const checked = checkedIds.has(item.id);
 
@@ -103,9 +103,10 @@ export function ChecklistSection({
             <button
               key={item.id}
               type="button"
+              aria-pressed={checked}
               onClick={() => toggleItem(item)}
               className={cn(
-                "group w-full rounded-lg border bg-white p-3.5 text-left shadow-sm transition-colors hover:border-primary/40 hover:bg-[#fbfdfc] sm:p-4",
+                "group w-full rounded-md border bg-white p-3 text-left shadow-sm transition-colors hover:border-primary/40 hover:bg-[#fbfdfc] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-ring/20 sm:p-4",
                 checked && "border-primary/40 bg-accent/40",
               )}
             >
@@ -126,7 +127,7 @@ export function ChecklistSection({
                     ) : null}
                     <h3
                       className={cn(
-                        "text-sm font-semibold leading-6 sm:text-base",
+                        "min-w-0 text-sm font-semibold leading-6 break-words sm:text-base",
                         checked && "text-muted-foreground line-through",
                       )}
                     >

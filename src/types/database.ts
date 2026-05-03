@@ -5,10 +5,12 @@ import type {
   ContentReviewStatus,
   ProcessDifficulty,
   ProcessDocument,
+  ProcessDocumentExample,
   ProcessFaq,
   ProcessFee,
   ProcessInstruction,
   ProcessStatus,
+  ProcessVideoTutorial,
 } from "@/types/process";
 
 export type Json =
@@ -21,6 +23,11 @@ export type Json =
 
 export type SavedGuideStatus = "Not started" | "In progress" | "Completed";
 export type ChecklistItemType = "document" | "step";
+export type SavedGuideReminderId =
+  | "bring_photocopies"
+  | "check_appointment_confirmation"
+  | "verify_payment_method"
+  | "bring_extra_valid_id";
 
 export type ProcessGuideRow = {
   id: string;
@@ -42,6 +49,11 @@ export type ProcessGuideRow = {
   tips: string[];
   faq: ProcessFaq[];
   official_source_links: OfficialSourceLink[];
+  video_tutorials?: ProcessVideoTutorial[];
+  document_examples?: ProcessDocumentExample[];
+  plain_english_summary?: string | null;
+  prepare_first?: string[];
+  common_confusions?: string[];
   last_reviewed_date: string;
   review_status: ContentReviewStatus;
   difficulty: ProcessDifficulty;
@@ -72,6 +84,11 @@ export type ProcessGuideInsert = {
   tips?: string[];
   faq?: ProcessFaq[];
   official_source_links?: OfficialSourceLink[];
+  video_tutorials?: ProcessVideoTutorial[];
+  document_examples?: ProcessDocumentExample[];
+  plain_english_summary?: string | null;
+  prepare_first?: string[];
+  common_confusions?: string[];
   last_reviewed_date: string;
   review_status?: ContentReviewStatus;
   difficulty?: ProcessDifficulty;
@@ -117,6 +134,7 @@ export type Database = {
           guide_id: string;
           status: SavedGuideStatus;
           notes: string | null;
+          reminders: SavedGuideReminderId[];
           created_at: string;
           updated_at: string;
         };
@@ -126,6 +144,7 @@ export type Database = {
           guide_id: string;
           status?: SavedGuideStatus;
           notes?: string | null;
+          reminders?: SavedGuideReminderId[];
           created_at?: string;
           updated_at?: string;
         };

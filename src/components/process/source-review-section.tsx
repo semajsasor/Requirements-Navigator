@@ -3,6 +3,7 @@ import { CalendarCheck, ShieldCheck } from "lucide-react";
 import { LinkedSourceList } from "@/components/process/linked-source-list";
 import { TrustBadge } from "@/components/process/trust-badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { getReviewStatusDescription } from "@/lib/process/freshness";
 import type { ProcessGuide } from "@/types/process";
 
 export function SourceReviewSection({ process }: { process: ProcessGuide }) {
@@ -19,6 +20,7 @@ export function SourceReviewSection({ process }: { process: ProcessGuide }) {
           <div className="flex flex-wrap items-center gap-3">
             <TrustBadge
               reviewStatus={process.reviewStatus}
+              lastReviewedDate={process.lastReviewedDate}
               publicationStatus={process.status}
             />
             <span className="flex items-center gap-2 font-medium text-foreground">
@@ -27,9 +29,10 @@ export function SourceReviewSection({ process }: { process: ProcessGuide }) {
             </span>
           </div>
           <p>
-            Requirements, fees, forms, and timelines can change. Use this guide as
-            preparation support, then verify final details with the official source
-            before submitting anything.
+            {getReviewStatusDescription(process.reviewStatus)} Requirements,
+            fees, forms, and timelines can change. Use this guide as preparation
+            support, then verify final details with the official source before
+            submitting anything.
           </p>
         </div>
         <LinkedSourceList sources={process.officialSourceLinks} />

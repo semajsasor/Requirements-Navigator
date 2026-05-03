@@ -1,11 +1,23 @@
 "use client";
 
 import { useState } from "react";
-import { Check, Copy, Printer } from "lucide-react";
+import { Check, Copy, Download, Printer } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 
-export function ProcessActions({ checklistText }: { checklistText: string }) {
+type ProcessActionsProps = {
+  checklistText: string;
+  downloadFilename?: string;
+};
+
+function getDownloadFilename(filename?: string) {
+  return filename?.trim() || "requirements-navigator-summary.txt";
+}
+
+export function ProcessActions({
+  checklistText,
+  downloadFilename,
+}: ProcessActionsProps) {
   const [copyStatus, setCopyStatus] = useState<"idle" | "copied" | "failed">(
     "idle",
   );
@@ -24,8 +36,25 @@ export function ProcessActions({ checklistText }: { checklistText: string }) {
     }
   }
 
+  function downloadSummary() {
+    const blob = new Blob([checklistText], { type: "text/plain;charset=utf-8" });
+    const url = window.URL.createObjectURL(blob);
+    const link = document.createElement("a");
+
+    link.href = url;
+    link.download = getDownloadFilename(downloadFilename);
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+    window.URL.revokeObjectURL(url);
+  }
+
   return (
-    <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-1">
+    <div className="grid gap-2 sm:grid-cols-3 lg:grid-cols-1">
+      <Button onClick={() => window.print()}>
+        <Printer className="h-4 w-4" aria-hidden="true" />
+        Print checklist
+      </Button>
       <Button onClick={copyChecklist} variant="outline" className="bg-white">
         {copyStatus === "copied" ? (
           <Check className="h-4 w-4" aria-hidden="true" />
@@ -38,13 +67,17 @@ export function ProcessActions({ checklistText }: { checklistText: string }) {
             ? "Copy failed"
             : "Copy checklist"}
       </Button>
-      <Button onClick={() => window.print()}>
-        <Printer className="h-4 w-4" aria-hidden="true" />
-        Print checklist
+      <Button
+        onClick={downloadSummary}
+        variant="outline"
+        className="bg-white"
+      >
+        <Download className="h-4 w-4" aria-hidden="true" />
+        Download summary
       </Button>
       {copyStatus === "failed" ? (
         <div
-          className="rounded-md border bg-white p-3 text-sm text-muted-foreground sm:col-span-2 lg:col-span-1"
+          className="rounded-md border bg-white p-3 text-sm text-muted-foreground sm:col-span-3 lg:col-span-1"
           role="status"
         >
           <p className="font-medium text-foreground">Copy was blocked.</p>

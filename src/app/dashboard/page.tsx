@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { CalendarCheck, ClipboardCheck, Plus, Settings } from "lucide-react";
+import { CalendarCheck, ClipboardCheck, Compass, Plus, Settings } from "lucide-react";
 
 import { RecentlyViewedGuides } from "@/components/dashboard/recently-viewed-guides";
 import { SavedGuideCard } from "@/components/dashboard/saved-guide-card";
@@ -43,8 +43,8 @@ export default async function DashboardPage() {
                 Your saved requirements workspace
               </h1>
               <p className="mt-4 max-w-3xl text-base leading-7 text-muted-foreground">
-                Continue saved guides, check off documents and steps, and remove guides
-                when you no longer need them.
+                Continue saved guides, check off documents and steps, and keep
+                notes or reminders close to the checklist.
               </p>
             </div>
             <Button asChild>
@@ -107,15 +107,24 @@ export default async function DashboardPage() {
                   <div>
                     <h2 className="font-semibold">No saved guides yet</h2>
                     <p className="mt-1 text-sm leading-6 text-muted-foreground">
-                      Browse process guides and save the ones you want to complete.
+                      Browse guides or answer a few questions to find the right
+                      checklist to save.
                     </p>
                   </div>
-                  <Button asChild>
-                    <Link href="/explore">
-                      <Plus className="h-4 w-4" aria-hidden="true" />
-                      Add process
-                    </Link>
-                  </Button>
+                  <div className="grid w-full gap-2 sm:w-auto sm:grid-cols-2">
+                    <Button asChild>
+                      <Link href="/explore">
+                        <Plus className="h-4 w-4" aria-hidden="true" />
+                        Add guide
+                      </Link>
+                    </Button>
+                    <Button asChild variant="outline" className="bg-white">
+                      <Link href="/guide-finder">
+                        <Compass className="h-4 w-4" aria-hidden="true" />
+                        Help me choose
+                      </Link>
+                    </Button>
+                  </div>
                 </CardContent>
               </Card>
             )}

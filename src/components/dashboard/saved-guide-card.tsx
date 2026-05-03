@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, CheckCircle2, Clock } from "lucide-react";
+import { ArrowRight, Bell, CheckCircle2, Clock, StickyNote } from "lucide-react";
 
 import { ProgressRing } from "@/components/dashboard/progress-ring";
 import { Badge } from "@/components/ui/badge";
@@ -8,22 +8,25 @@ import { Card, CardContent } from "@/components/ui/card";
 import { removeSavedGuideAction } from "@/lib/actions/saved-guides";
 import { formatFeeRange } from "@/lib/data/processes";
 import type { SavedGuideDashboardItem } from "@/lib/dashboard/queries";
+import { getSavedGuideReminderLabels } from "@/lib/dashboard/reminders";
 
 export function SavedGuideCard({ item }: { item: SavedGuideDashboardItem }) {
   const percent =
     item.totalCount === 0
       ? 0
       : Math.round((item.completedCount / item.totalCount) * 100);
+  const reminderLabels = getSavedGuideReminderLabels(item.savedGuide.reminders);
+  const notesPreview = item.savedGuide.notes?.trim();
 
   return (
     <Card className="bg-white">
-      <CardContent className="grid gap-5 p-5 lg:grid-cols-[1fr_auto] lg:items-center">
+      <CardContent className="grid gap-5 p-4 sm:p-5 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-center">
         <div>
           <div className="flex flex-wrap gap-2">
             <Badge variant="accent">{item.guide.category}</Badge>
             <Badge variant="secondary">{item.savedGuide.status}</Badge>
           </div>
-          <h2 className="mt-3 text-xl font-semibold tracking-normal">
+          <h2 className="mt-3 text-lg font-semibold leading-7 tracking-normal break-words sm:text-xl">
             {item.guide.title}
           </h2>
           <p className="mt-2 max-w-2xl text-sm leading-6 text-muted-foreground">
@@ -46,10 +49,38 @@ export function SavedGuideCard({ item }: { item: SavedGuideDashboardItem }) {
               style={{ width: `${percent}%` }}
             />
           </div>
+          {notesPreview || reminderLabels.length ? (
+            <div className="mt-4 grid gap-2 rounded-md border bg-[#fbfdfc] p-3 text-sm">
+              {notesPreview ? (
+                <p className="flex gap-2 leading-6 text-muted-foreground">
+                  <StickyNote
+                    className="mt-1 h-4 w-4 shrink-0 text-primary"
+                    aria-hidden="true"
+                  />
+                  <span className="line-clamp-2">{notesPreview}</span>
+                </p>
+              ) : null}
+              {reminderLabels.length ? (
+                <div className="flex flex-wrap gap-2">
+                  {reminderLabels.map((label) => (
+                    <span
+                      key={label}
+                      className="inline-flex items-center gap-1 rounded-full border bg-white px-2.5 py-1 text-xs font-medium text-muted-foreground"
+                    >
+                      <Bell className="h-3.5 w-3.5 text-primary" aria-hidden="true" />
+                      {label}
+                    </span>
+                  ))}
+                </div>
+              ) : null}
+            </div>
+          ) : null}
         </div>
 
-        <div className="grid gap-4 sm:grid-cols-[auto_1fr] lg:w-52 lg:grid-cols-1">
-          <ProgressRing value={percent} label={`${percent}% complete`} />
+        <div className="grid gap-3 sm:grid-cols-[auto_1fr] sm:items-center lg:w-52 lg:grid-cols-1">
+          <div className="hidden sm:block">
+            <ProgressRing value={percent} label={`${percent}% complete`} />
+          </div>
           <Button asChild>
             <Link href={`/dashboard/guides/${item.savedGuide.id}`}>
               Continue

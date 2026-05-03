@@ -34,27 +34,27 @@ export default function Home() {
 
   return (
     <>
-      <section className="relative overflow-hidden bg-[#f8faf9]">
-        <div className="absolute inset-x-0 top-0 h-56 bg-[linear-gradient(180deg,#def2eb_0%,#edf7f3_72%,rgba(248,250,249,0)_100%)] sm:h-72" aria-hidden="true" />
-        <div className="relative mx-auto grid w-full max-w-7xl gap-7 px-4 py-7 sm:px-6 sm:py-9 md:grid-cols-[1.02fr_0.98fr] md:items-center md:py-18 lg:px-8 lg:py-24">
+      <section className="relative overflow-hidden bg-[#f8fafc]">
+        <div className="absolute inset-x-0 top-0 h-56 bg-[linear-gradient(180deg,#dff4ed_0%,#eef8f4_68%,rgba(248,250,252,0)_100%)] sm:h-72" aria-hidden="true" />
+        <div className="relative mx-auto grid w-full max-w-7xl gap-8 px-4 py-8 sm:px-6 sm:py-12 md:grid-cols-[1.02fr_0.98fr] md:items-center lg:px-8 lg:py-20">
           <div>
             <Badge variant="accent" className="mb-4 shadow-sm sm:mb-5">
               {landingPage.hero.eyebrow}
             </Badge>
-            <h1 className="max-w-4xl text-2xl font-semibold leading-[1.12] tracking-normal text-foreground min-[420px]:text-3xl sm:text-5xl lg:text-6xl">
+            <h1 className="max-w-4xl text-3xl font-semibold leading-[1.08] tracking-normal text-foreground sm:text-5xl lg:text-6xl">
               {landingPage.hero.headline}
             </h1>
-            <p className="mt-3 max-w-2xl text-sm leading-6 text-muted-foreground sm:mt-5 sm:text-lg sm:leading-7">
+            <p className="mt-4 max-w-2xl text-base leading-7 text-muted-foreground sm:mt-5 sm:text-lg sm:leading-8">
               {landingPage.hero.subheadline}
             </p>
-            <div className="mt-5 flex flex-col gap-3 sm:mt-8 sm:flex-row">
-              <Button asChild size="lg" className="h-10 shadow-lg shadow-primary/15 sm:h-11">
+            <div className="mt-6 flex flex-col gap-3 sm:mt-8 sm:flex-row">
+              <Button asChild size="lg" className="shadow-lg shadow-primary/15">
                 <Link href="/explore">
                   {landingPage.hero.primaryCta}
                   <ArrowRight className="h-4 w-4" aria-hidden="true" />
                 </Link>
               </Button>
-              <Button asChild size="lg" variant="outline" className="h-10 bg-white/70 sm:h-11">
+              <Button asChild size="lg" variant="outline" className="bg-white/80">
                 <Link href="#how-it-works">{landingPage.hero.secondaryCta}</Link>
               </Button>
             </div>
@@ -64,7 +64,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="hidden rounded-lg border bg-white/90 p-3 shadow-2xl shadow-[#0b3d2d]/10 backdrop-blur md:block">
+          <div className="hidden rounded-lg border border-white/80 bg-white/90 p-3 shadow-2xl shadow-slate-900/10 backdrop-blur md:block">
             <div className="rounded-md bg-[#123c33] p-5 text-white shadow-inner shadow-white/5">
               <div className="flex items-start justify-between gap-4">
                 <div>
@@ -104,7 +104,7 @@ export default function Home() {
       </section>
 
       <section id="how-it-works" className="bg-white">
-        <div className="mx-auto w-full max-w-7xl px-4 py-11 sm:px-6 sm:py-14 lg:px-8 lg:py-18">
+        <div className="mx-auto w-full max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8 lg:py-20">
           <div className="mx-auto max-w-3xl text-center">
             <p className="text-sm font-medium text-primary">{landingPage.howItWorks.eyebrow}</p>
             <h2 className="mt-2 text-2xl font-semibold tracking-normal sm:mt-3 sm:text-4xl">
@@ -115,14 +115,14 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="mt-8 grid gap-4 sm:mt-10 md:grid-cols-3">
+          <div className="mt-9 grid gap-4 sm:mt-11 md:grid-cols-3 lg:gap-5">
             {landingPage.howItWorks.steps.map((item, index) => {
               const Icon = howItWorksIcons[index];
 
               return (
                 <Card
                   key={item.title}
-                  className="border-[#dce8e2] bg-white transition-transform duration-200 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-[#123c33]/10"
+                  className="border-[#dce8e2] bg-white transition-transform duration-200 hover:-translate-y-0.5 hover:border-primary/25 hover:shadow-xl hover:shadow-slate-900/10"
                 >
                   <CardHeader>
                     <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-md bg-accent text-accent-foreground">
@@ -140,8 +140,8 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="bg-[#f8faf9]">
-        <div className="mx-auto w-full max-w-7xl px-4 py-11 sm:px-6 sm:py-14 lg:px-8 lg:py-18">
+      <section className="bg-[#f8fafc]">
+        <div className="mx-auto w-full max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8 lg:py-20">
           <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
             <div className="max-w-2xl">
               <p className="text-sm font-medium text-primary">
@@ -163,7 +163,7 @@ export default function Home() {
       </section>
 
       <section className="bg-white">
-        <div className="mx-auto grid w-full max-w-7xl gap-8 px-4 py-11 sm:px-6 sm:py-14 lg:grid-cols-[0.9fr_1.1fr] lg:items-center lg:px-8 lg:py-18">
+        <div className="mx-auto grid w-full max-w-7xl gap-8 px-4 py-12 sm:px-6 sm:py-16 lg:grid-cols-[0.9fr_1.1fr] lg:items-center lg:px-8 lg:py-20">
           <div>
             <p className="text-sm font-medium text-primary">{landingPage.benefits.eyebrow}</p>
             <h2 className="mt-2 text-2xl font-semibold tracking-normal sm:mt-3 sm:text-4xl">
@@ -181,7 +181,7 @@ export default function Home() {
               return (
                 <div
                   key={item.title}
-                  className="flex gap-4 rounded-lg border bg-[#fbfdfc] p-5 shadow-sm"
+                  className="flex gap-4 rounded-lg border bg-[#fbfdfc] p-5 shadow-sm shadow-slate-900/5"
                 >
                   <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-md bg-accent text-accent-foreground">
                     <Icon className="h-5 w-5" aria-hidden="true" />
@@ -200,7 +200,7 @@ export default function Home() {
       </section>
 
       <section className="bg-[#eef7f3]">
-        <div className="mx-auto w-full max-w-7xl px-4 py-11 sm:px-6 sm:py-14 lg:px-8 lg:py-18">
+        <div className="mx-auto w-full max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8 lg:py-20">
           <div className="grid gap-8 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
             <div>
               <p className="text-sm font-medium text-primary">
@@ -236,7 +236,7 @@ export default function Home() {
       </section>
 
       <section className="bg-white">
-        <div className="mx-auto w-full max-w-7xl px-4 py-11 sm:px-6 sm:py-14 lg:px-8 lg:py-18">
+        <div className="mx-auto w-full max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8 lg:py-20">
           <div className="mx-auto max-w-3xl text-center">
             <p className="text-sm font-medium text-primary">
               {landingPage.testimonials.eyebrow}
@@ -248,7 +248,7 @@ export default function Home() {
 
           <div className="mt-10 grid gap-4 md:grid-cols-3">
             {landingPage.testimonials.items.map((testimonial) => (
-              <Card key={testimonial.name} className="shadow-lg shadow-[#123c33]/5">
+              <Card key={testimonial.name} className="shadow-lg shadow-slate-900/5">
                 <CardContent className="p-6">
                   <MessageSquareQuote className="h-6 w-6 text-primary" aria-hidden="true" />
                   <p className="mt-5 text-sm leading-6 text-muted-foreground">

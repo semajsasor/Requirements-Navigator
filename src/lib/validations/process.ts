@@ -3,6 +3,22 @@ import { z } from "zod";
 export const processDifficultySchema = z.enum(["Low", "Medium", "High"]);
 export const processStatusSchema = z.enum(["draft", "review", "published", "archived"]);
 export const contentReviewStatusSchema = z.enum(["draft", "reviewed", "outdated"]);
+export const processVideoTutorialTypeSchema = z.enum([
+  "quick overview",
+  "full walkthrough",
+  "before-you-go",
+  "common mistakes",
+]);
+export const savedGuideReminderIdSchema = z.enum([
+  "bring_photocopies",
+  "check_appointment_confirmation",
+  "verify_payment_method",
+  "bring_extra_valid_id",
+]);
+const httpUrlSchema = z.string().trim().url().refine(
+  (value) => value.startsWith("https://") || value.startsWith("http://"),
+  "URL must use HTTP or HTTPS.",
+);
 
 export const processLocationSchema = z.object({
   countryCode: z.string().trim().length(2),
@@ -22,6 +38,14 @@ export const processDocumentSchema = z.object({
   required: z.boolean(),
   acceptedFormats: z.array(z.string().trim().min(1).max(80)).optional(),
   notes: z.string().trim().max(600).optional(),
+});
+
+export const processDocumentExampleSchema = z.object({
+  label: z.string().trim().min(1).max(160),
+  acceptedTypes: z.array(z.string().trim().min(1).max(120)),
+  notes: z.string().trim().max(700).optional(),
+  previewImageUrl: httpUrlSchema.optional(),
+  previewImageAlt: z.string().trim().min(1).max(180).optional(),
 });
 
 export const processInstructionSchema = z.object({
@@ -61,6 +85,20 @@ export const officialSourceLinkSchema = z.object({
   description: z.string().trim().max(500).optional(),
 });
 
+export const processVideoTutorialSchema = z.object({
+  title: z.string().trim().min(1).max(180),
+  description: z.string().trim().max(800).optional(),
+  url: httpUrlSchema.optional(),
+  embedUrl: httpUrlSchema.optional(),
+  duration: z.string().trim().min(1).max(80).optional(),
+  transcript: z.string().trim().max(20000).optional(),
+  captionsAvailable: z.boolean(),
+  type: processVideoTutorialTypeSchema,
+}).refine((value) => value.url || value.embedUrl, {
+  message: "A video tutorial must include a video URL or embed URL.",
+  path: ["url"],
+});
+
 export const processGuideSchema = z.object({
   title: z.string().trim().min(1).max(180),
   slug: z.string().trim().min(1).max(180),
@@ -77,6 +115,11 @@ export const processGuideSchema = z.object({
   tips: z.array(z.string().trim().min(1).max(500)),
   faq: z.array(processFaqSchema),
   officialSourceLinks: z.array(officialSourceLinkSchema),
+  videoTutorials: z.array(processVideoTutorialSchema).optional(),
+  documentExamples: z.array(processDocumentExampleSchema).optional(),
+  plainEnglishSummary: z.string().trim().min(1).max(700).optional(),
+  prepareFirst: z.array(z.string().trim().min(1).max(180)).optional(),
+  commonConfusions: z.array(z.string().trim().min(1).max(220)).optional(),
   lastReviewedDate: z.string().date(),
   reviewStatus: contentReviewStatusSchema,
   difficulty: processDifficultySchema,
@@ -97,6 +140,7 @@ export const savedProcessSchema = z.object({
   processId: z.string().uuid(),
   status: z.enum(["Not started", "In progress", "Completed"]),
   notes: z.string().trim().max(1000).optional(),
+  reminders: z.array(savedGuideReminderIdSchema).optional(),
 });
 
 export type ProcessGuideInput = z.infer<typeof processGuideSchema>;

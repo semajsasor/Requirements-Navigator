@@ -2,6 +2,11 @@ export type ProcessDifficulty = "Low" | "Medium" | "High";
 
 export type ProcessStatus = "draft" | "review" | "published" | "archived";
 export type ContentReviewStatus = "draft" | "reviewed" | "outdated";
+export type ProcessVideoTutorialType =
+  | "quick overview"
+  | "full walkthrough"
+  | "before-you-go"
+  | "common mistakes";
 
 export type ProcessingTimeUnit = "minutes" | "hours" | "days" | "weeks" | "months";
 
@@ -23,6 +28,14 @@ export type ProcessDocument = {
   required: boolean;
   acceptedFormats?: string[];
   notes?: string;
+};
+
+export type ProcessDocumentExample = {
+  label: string;
+  acceptedTypes: string[];
+  notes?: string;
+  previewImageUrl?: string;
+  previewImageAlt?: string;
 };
 
 export type ProcessInstruction = {
@@ -59,6 +72,17 @@ export type OfficialSourceLink = {
   description?: string;
 };
 
+export type ProcessVideoTutorial = {
+  title: string;
+  description?: string;
+  url?: string;
+  embedUrl?: string;
+  duration?: string;
+  transcript?: string;
+  captionsAvailable: boolean;
+  type: ProcessVideoTutorialType;
+};
+
 export type ProcessGuide = {
   title: string;
   slug: string;
@@ -75,6 +99,11 @@ export type ProcessGuide = {
   tips: string[];
   faq: ProcessFaq[];
   officialSourceLinks: OfficialSourceLink[];
+  videoTutorials?: ProcessVideoTutorial[];
+  documentExamples?: ProcessDocumentExample[];
+  plainEnglishSummary?: string;
+  prepareFirst?: string[];
+  commonConfusions?: string[];
   lastReviewedDate: string;
   reviewStatus: ContentReviewStatus;
   difficulty: ProcessDifficulty;
@@ -101,6 +130,11 @@ export type ProcessSeedRecord = {
   tips: string[];
   faq: ProcessFaq[];
   official_source_links: OfficialSourceLink[];
+  video_tutorials?: ProcessVideoTutorial[];
+  document_examples?: ProcessDocumentExample[];
+  plain_english_summary?: string | null;
+  prepare_first?: string[];
+  common_confusions?: string[];
   last_reviewed_date: string;
   review_status: ContentReviewStatus;
   difficulty: ProcessDifficulty;

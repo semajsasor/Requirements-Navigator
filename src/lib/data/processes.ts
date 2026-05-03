@@ -2952,6 +2952,39 @@ export const processGuides: ProcessGuide[] = [
     officialSourceLinks: [
       { title: "DFA Passport Application", publisher: "Department of Foreign Affairs", url: "https://passport.gov.ph/" },
     ],
+    videoTutorials: [
+      {
+        title: "First-time passport appointment prep",
+        description: "A quick walkthrough of booking, paying, and packing your DFA passport requirements.",
+        embedUrl: "https://www.youtube-nocookie.com/embed/apply-philippine-passport-demo",
+        duration: "4 minutes",
+        transcript: "Book a DFA slot, pay before the deadline, print the appointment packet, and bring your PSA birth certificate, valid ID, photocopies, and optional marriage certificate if needed.",
+        captionsAvailable: true,
+        type: "quick overview",
+      },
+    ],
+    documentExamples: [
+      {
+        label: "Proof of identity",
+        acceptedTypes: ["PhilSys ID", "UMID", "Driver's License", "Voter's ID"],
+        notes: "Bring the original ID and a clear photocopy. The exact accepted ID list can change, so confirm with DFA before your appointment.",
+      },
+      {
+        label: "PSA birth certificate",
+        acceptedTypes: ["PSA security paper copy"],
+        notes: "Use a readable PSA-issued copy. Damaged, blurred, or unofficial scans may slow down verification.",
+      },
+    ],
+    plainEnglishSummary: "This is mainly an appointment and document-check process. Your job is to secure a DFA slot, pay on time, and arrive with original identity documents plus clean photocopies.",
+    prepareFirst: [
+      "A confirmed DFA appointment packet",
+      "Original PSA birth certificate and one valid government ID",
+      "Photocopies of required identity documents",
+    ],
+    commonConfusions: [
+      "The slot is not final until the fee is paid.",
+      "Courtesy Lane walk-ins are only for eligible applicants.",
+    ],
     lastReviewedDate: "2026-04-27",
     reviewStatus: "reviewed",
     difficulty: "Medium",
@@ -2999,6 +3032,27 @@ export const processGuides: ProcessGuide[] = [
     ],
     officialSourceLinks: [
       { title: "DFA Passport Renewal Requirements", publisher: "Department of Foreign Affairs", url: "https://consular.dfa.gov.ph/services/passport/requirements/passport-adult/adult-renewal-epassport" },
+    ],
+    videoTutorials: [
+      {
+        title: "Passport renewal checklist before DFA",
+        description: "A short guide to the documents and timing for renewing an adult Philippine ePassport.",
+        embedUrl: "https://www.youtube-nocookie.com/embed/renew-philippine-passport-demo",
+        duration: "3 minutes",
+        transcript: "Renew early, book and pay for your DFA appointment, bring your current ePassport and data page photocopy, and add PSA documents only if your details changed.",
+        captionsAvailable: true,
+        type: "before-you-go",
+      },
+    ],
+    plainEnglishSummary: "Renewal is usually simpler than a first-time application. If your name and details are unchanged, focus on your old ePassport, the appointment packet, payment proof, and the data page photocopy.",
+    prepareFirst: [
+      "Current or expired Philippine ePassport",
+      "Printed appointment packet",
+      "Photocopy of the passport data page",
+    ],
+    commonConfusions: [
+      "A PSA birth certificate is not always needed for standard adult ePassport renewal.",
+      "Name or civil status changes usually require extra documents.",
     ],
     lastReviewedDate: "2026-04-27",
     reviewStatus: "reviewed",
@@ -3137,6 +3191,39 @@ export const processGuides: ProcessGuide[] = [
     officialSourceLinks: [
       { title: "NBI Clearance Online Services", publisher: "National Bureau of Investigation", url: "https://clearance.nbi.gov.ph/" },
     ],
+    videoTutorials: [
+      {
+        title: "NBI Clearance online registration flow",
+        description: "See the basic path from account setup to payment, biometrics, and claiming.",
+        embedUrl: "https://www.youtube-nocookie.com/embed/apply-nbi-clearance-demo",
+        duration: "5 minutes",
+        transcript: "Create or update your NBI account, choose a branch and schedule, pay with the reference number, then bring valid IDs to your appointment for photo and fingerprint capture.",
+        captionsAvailable: true,
+        type: "full walkthrough",
+      },
+    ],
+    documentExamples: [
+      {
+        label: "Valid government IDs",
+        acceptedTypes: ["Passport", "UMID", "PhilSys ID", "Postal ID"],
+        notes: "Prepare two original valid IDs with matching personal details. Bring backup IDs if your name or address differs across documents.",
+      },
+      {
+        label: "NBI reference number",
+        acceptedTypes: ["Printed reference number", "Readable digital copy"],
+        notes: "Keep the reference number accessible at the branch, especially if payment confirmation is requested.",
+      },
+    ],
+    plainEnglishSummary: "NBI Clearance starts online but finishes in person unless you qualify for renewal delivery. Register, pay with the reference number, then attend biometrics at your chosen branch.",
+    prepareFirst: [
+      "NBI online account and reference number",
+      "Two valid government IDs",
+      "Payment confirmation from your chosen channel",
+    ],
+    commonConfusions: [
+      "A HIT usually means a name match, not an automatic criminal record.",
+      "You normally need to pay before going to the branch.",
+    ],
     lastReviewedDate: "2026-04-27",
     reviewStatus: "reviewed",
     difficulty: "Medium",
@@ -3182,6 +3269,27 @@ export const processGuides: ProcessGuide[] = [
     ],
     officialSourceLinks: [
       { title: "National Police Clearance System", publisher: "Philippine National Police", url: "https://pnpclearance.ph/" },
+    ],
+    videoTutorials: [
+      {
+        title: "Police clearance appointment checklist",
+        description: "A compact guide to registering on NPCS and showing up ready for biometrics.",
+        embedUrl: "https://www.youtube-nocookie.com/embed/apply-police-clearance-demo",
+        duration: "3 minutes",
+        transcript: "Register on NPCS, schedule your station visit, pay the fee before appearing, bring two valid IDs, and keep your reference number available at the police station.",
+        captionsAvailable: true,
+        type: "quick overview",
+      },
+    ],
+    plainEnglishSummary: "Police Clearance is appointment-based. You register online, pay first, then go to the selected police station for photo, fingerprinting, and release if there is no record match.",
+    prepareFirst: [
+      "NPCS account and appointment reference",
+      "Two valid IDs",
+      "Payment proof or reference number",
+    ],
+    commonConfusions: [
+      "NBI and Police Clearance are different documents.",
+      "Some stations may still ask for a barangay clearance.",
     ],
     lastReviewedDate: "2026-04-27",
     reviewStatus: "reviewed",
@@ -3407,6 +3515,27 @@ export const processGuides: ProcessGuide[] = [
     officialSourceLinks: [
       { title: "PhilHealth Registration", publisher: "Philippine Health Insurance Corporation", url: "https://www.philhealth.gov.ph/" },
     ],
+    videoTutorials: [
+      {
+        title: "PhilHealth registration form walkthrough",
+        description: "A quick look at filling out the PMRF and what to bring to the LHIO.",
+        embedUrl: "https://www.youtube-nocookie.com/embed/register-philhealth-demo",
+        duration: "4 minutes",
+        transcript: "Complete the PMRF, list dependents carefully, bring a valid ID or birth certificate and photos, then submit everything at an LHIO or PhilHealth Express counter.",
+        captionsAvailable: true,
+        type: "full walkthrough",
+      },
+    ],
+    plainEnglishSummary: "PhilHealth registration gives you a PIN and member record. The most important part is filling out the PMRF correctly, especially your membership category and dependents.",
+    prepareFirst: [
+      "Completed PMRF",
+      "Valid ID or birth certificate",
+      "Dependent details, if you will declare dependents",
+    ],
+    commonConfusions: [
+      "Registration is free, but some member types must pay premiums.",
+      "The MDR is often more useful than the printed ID during hospital transactions.",
+    ],
     lastReviewedDate: "2026-04-27",
     reviewStatus: "reviewed",
     difficulty: "Low",
@@ -3451,6 +3580,27 @@ export const processGuides: ProcessGuide[] = [
     officialSourceLinks: [
       { title: "Virtual Pag-IBIG", publisher: "Home Development Mutual Fund", url: "https://www.pagibigfundservices.com/" },
     ],
+    videoTutorials: [
+      {
+        title: "Virtual Pag-IBIG new member overview",
+        description: "A short orientation for submitting your online registration and tracking your MID.",
+        embedUrl: "https://www.youtube-nocookie.com/embed/register-pag-ibig-demo",
+        duration: "3 minutes",
+        transcript: "Open Virtual Pag-IBIG, choose new member registration, enter accurate personal and employment details, save your RTN, and wait for your MID by SMS.",
+        captionsAvailable: true,
+        type: "quick overview",
+      },
+    ],
+    plainEnglishSummary: "Pag-IBIG registration can be started online. After submitting the form, save the RTN and wait for the permanent MID before setting up full account access.",
+    prepareFirst: [
+      "Active mobile number",
+      "Personal and employment details",
+      "Valid ID for later verification",
+    ],
+    commonConfusions: [
+      "The RTN is temporary; the MID is the permanent membership number.",
+      "Submitting multiple applications can create duplicate records.",
+    ],
     lastReviewedDate: "2026-04-27",
     reviewStatus: "reviewed",
     difficulty: "Low",
@@ -3494,6 +3644,27 @@ export const processGuides: ProcessGuide[] = [
     ],
     officialSourceLinks: [
       { title: "SSS Online Registration", publisher: "Social Security System", url: "https://www.sss.gov.ph/" },
+    ],
+    videoTutorials: [
+      {
+        title: "SSS number application basics",
+        description: "A practical guide to creating an SSS number and making the record permanent.",
+        embedUrl: "https://www.youtube-nocookie.com/embed/register-sss-demo",
+        duration: "4 minutes",
+        transcript: "Use the SSS online facility, match your details to your birth record, save the issued SS number, then upload or submit identity documents so the status becomes permanent.",
+        captionsAvailable: true,
+        type: "before-you-go",
+      },
+    ],
+    plainEnglishSummary: "SSS online registration can issue a number quickly, but the record may stay temporary until you submit identity documents. Permanent status matters for loans and benefits.",
+    prepareFirst: [
+      "Active email address",
+      "Birth record details",
+      "Valid ID or PSA birth certificate for permanent status",
+    ],
+    commonConfusions: [
+      "Do not apply for a second SS number if you forget the first one.",
+      "Temporary status is not the same as fully verified membership.",
     ],
     lastReviewedDate: "2026-04-27",
     reviewStatus: "reviewed",
@@ -3585,6 +3756,39 @@ export const processGuides: ProcessGuide[] = [
     ],
     officialSourceLinks: [
       { title: "Financial Consumer Protection", publisher: "Bangko Sentral ng Pilipinas", url: "https://www.bsp.gov.ph/" },
+    ],
+    videoTutorials: [
+      {
+        title: "Bank account opening checklist",
+        description: "A quick prep video for IDs, initial deposit, branch forms, and digital bank alternatives.",
+        embedUrl: "https://www.youtube-nocookie.com/embed/open-bank-account-ph-demo",
+        duration: "4 minutes",
+        transcript: "Choose a bank and account type, confirm the ID and deposit requirements, keep your signature consistent, prepare proof of billing if requested, and review maintaining balance rules.",
+        captionsAvailable: true,
+        type: "quick overview",
+      },
+    ],
+    documentExamples: [
+      {
+        label: "Valid IDs",
+        acceptedTypes: ["PhilSys ID", "Passport", "Driver's License", "UMID"],
+        notes: "Some banks accept one primary ID while others ask for two IDs. Check the chosen bank's latest onboarding rules.",
+      },
+      {
+        label: "Proof of address",
+        acceptedTypes: ["Utility bill", "Bank statement", "Barangay certificate"],
+        notes: "If the bill is not under your name, the branch may ask for an authorization letter or another address document.",
+      },
+    ],
+    plainEnglishSummary: "Opening a bank account is mostly identity verification plus choosing the right account type. Compare maintaining balance rules before you hand over the initial deposit.",
+    prepareFirst: [
+      "Accepted valid ID or IDs",
+      "Initial deposit amount",
+      "Proof of billing if the bank asks for address proof",
+    ],
+    commonConfusions: [
+      "Initial deposit and maintaining balance are not always the same.",
+      "Digital banks may have fewer documents but no branch support.",
     ],
     lastReviewedDate: "2026-04-27",
     reviewStatus: "reviewed",
@@ -3723,6 +3927,27 @@ export const processGuides: ProcessGuide[] = [
     officialSourceLinks: [
       { title: "DTI Business Name Registration", publisher: "Department of Trade and Industry", url: "https://bnrs.dti.gov.ph/" },
     ],
+    videoTutorials: [
+      {
+        title: "DTI sole proprietorship name registration",
+        description: "A concise walkthrough of choosing a business name, scope, and online payment.",
+        embedUrl: "https://www.youtube-nocookie.com/embed/register-sole-proprietorship-demo",
+        duration: "5 minutes",
+        transcript: "Prepare name options, search availability on BNRS, choose the right territorial scope, complete owner and business details, pay online, and download the DTI certificate.",
+        captionsAvailable: true,
+        type: "full walkthrough",
+      },
+    ],
+    plainEnglishSummary: "DTI registration only protects your sole proprietorship business name. It is usually the first step before local permits and BIR tax registration.",
+    prepareFirst: [
+      "Three possible business names",
+      "Chosen territorial scope",
+      "Owner details and online payment method",
+    ],
+    commonConfusions: [
+      "DTI registration is not the same as a Mayor's Permit.",
+      "A wider scope costs more and may not be necessary for a small local business.",
+    ],
     lastReviewedDate: "2026-04-27",
     reviewStatus: "reviewed",
     difficulty: "Medium",
@@ -3815,6 +4040,39 @@ export const processGuides: ProcessGuide[] = [
     ],
     officialSourceLinks: [
       { title: "CHED Free Higher Education", publisher: "Commission on Higher Education", url: "https://ched.gov.ph/" },
+    ],
+    videoTutorials: [
+      {
+        title: "College enrollment document prep",
+        description: "A short guide to organizing school records before enrollment week.",
+        embedUrl: "https://www.youtube-nocookie.com/embed/prepare-college-enrollment-demo",
+        duration: "3 minutes",
+        transcript: "Confirm your slot, request Form 138 and good moral documents early, prepare PSA copies and ID photos, keep originals separate, and follow your university enrollment schedule.",
+        captionsAvailable: true,
+        type: "before-you-go",
+      },
+    ],
+    documentExamples: [
+      {
+        label: "High school records",
+        acceptedTypes: ["Form 138", "Form 137 request", "Good moral certificate"],
+        notes: "Universities may require original sealed copies or school-to-school transmission. Ask the admissions office before submitting originals.",
+      },
+      {
+        label: "Identity and photo documents",
+        acceptedTypes: ["PSA birth certificate", "2x2 ID photos", "Student applicant ID"],
+        notes: "Keep extra photocopies and digital backups, but submit only the format requested by the school.",
+      },
+    ],
+    plainEnglishSummary: "Enrollment is about proving you passed, clearing your high school records, and submitting documents on the university schedule. Deadlines matter more than the number of documents.",
+    prepareFirst: [
+      "Entrance exam result or admission notice",
+      "Form 138 and good moral certificate",
+      "PSA birth certificate copies and ID photos",
+    ],
+    commonConfusions: [
+      "Some records are sent school-to-school, so ask before requesting sealed originals.",
+      "Passing an exam may still require confirming your slot by a deadline.",
     ],
     lastReviewedDate: "2026-04-27",
     reviewStatus: "reviewed",
@@ -5427,6 +5685,11 @@ export const processSeedRecords: ProcessSeedRecord[] = processGuides.map((proces
   tips: process.tips,
   faq: process.faq,
   official_source_links: process.officialSourceLinks,
+  video_tutorials: process.videoTutorials,
+  document_examples: process.documentExamples,
+  plain_english_summary: process.plainEnglishSummary,
+  prepare_first: process.prepareFirst,
+  common_confusions: process.commonConfusions,
   last_reviewed_date: process.lastReviewedDate,
   review_status: process.reviewStatus,
   difficulty: process.difficulty,

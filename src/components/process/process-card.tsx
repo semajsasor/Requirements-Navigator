@@ -11,20 +11,23 @@ export function ProcessCard({ process }: { process: ProcessGuide }) {
   return (
     <Link
       href={`/process/${process.slug}`}
-      className="group block h-full rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+      className="group block h-full rounded-lg focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-ring/20 focus-visible:ring-offset-2"
     >
-      <Card className="flex h-full flex-col bg-white transition-all duration-200 hover:-translate-y-0.5 hover:border-primary/35 hover:bg-[#fbfdfc] hover:shadow-xl hover:shadow-[#123c33]/10">
-        <CardHeader className="p-5 pb-4">
+      <Card className="flex h-full flex-col bg-white transition-all duration-200 hover:-translate-y-0.5 hover:border-primary/35 hover:bg-[#fbfdfc] hover:shadow-xl hover:shadow-slate-900/10">
+        <CardHeader className="p-5 pb-4 sm:p-6 sm:pb-4">
           <div className="mb-3 flex flex-wrap items-center gap-2">
             <Badge variant="accent">{process.category}</Badge>
             <Badge variant="outline">{process.difficulty}</Badge>
             <Badge variant="secondary">{process.location.countryCode}</Badge>
-            <TrustBadge reviewStatus={process.reviewStatus} />
+            <TrustBadge
+              reviewStatus={process.reviewStatus}
+              lastReviewedDate={process.lastReviewedDate}
+            />
           </div>
-          <CardTitle className="text-[1.05rem] leading-6">{process.title}</CardTitle>
+          <CardTitle className="text-lg leading-6">{process.title}</CardTitle>
           <CardDescription className="mt-1.5">{process.summary}</CardDescription>
         </CardHeader>
-        <CardContent className="mt-auto p-5 pt-0">
+        <CardContent className="mt-auto p-5 pt-0 sm:p-6 sm:pt-0">
           <div className="grid gap-3 text-sm text-muted-foreground">
             <div className="flex items-center gap-2">
               <Clock className="h-4 w-4 text-primary" aria-hidden="true" />
