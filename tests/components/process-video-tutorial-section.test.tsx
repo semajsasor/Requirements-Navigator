@@ -78,4 +78,22 @@ describe("ProcessVideoTutorialSection", () => {
       "https://www.youtube.com/embed/example?rel=0",
     );
   });
+
+  it("shows a visible placeholder for demo embed URLs", () => {
+    render(
+      <ProcessVideoTutorialSection
+        tutorial={{
+          title: "Demo tutorial",
+          embedUrl: "https://www.youtube-nocookie.com/embed/demo-video-demo",
+          duration: "3 minutes",
+          transcript: "This is a demo transcript.",
+          captionsAvailable: true,
+          type: "quick overview",
+        }}
+      />,
+    );
+
+    expect(screen.getByText(/demo video placeholder/i)).toBeInTheDocument();
+    expect(screen.queryByTitle("Demo tutorial")).not.toBeInTheDocument();
+  });
 });

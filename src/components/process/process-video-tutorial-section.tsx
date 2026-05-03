@@ -35,6 +35,18 @@ function getSafeVideoUrl(value?: string, options?: { stripAutoplay?: boolean }) 
   }
 }
 
+function isDemoVideoUrl(value?: string) {
+  if (!value) {
+    return false;
+  }
+
+  try {
+    return new URL(value).pathname.includes("-demo");
+  } catch {
+    return false;
+  }
+}
+
 function formatTutorialType(type: ProcessVideoTutorial["type"]) {
   return type
     .split("-")
@@ -50,6 +62,7 @@ export function ProcessVideoTutorialSection({
   const hasTranscript = Boolean(tutorial.transcript?.trim());
   const safeEmbedUrl = getSafeVideoUrl(tutorial.embedUrl, { stripAutoplay: true });
   const safeVideoUrl = getSafeVideoUrl(tutorial.url);
+  const isDemoEmbed = isDemoVideoUrl(safeEmbedUrl);
 
   return (
     <section
@@ -88,7 +101,7 @@ export function ProcessVideoTutorialSection({
           </div>
         </CardHeader>
         <CardContent className="grid gap-3 p-4 pt-0 sm:gap-4 sm:p-5 sm:pt-0">
-          {safeEmbedUrl ? (
+          {safeEmbedUrl && !isDemoEmbed ? (
             <div className="aspect-video max-h-[420px] overflow-hidden rounded-md border bg-muted">
               <iframe
                 title={tutorial.title}
@@ -100,21 +113,27 @@ export function ProcessVideoTutorialSection({
                 allowFullScreen
               />
             </div>
-          ) : safeVideoUrl ? (
+          ) : isDemoEmbed || safeVideoUrl ? (
             <div className="flex min-h-56 flex-col items-center justify-center gap-4 rounded-md border border-dashed bg-[#fbfdfc] p-5 text-center sm:aspect-video">
               <PlayCircle className="h-10 w-10 text-primary" aria-hidden="true" />
               <div>
-                <p className="font-medium">Video opens in a new tab</p>
+                <p className="font-medium">
+                  {isDemoEmbed ? "Demo video placeholder" : "Video opens in a new tab"}
+                </p>
                 <p className="mt-1 text-sm leading-6 text-muted-foreground">
-                  This guide includes a tutorial link, but no embeddable player URL.
+                  {isDemoEmbed
+                    ? "This guide includes sample tutorial data so the video section can be tested before a real production video is added."
+                    : "This guide includes a tutorial link, but no embeddable player URL."}
                 </p>
               </div>
-              <Button asChild variant="outline" className="bg-white">
-                <a href={safeVideoUrl} target="_blank" rel="noreferrer">
-                  Open tutorial
-                  <ExternalLink className="h-4 w-4" aria-hidden="true" />
-                </a>
-              </Button>
+              {safeVideoUrl ? (
+                <Button asChild variant="outline" className="bg-white">
+                  <a href={safeVideoUrl} target="_blank" rel="noreferrer">
+                    Open tutorial
+                    <ExternalLink className="h-4 w-4" aria-hidden="true" />
+                  </a>
+                </Button>
+              ) : null}
             </div>
           ) : null}
 

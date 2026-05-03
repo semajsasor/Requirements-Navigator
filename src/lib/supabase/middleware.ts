@@ -3,6 +3,10 @@ import { type NextRequest, NextResponse } from "next/server";
 
 import type { Database } from "@/types/database";
 
+function isRouteOrChild(pathname: string, route: string) {
+  return pathname === route || pathname.startsWith(`${route}/`);
+}
+
 export async function updateSession(request: NextRequest) {
   let response = NextResponse.next({
     request,
@@ -38,12 +42,15 @@ export async function updateSession(request: NextRequest) {
 
   if (
     !user &&
-    (request.nextUrl.pathname.startsWith("/dashboard") ||
-      request.nextUrl.pathname.startsWith("/admin"))
+    (isRouteOrChild(request.nextUrl.pathname, "/dashboard") ||
+      isRouteOrChild(request.nextUrl.pathname, "/admin"))
   ) {
     const redirectUrl = request.nextUrl.clone();
     redirectUrl.pathname = "/auth/sign-in";
-    redirectUrl.searchParams.set("redirectTo", request.nextUrl.pathname);
+    redirectUrl.searchParams.set(
+      "redirectTo",
+      `${request.nextUrl.pathname}${request.nextUrl.search}`,
+    );
 
     return NextResponse.redirect(redirectUrl);
   }
